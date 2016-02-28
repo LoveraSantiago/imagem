@@ -3,10 +3,10 @@ package lovera.imagem.linhas;
 import java.awt.image.BufferedImage;
 
 import lovera.comuns.recursos.Imagens;
+import lovera.img.factory.FactoryLinha;
 import lovera.img.manipulacao.ImgIO;
+import lovera.img.modelos.CorrosaoImg;
 import lovera.img.uniaomodelos.UniaoImg;
-import lovera.linha.factorylinha.FactoryLinha;
-import lovera.linha.modelos.CorrosaoImg;
 
 public class Linhas {
 	

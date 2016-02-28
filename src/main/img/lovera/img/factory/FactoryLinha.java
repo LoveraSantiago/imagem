@@ -1,10 +1,10 @@
-package lovera.linha.factorylinha;
+package lovera.img.factory;
 
 import java.awt.image.BufferedImage;
 
+import lovera.img.modelos.CorrosaoImg;
 import lovera.img.modelos.GaussImg;
 import lovera.img.modelos.LaplaceImg;
-import lovera.linha.modelos.CorrosaoImg;
 
 public final class FactoryLinha {
 	

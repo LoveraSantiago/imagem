@@ -1,4 +1,4 @@
-package lovera.linha.modelos;
+package lovera.img.modelos;
 
 import static lovera.comuns.comum.Regras.validarBufferedImgCinza;
 import static lovera.comuns.comum.Regras.validarListaCoordenadas;
@@ -18,7 +18,6 @@ import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.LaplaceImg;
 
 public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenadas{
 	
