@@ -8,7 +8,7 @@ import lovera.linha.modelos.CorrosaoImg;
 
 public final class FactoryLinha {
 	
-	public static CorrosaoImg factoryErosaoImgFromBufferedImage(BufferedImage img){
+	public static CorrosaoImg factoryCorrosaoImgFromBufferedImage(BufferedImage img){
 		GaussImg gauss = new GaussImg(img);
 		gauss.executarTransformacao();
 		

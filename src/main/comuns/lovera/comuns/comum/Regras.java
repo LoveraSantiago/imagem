@@ -29,5 +29,4 @@ public final class Regras {
 		if(img == null)
 			throw new IllegalArgumentException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getSimpleName());
 	}
-
 }

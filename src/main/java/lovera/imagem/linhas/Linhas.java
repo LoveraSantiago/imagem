@@ -4,17 +4,17 @@ import java.awt.image.BufferedImage;
 
 import lovera.comuns.recursos.Imagens;
 import lovera.img.manipulacao.ImgIO;
+import lovera.img.uniaomodelos.UniaoImg;
 import lovera.linha.factorylinha.FactoryLinha;
 import lovera.linha.modelos.CorrosaoImg;
-import lovera.linha.uniao.UniaoImgErosao;
 
 public class Linhas {
 	
 	public static void main(String[] args) {
 //		BufferedImage img = carregarImg_modoIO(Imagens.REDACAO_PNG);
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
-		CorrosaoImg erosao = FactoryLinha.factoryErosaoImgFromBufferedImage(img);
-		UniaoImgErosao uniao = new UniaoImgErosao(erosao, img);
+		CorrosaoImg corrosao = FactoryLinha.factoryCorrosaoImgFromBufferedImage(img);
+		UniaoImg uniao = new UniaoImg("redacaoUniaoCorrosao", corrosao, img);
 		uniao.executarTransformacao();
 //		erosao.gravar();
 		uniao.gravar();
