@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import java.util.List;
 
 import lovera.comuns.contratos.Gravavel;
@@ -30,12 +31,16 @@ public final class UniaoImgErosao implements UnidorImagens, Gravavel{
 	@Override
 	public void executarTransformacao() {
 		this.imgUniao = copiarImg(imgTemp, BufferedImage.TYPE_INT_RGB);
+//		this.imgUniao = new BufferedImage(imgTemp.getWidth(), imgTemp.getHeight(), BufferedImage.TYPE_INT_RGB);
+//		WritableRaster wRaster = imgUniao.getRaster();
 		
 		Graphics2D graphics = this.imgUniao.createGraphics();
 		graphics.setColor(Color.red);
 		
-		for(Point ponto : coordenadas)			
-			graphics.fillOval((int) ponto.getX(), (int) ponto.getY(), 1, 1);
+		for(Point ponto : coordenadas)	
+			graphics.fillOval((int) ponto.getX(), (int) ponto.getY(), 2, 2);
+//			wRaster.setSample((int) ponto.getX(), (int) ponto.getY(), 0, 255);
+
 		graphics.dispose();
 		
 		this.imgTemp = null;

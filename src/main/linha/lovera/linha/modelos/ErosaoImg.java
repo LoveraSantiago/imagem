@@ -1,6 +1,7 @@
 package lovera.linha.modelos;
 
 import static lovera.comuns.comum.Regras.validarBufferedImgCinza;
+import static lovera.comuns.comum.Regras.validarListaCoordenadas;
 import static lovera.comuns.comum.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
@@ -9,9 +10,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
@@ -29,19 +28,19 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	private static final int HUM_BINARIO  = 1;
 	
 	private BufferedImage imgErosao;
+	
 	private List<Point> coordenadas;
 	
 	public ErosaoImg(LaplaceImg laplace) {
 		validarBufferedImgCinza(laplace.getImgTransformada());
 		
-		this.imgErosao = copiarImg(laplace.getImgTransformada());		
-		this.coordenadas = new ArrayList<>(); 
+		this.imgErosao = copiarImg(laplace.getImgTransformada());		 
 	}
 	
 	@Override
 	public void executarTransformacao() {		
 		executarErosao();
-		filtrarListaDeCoordenadas();
+		carregarCoordenadas();
 	}
 
 	private void executarErosao(){
@@ -81,9 +80,6 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	private int[] analiseVizinhanca(int[] vizinhanca, int x, int y){
 		int caso = getCaso(vizinhanca);
 		int casoErosao = getErosao(caso);
-		
-		if(casoErosao == 1)this.coordenadas.add(new Point(x, y));
-		
 		return casoParaVizinhanca(casoErosao, new int[vizinhanca.length]);
 	}
 	
@@ -172,14 +168,14 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 		throw new RuntimeException("Caso nº" + caso + " de erosão inexistente.");
 	}
 	
-	private void filtrarListaDeCoordenadas(){
-		Set<Point> filtro = new HashSet<>(this.coordenadas);
-		this.coordenadas = new ArrayList<>(filtro);
-	}
-
-	public List<Point> getCoordenadas() {
-		validarOperacaoExecutada(this.imgErosao, this);
-		return coordenadas;
+	private void carregarCoordenadas(){
+		this.coordenadas = new ArrayList<>();
+		
+		WritableRaster raster = this.imgErosao.getRaster();
+		for(int i = 0; i < this.imgErosao.getHeight(); i++)
+			for(int j = 0; j < this.imgErosao.getWidth(); j++)
+				if(raster.getSample(j, i, 0) == PREENCHIDO)
+					this.coordenadas.add(new Point(j, i));		
 	}
 
 	/**
@@ -195,6 +191,11 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	public void gravar() {
 		validarOperacaoExecutada(this.imgErosao, this);
 		ImgIO.gravarImg(this.imgErosao, Endereco.TESTES, "RedacaoErosao", TipoImagem.PNG);
+	}
+
+	public List<Point> getCoordenadas() {
+		validarListaCoordenadas(this.coordenadas);
+		return this.coordenadas;
 	}
 	
 //	Testando conversoes binarias

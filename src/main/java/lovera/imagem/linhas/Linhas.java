@@ -16,8 +16,8 @@ public class Linhas {
 		ErosaoImg erosao = FactoryLinha.factoryErosaoImgFromBufferedImage(img);
 		UniaoImgErosao uniao = new UniaoImgErosao(erosao, img);
 		uniao.executarTransformacao();
-		uniao.gravar();
 //		erosao.gravar();
+		uniao.gravar();
 //		System.out.println("Fim");
 	}
 }
