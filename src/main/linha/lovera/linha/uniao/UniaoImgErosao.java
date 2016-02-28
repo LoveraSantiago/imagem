@@ -1,4 +1,4 @@
-package lovera.img.modelos;
+package lovera.linha.uniao;
 
 import static lovera.comuns.comum.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
@@ -13,9 +13,10 @@ import java.util.List;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
-import lovera.img.contratos.ImgTransformavel;
+import lovera.img.contratos.UnidorImagens;
+import lovera.linha.modelos.ErosaoImg;
 
-public final class UniaoImgErosao implements ImgTransformavel, Gravavel{
+public final class UniaoImgErosao implements UnidorImagens, Gravavel{
 	
 	private final List<Point> coordenadas;
 	private BufferedImage imgTemp;

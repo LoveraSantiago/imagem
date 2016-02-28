@@ -2,9 +2,9 @@ package lovera.linha.factorylinha;
 
 import java.awt.image.BufferedImage;
 
-import lovera.img.modelos.ErosaoImg;
 import lovera.img.modelos.GaussImg;
 import lovera.img.modelos.LaplaceImg;
+import lovera.linha.modelos.ErosaoImg;
 
 public final class FactoryImgs {
 	

@@ -1,4 +1,4 @@
-package lovera.img.modelos;
+package lovera.linha.modelos;
 
 import static lovera.comuns.comum.Regras.validarBufferedImgCinza;
 import static lovera.comuns.comum.Regras.validarOperacaoExecutada;
@@ -18,6 +18,7 @@ import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
+import lovera.img.modelos.LaplaceImg;
 
 public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	
