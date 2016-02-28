@@ -27,6 +27,7 @@ public final class ImgIO {
 			img = ImageIO.read(new File(imagem.getEndereco()));
 		} catch (IOException e) {			
 			e.printStackTrace();
+			log.error("Img não carregada! End: " + imagem.getEndereco() + " Modo: IO");
 		}
 		return img;
 	}
@@ -40,12 +41,13 @@ public final class ImgIO {
 			mt.waitForID(0);
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
+			log.error("Img não carregada! End: " + imagem.getEndereco() + " Modo: MediaTracker");
 		}
 		
 		BufferedImage img = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_BYTE_GRAY);
 		Graphics graphics = img.getGraphics();
 		graphics.drawImage(image, 0, 0, null);
-		graphics.dispose();
+		graphics.dispose();		
 		return img;
 	}
 	
