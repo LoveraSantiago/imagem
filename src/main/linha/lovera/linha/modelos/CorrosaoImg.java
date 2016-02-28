@@ -19,7 +19,7 @@ import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.LaplaceImg;
 
-public final class ErosaoImg implements ImgTransformavel, Gravavel{
+public final class CorrosaoImg implements ImgTransformavel, Gravavel{
 	
 	private static final int VAZIO      = 0;
 	private static final int PREENCHIDO = 255;
@@ -27,14 +27,14 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	private static final int ZERO_BINARIO = 0;
 	private static final int HUM_BINARIO  = 1;
 	
-	private BufferedImage imgErosao;
+	private BufferedImage imgCorrosao;
 	
 	private List<Point> coordenadas;
 	
-	public ErosaoImg(LaplaceImg laplace) {
+	public CorrosaoImg(LaplaceImg laplace) {
 		validarBufferedImgCinza(laplace.getImgTransformada());
 		
-		this.imgErosao = copiarImg(laplace.getImgTransformada());		 
+		this.imgCorrosao = copiarImg(laplace.getImgTransformada());		 
 	}
 	
 	@Override
@@ -44,10 +44,10 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	}
 
 	private void executarErosao(){
-		WritableRaster wRaster = this.imgErosao.getRaster();
+		WritableRaster wRaster = this.imgCorrosao.getRaster();
 		
-		for(int i = 1; i < this.imgErosao.getHeight() - 1; i++)
-			for(int j = 1; j < this.imgErosao.getWidth() - 1; j++){
+		for(int i = 1; i < this.imgCorrosao.getHeight() - 1; i++)
+			for(int j = 1; j < this.imgCorrosao.getWidth() - 1; j++){
 				int[] vizinhanca = getVizinhanca(j, i, wRaster);
 				int[] vErodida = analiseVizinhanca(vizinhanca, j, i);
 				setVizinhanca(j, i, wRaster, vErodida);
@@ -171,9 +171,9 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	private void carregarCoordenadas(){
 		this.coordenadas = new ArrayList<>();
 		
-		WritableRaster raster = this.imgErosao.getRaster();
-		for(int i = 0; i < this.imgErosao.getHeight(); i++)
-			for(int j = 0; j < this.imgErosao.getWidth(); j++)
+		WritableRaster raster = this.imgCorrosao.getRaster();
+		for(int i = 0; i < this.imgCorrosao.getHeight(); i++)
+			for(int j = 0; j < this.imgCorrosao.getWidth(); j++)
 				if(raster.getSample(j, i, 0) == PREENCHIDO)
 					this.coordenadas.add(new Point(j, i));		
 	}
@@ -183,14 +183,14 @@ public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	 */
 	@Override
 	public BufferedImage getImgTransformada() {
-		validarOperacaoExecutada(this.imgErosao, this);
-		return this.imgErosao;
+		validarOperacaoExecutada(this.imgCorrosao, this);
+		return this.imgCorrosao;
 	}
 
 	@Override
 	public void gravar() {
-		validarOperacaoExecutada(this.imgErosao, this);
-		ImgIO.gravarImg(this.imgErosao, Endereco.TESTES, "RedacaoErosao", TipoImagem.PNG);
+		validarOperacaoExecutada(this.imgCorrosao, this);
+		ImgIO.gravarImg(this.imgCorrosao, Endereco.TESTES, "RedacaoCorrosao", TipoImagem.PNG);
 	}
 
 	public List<Point> getCoordenadas() {

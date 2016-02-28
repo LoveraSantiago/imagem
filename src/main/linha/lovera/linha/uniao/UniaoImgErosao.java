@@ -15,7 +15,7 @@ import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.UnidorImagens;
-import lovera.linha.modelos.ErosaoImg;
+import lovera.linha.modelos.CorrosaoImg;
 
 public final class UniaoImgErosao implements UnidorImagens, Gravavel{
 	
@@ -23,7 +23,7 @@ public final class UniaoImgErosao implements UnidorImagens, Gravavel{
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
 	
-	public UniaoImgErosao(ErosaoImg erosao, BufferedImage img) {
+	public UniaoImgErosao(CorrosaoImg erosao, BufferedImage img) {
 		this.coordenadas = erosao.getCoordenadas();
 		this.imgTemp = img;
 	}

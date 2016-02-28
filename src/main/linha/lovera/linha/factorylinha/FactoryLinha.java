@@ -4,20 +4,20 @@ import java.awt.image.BufferedImage;
 
 import lovera.img.modelos.GaussImg;
 import lovera.img.modelos.LaplaceImg;
-import lovera.linha.modelos.ErosaoImg;
+import lovera.linha.modelos.CorrosaoImg;
 
 public final class FactoryLinha {
 	
-	public static ErosaoImg factoryErosaoImgFromBufferedImage(BufferedImage img){
+	public static CorrosaoImg factoryErosaoImgFromBufferedImage(BufferedImage img){
 		GaussImg gauss = new GaussImg(img);
 		gauss.executarTransformacao();
 		
 		LaplaceImg laplace = new LaplaceImg(gauss);
 		laplace.executarTransformacao();
 		
-		ErosaoImg erosao = new ErosaoImg(laplace);
+		CorrosaoImg erosao = new CorrosaoImg(laplace);
 		erosao.executarTransformacao();
-		return (ErosaoImg) erosao;
+		return (CorrosaoImg) erosao;
 	}
 	
 }
