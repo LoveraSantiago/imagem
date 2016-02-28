@@ -38,7 +38,7 @@ public final class UniaoImg implements UnidorImagens, Gravavel{
 		Graphics2D graphics = this.imgUniao.createGraphics();
 		graphics.setColor(Color.red);
 		
-		for(Point ponto : coordenadas)	
+		for(Point ponto : this.coordenadas)	
 			graphics.fillOval((int) ponto.getX(), (int) ponto.getY(), 2, 2);
 
 		graphics.dispose();
