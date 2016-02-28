@@ -16,6 +16,7 @@
 
   <dependencies>
   
+    <!-- Junit para testes -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -23,11 +24,21 @@
       <scope>test</scope>
     </dependency>
     
+    <!-- Apache Maths -->
     <dependency>
 	  <groupId>org.apache.commons</groupId>
 	  <artifactId>commons-math3</artifactId>
 	  <version>3.6</version>
 	</dependency>
+	
+	<!-- log4j -->
+	<dependency>
+	  <groupId>log4j</groupId>
+	  <artifactId>log4j</artifactId>
+	  <version>1.2.17</version>
+	</dependency>
+
+
     
   </dependencies>
   

@@ -6,7 +6,7 @@ import lovera.img.modelos.GaussImg;
 import lovera.img.modelos.LaplaceImg;
 import lovera.linha.modelos.ErosaoImg;
 
-public final class FactoryImgs {
+public final class FactoryLinha {
 	
 	public static ErosaoImg factoryErosaoImgFromBufferedImage(BufferedImage img){
 		GaussImg gauss = new GaussImg(img);

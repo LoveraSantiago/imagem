@@ -11,11 +11,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import org.apache.log4j.Logger;
+
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.Imagens;
 import lovera.comuns.recursos.TipoImagem;
 
 public final class ImgIO {
+	
+	private static final Logger log = Logger.getLogger(ImgIO.class);
 	
 	public static final BufferedImage carregarImg_modoIO(Imagens imagem){
 		BufferedImage img = null;
@@ -52,7 +56,10 @@ public final class ImgIO {
 	public static final void gravarImg(BufferedImage img, Endereco endereco, String nomeArquivo, TipoImagem extensao){			
 		String enderecoCpto = validarNomeArquivo(endereco.getEndereco() + "/" + nomeArquivo + "." + extensao.getTipo());
 		 try {
-			ImageIO.write(img, extensao.getTipo(), new File(enderecoCpto));
+			 File arquivo = new File(enderecoCpto);
+			 ImageIO.write(img, extensao.getTipo(), arquivo);
+			 
+			 log.info("Arquivo salvo como: " + arquivo.getPath());
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
