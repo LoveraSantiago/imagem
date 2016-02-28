@@ -15,11 +15,12 @@ import java.util.List;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.LaplaceImg;
 
-public final class CorrosaoImg implements ImgTransformavel, Gravavel{
+public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenadas{
 	
 	private static final int VAZIO      = 0;
 	private static final int PREENCHIDO = 255;
@@ -193,6 +194,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel{
 		ImgIO.gravarImg(this.imgCorrosao, Endereco.TESTES, "RedacaoCorrosao", TipoImagem.PNG);
 	}
 
+	@Override
 	public List<Point> getCoordenadas() {
 		validarListaCoordenadas(this.coordenadas);
 		return this.coordenadas;
