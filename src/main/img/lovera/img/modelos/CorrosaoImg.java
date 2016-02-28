@@ -1,8 +1,9 @@
 package lovera.img.modelos;
 
-import static lovera.comuns.comum.Regras.validarBufferedImgCinza;
-import static lovera.comuns.comum.Regras.validarListaCoordenadas;
-import static lovera.comuns.comum.Regras.validarOperacaoExecutada;
+import static lovera.img.comum.Regras.validarBufferedImgCinza;
+import static lovera.img.comum.Regras.validarListaCoordenadas;
+import static lovera.img.comum.Regras.validarOperacaoExecutada;
+import static lovera.img.manipulacao.ImgIO.gravarImg;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
 import java.awt.Point;
@@ -15,14 +16,10 @@ import java.util.List;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.comum.Pixel;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.img.manipulacao.ImgIO;
-
 public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenadas{
-	
-	private static final int VAZIO      = 0;
-	private static final int PREENCHIDO = 255;
 	
 	private static final int ZERO_BINARIO = 0;
 	private static final int HUM_BINARIO  = 1;
@@ -85,7 +82,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	
 	private int[] casoParaVizinhanca(int caso, int[] array){
 		for(int i = array.length - 1, contador = 0; i >= 0; i--, contador++){
-			array[contador] = ((caso & (HUM_BINARIO << i)) != ZERO_BINARIO) ? PREENCHIDO : VAZIO; 
+			array[contador] = ((caso & (HUM_BINARIO << i)) != ZERO_BINARIO) ? Pixel.PREENCHIDO : Pixel.VAZIO; 
 		}
 		return array;
 	}
@@ -174,7 +171,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 		WritableRaster raster = this.imgCorrosao.getRaster();
 		for(int i = 0; i < this.imgCorrosao.getHeight(); i++)
 			for(int j = 0; j < this.imgCorrosao.getWidth(); j++)
-				if(raster.getSample(j, i, 0) == PREENCHIDO)
+				if(raster.getSample(j, i, 0) == Pixel.PREENCHIDO)
 					this.coordenadas.add(new Point(j, i));		
 	}
 
@@ -190,7 +187,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	@Override
 	public void gravar() {
 		validarOperacaoExecutada(this.imgCorrosao, this);
-		ImgIO.gravarImg(this.imgCorrosao, Endereco.TESTES, "RedacaoCorrosao", TipoImagem.PNG);
+		gravarImg(this.imgCorrosao, Endereco.TESTES, "RedacaoCorrosao", TipoImagem.PNG);
 	}
 
 	@Override

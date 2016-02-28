@@ -1,6 +1,6 @@
 package lovera.img.modelos;
 
-import static lovera.comuns.comum.Regras.validarOperacaoExecutada;
+import static lovera.img.comum.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.Filtros.Gauss;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 

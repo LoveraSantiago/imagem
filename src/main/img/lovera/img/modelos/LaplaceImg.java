@@ -1,15 +1,15 @@
 package lovera.img.modelos;
 
-import static lovera.comuns.comum.Regras.validarOperacaoExecutada;
+import static lovera.img.comum.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.Filtros.Laplace;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.image.BufferedImage;
 
-import lovera.comuns.comum.Regras;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
 
 public final class LaplaceImg implements ImgTransformavel, Gravavel{

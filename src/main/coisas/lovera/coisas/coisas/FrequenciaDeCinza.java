@@ -1,6 +1,6 @@
 package lovera.coisas.coisas;
 
-import static lovera.comuns.comum.Regras.validarNivelCinza;
+import static lovera.img.comum.Regras.validarNivelCinza;
 
 import lovera.comuns.contratos.Gravavel;
 

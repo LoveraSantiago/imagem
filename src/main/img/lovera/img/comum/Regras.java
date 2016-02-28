@@ -1,4 +1,4 @@
-package lovera.comuns.comum;
+package lovera.img.comum;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
