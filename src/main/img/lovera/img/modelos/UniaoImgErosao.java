@@ -10,11 +10,12 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import lovera.comuns.contratos.ImgTransformavel;
+import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.contratos.ImgTransformavel;
 
-public final class UniaoImgErosao implements ImgTransformavel{
+public final class UniaoImgErosao implements ImgTransformavel, Gravavel{
 	
 	private final List<Point> coordenadas;
 	private BufferedImage imgTemp;

@@ -13,12 +13,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import lovera.comuns.contratos.ImgTransformavel;
+import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
 
-public final class ErosaoImg implements ImgTransformavel{
+public final class ErosaoImg implements ImgTransformavel, Gravavel{
 	
 	private static final int VAZIO      = 0;
 	private static final int PREENCHIDO = 255;

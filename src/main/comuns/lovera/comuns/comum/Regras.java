@@ -2,7 +2,7 @@ package lovera.comuns.comum;
 
 import java.awt.image.BufferedImage;
 
-import lovera.comuns.contratos.ImgTransformavel;
+import lovera.img.contratos.ImgTransformavel;
 
 public final class Regras {
 	

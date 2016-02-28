@@ -1,8 +1,8 @@
-package lovera.comuns.contratos;
+package lovera.img.contratos;
 
 import java.awt.image.BufferedImage;
 
-public interface ImgTransformavel extends Gravavel{
+public interface ImgTransformavel{
 	
 	void executarTransformacao();
 	BufferedImage getImgTransformada();

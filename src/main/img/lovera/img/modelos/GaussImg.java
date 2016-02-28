@@ -6,11 +6,12 @@ import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.image.BufferedImage;
 
-import lovera.comuns.contratos.ImgTransformavel;
+import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.contratos.ImgTransformavel;
 
-public final class GaussImg implements ImgTransformavel{
+public final class GaussImg implements ImgTransformavel, Gravavel{
 	
 	private BufferedImage imgTemp;
 	private BufferedImage imgGauss;
