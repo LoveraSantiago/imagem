@@ -11,6 +11,8 @@ import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.List;
 
+import lovera.coisas.coisas.Estatistica;
+import lovera.comuns.contratos.EstatisticaDescritivel;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
@@ -19,7 +21,7 @@ import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.uniaomodelos.UniaoImg;
 
-public class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas{
+public class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, EstatisticaDescritivel{
 	
 	private BufferedImage imgTemp;
 	private BufferedImage imgChuva;
@@ -77,5 +79,17 @@ public class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas{
 	public void gravar() {
 		validarOperacaoExecutada(this.imgChuva, this);
 		gravarImg(this.imgChuva, Endereco.TESTES, "redacaoChuva", TipoImagem.PNG);
+	}
+
+	@Override
+	public void gerarEstatistica() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Estatistica getEstatistica() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 }
