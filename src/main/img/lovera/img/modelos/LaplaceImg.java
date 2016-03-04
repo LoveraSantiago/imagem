@@ -22,9 +22,10 @@ public final class LaplaceImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void executarTransformacao() {
+	public ImgTransformavel executarTransformacao() {
 		this.imgLaplace = Laplace(imgTemp);
-		this.imgTemp = null;		
+		this.imgTemp = null;
+		return this;
 	}
 
 	@Override

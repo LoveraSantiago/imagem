@@ -21,9 +21,10 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void executarTransformacao() {
+	public ImgTransformavel executarTransformacao() {
 		this.imgGauss = Gauss(this.imgTemp);
 		this.imgTemp = null;
+		return this;
 	}
 
 	@Override

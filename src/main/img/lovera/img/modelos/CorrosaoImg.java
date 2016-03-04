@@ -38,9 +38,10 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	}
 	
 	@Override
-	public void executarTransformacao() {		
+	public ImgTransformavel executarTransformacao() {		
 		executarErosao();
 		carregarCoordenadas();
+		return this;
 	}
 
 	private void executarErosao(){

@@ -14,6 +14,7 @@ import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.Coordenadas;
+import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 
 public final class UniaoImg implements UnidorImagens, Gravavel{
@@ -32,7 +33,7 @@ public final class UniaoImg implements UnidorImagens, Gravavel{
 	}
 
 	@Override
-	public void executarTransformacao() {
+	public ImgTransformavel executarTransformacao() {
 		this.imgUniao = copiarImg(imgTemp, BufferedImage.TYPE_INT_RGB);
 		
 		Graphics2D graphics = this.imgUniao.createGraphics();
@@ -43,6 +44,8 @@ public final class UniaoImg implements UnidorImagens, Gravavel{
 
 		graphics.dispose();
 		this.imgTemp = null;
+		
+		return this;
 	}
 
 	@Override
