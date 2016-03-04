@@ -35,11 +35,12 @@ public class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, Estati
 	}
 
 	@Override
-	public void executarTransformacao() {
+	public ImgTransformavel executarTransformacao() {
 		carregarCoordenadas();
 		desenharImg();
 		
 		this.imgTemp = null;
+		return this;
 	}
 	
 	private void carregarCoordenadas(){

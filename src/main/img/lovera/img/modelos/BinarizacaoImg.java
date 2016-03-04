@@ -6,7 +6,6 @@ import java.awt.image.WritableRaster;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
-import lovera.img.comum.Binario;
 import lovera.img.comum.Pixel;
 import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
@@ -24,9 +23,10 @@ public class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void executarTransformacao() {
+	public ImgTransformavel executarTransformacao() {
 		int[] arrayBinario = iniciarArrayBinario();
 		binarizarImg(arrayBinario);		
+		return this;
 	}
 	
 	private int[] iniciarArrayBinario(){
