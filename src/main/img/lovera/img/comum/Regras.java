@@ -13,6 +13,10 @@ public final class Regras {
 			throw new IllegalArgumentException("BufferedImage deve ser do tipo cinza.");
 	}
 	
+	public static void validarBufferedImgCinza(ImgTransformavel imgTranformavel){
+		validarBufferedImgCinza(imgTranformavel.getImgTransformada());
+	}
+	
 	public static void validarListaCoordenadas(List<Point> lista){
 		if(lista.size() <= 0)
 			throw new IllegalArgumentException("Lista de coordenadas vazia.");

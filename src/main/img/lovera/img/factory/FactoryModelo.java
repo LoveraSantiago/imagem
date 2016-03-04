@@ -2,6 +2,7 @@ package lovera.img.factory;
 
 import java.awt.image.BufferedImage;
 
+import lovera.img.modelos.BinarizacaoImg;
 import lovera.img.modelos.CorrosaoImg;
 import lovera.img.modelos.GaussImg;
 import lovera.img.modelos.LaplaceImg;
@@ -15,7 +16,10 @@ public final class FactoryModelo {
 		LaplaceImg laplace = new LaplaceImg(gauss);
 		laplace.executarTransformacao();
 		
-		CorrosaoImg erosao = new CorrosaoImg(laplace);
+		BinarizacaoImg binariza = new BinarizacaoImg(laplace);
+		binariza.executarTransformacao();
+		
+		CorrosaoImg erosao = new CorrosaoImg(binariza);
 		erosao.executarTransformacao();
 		return (CorrosaoImg) erosao;
 	}

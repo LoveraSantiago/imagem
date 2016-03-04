@@ -2,9 +2,11 @@ package lovera.imagem.linhas;
 
 import java.awt.image.BufferedImage;
 
+import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
+import lovera.img.modelos.BinarizacaoImg;
 import lovera.img.modelos.ChuvaImg;
 import lovera.img.modelos.GaussImg;
 import lovera.img.modelos.LaplaceImg;
@@ -17,7 +19,10 @@ public class TesteChuva {
 		transformacao.executarTransformacao();
 		transformacao = new LaplaceImg((GaussImg) transformacao);
 		transformacao.executarTransformacao();
-		ChuvaImg chuva = new ChuvaImg((LaplaceImg) transformacao);
+		transformacao = new BinarizacaoImg((LaplaceImg) transformacao);
+		transformacao.executarTransformacao();
+		((Gravavel) transformacao).gravar();
+		ChuvaImg chuva = new ChuvaImg((BinarizacaoImg) transformacao);
 		chuva.executarTransformacao();
 		chuva.gravar();
 	}

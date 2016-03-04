@@ -1,5 +1,7 @@
 package lovera.img.modelos;
 
+import static lovera.img.comum.Binario.HUM_BINARIO;
+import static lovera.img.comum.Binario.ZERO_BINARIO;
 import static lovera.img.comum.Regras.validarBufferedImgCinza;
 import static lovera.img.comum.Regras.validarListaCoordenadas;
 import static lovera.img.comum.Regras.validarOperacaoExecutada;
@@ -18,20 +20,21 @@ import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Coordenadas;
-import lovera.img.contratos.ImgTransformavel;
+import lovera.img.contratos.ImgTransformavel;;
+
+/**
+ * @author Lovera
+ */
 public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenadas{
-	
-	private static final int ZERO_BINARIO = 0;
-	private static final int HUM_BINARIO  = 1;
 	
 	private BufferedImage imgCorrosao;
 	
 	private List<Point> coordenadas;
 	
-	public CorrosaoImg(LaplaceImg laplace) {
-		validarBufferedImgCinza(laplace.getImgTransformada());
+	public CorrosaoImg(BinarizacaoImg binarizacao) {
+		validarBufferedImgCinza(binarizacao);
 		
-		this.imgCorrosao = copiarImg(laplace.getImgTransformada());		 
+		this.imgCorrosao = copiarImg(binarizacao.getImgTransformada());		 
 	}
 	
 	@Override

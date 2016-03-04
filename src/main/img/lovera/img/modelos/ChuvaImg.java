@@ -28,10 +28,10 @@ public class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, Estati
 	
 	private List<Point> coordenadas;
 	
-	public ChuvaImg(LaplaceImg laplace) {
-		validarBufferedImgCinza(laplace.getImgTransformada());
+	public ChuvaImg(BinarizacaoImg binarizacao) {
+		validarBufferedImgCinza(binarizacao);
 		
-		this.imgTemp = laplace.getImgTransformada();
+		this.imgTemp = binarizacao.getImgTransformada();
 	}
 
 	@Override
