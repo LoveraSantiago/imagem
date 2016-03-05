@@ -4,7 +4,9 @@ public enum Imagens {
 		
 	REDACAO_PNG("redacao.png");
 	
-	private static final String RAIZ = "C:/Users/santi_000/Desktop/Proces_Imagens/Imagens/originais/";
+//	private static final String RAIZ = "C:/Users/santi_000/Desktop/Proces_Imagens/Imagens/originais/";
+	private static final String RAIZ = "C:/Users/Santiago/workspace/exemplos/Imagens/originais/";
+	
 		
 	private String endereco;
 	
