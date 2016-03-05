@@ -1,0 +1,5 @@
+Text line and word segmentation of handwritten documents - principal
+http://users.iit.demokritos.gr/~bgat/Louloud_1_2009.pdf
+
+Artigo I citado no texto acima
+https://hal.inria.fr/file/index/docid/112648/filename/cr1062195592206.pdf

@@ -21,6 +21,11 @@ public class BinarizacaoImg implements ImgTransformavel, Gravavel{
 		
 		this.imgBinaria = ManipulacaoImg.copiarImg(laplace.getImgTransformada());
 	}
+	
+	public BinarizacaoImg(BufferedImage img) {
+		Regras.validarBufferedImgCinza(img);
+		this.imgBinaria = img;
+	}
 
 	@Override
 	public ImgTransformavel executarTransformacao() {

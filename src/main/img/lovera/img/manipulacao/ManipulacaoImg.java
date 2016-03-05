@@ -45,7 +45,7 @@ public final class ManipulacaoImg {
 		int width = img.getWidth();
 		int height = img.getHeight();
 		
-		BufferedImage imgCinza = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR_PRE);
+		BufferedImage imgCinza = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
 		Graphics2D graphics = imgCinza.createGraphics();
 		graphics.drawImage(img, 0, 0, width, height, null);
 		

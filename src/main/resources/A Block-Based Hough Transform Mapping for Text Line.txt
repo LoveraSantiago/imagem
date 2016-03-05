@@ -1,0 +1,12 @@
+https://hal.inria.fr/file/index/docid/112648/filename/cr1062195592206.pdf
+
+1º Passo 
+	- pré-processamento realce de imagem
+	- extração de componentes
+	- altura media de caracteries com estimativa
+
+2º Passo
+	-transformação de Hough - para detecção de eventuais linhas de texto
+	
+3º Passo
+	- Corrigir falsos alarmes
