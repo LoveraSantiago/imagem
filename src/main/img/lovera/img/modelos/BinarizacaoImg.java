@@ -12,7 +12,7 @@ import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.manipulacao.ManipulacaoImg;
 
-public class BinarizacaoImg implements ImgTransformavel, Gravavel{
+public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	
 	private BufferedImage imgBinaria;
 	

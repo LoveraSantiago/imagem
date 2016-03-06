@@ -1,6 +1,6 @@
 package lovera.comuns.grafoanalise;
 
-public class Grafologia {
+public final class Grafologia {
 	
 	private Espaco espaco;
 	private Forma forma;

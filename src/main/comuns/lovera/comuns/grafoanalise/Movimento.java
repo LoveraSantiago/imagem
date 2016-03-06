@@ -1,5 +1,5 @@
 package lovera.comuns.grafoanalise;
 
-public class Movimento {
+public final class Movimento {
 
 }

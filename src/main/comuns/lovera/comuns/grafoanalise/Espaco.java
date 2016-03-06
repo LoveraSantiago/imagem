@@ -1,6 +1,6 @@
 package lovera.comuns.grafoanalise;
 
-public class Espaco {
+public final class Espaco {
 	
 	private double margemInicial;
 	private double margemEsquerda;

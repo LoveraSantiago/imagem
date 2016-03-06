@@ -1,5 +1,5 @@
 package lovera.comuns.grafoanalise;
 
-public class Forma {
+public final class Forma {
 
 }

@@ -21,7 +21,7 @@ import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.uniaomodelos.UniaoImg;
 
-public class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, EstatisticaDescritivel{
+public final class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, EstatisticaDescritivel{
 	
 	private BufferedImage imgTemp;
 	private BufferedImage imgChuva;

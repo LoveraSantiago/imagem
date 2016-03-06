@@ -11,7 +11,10 @@ import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
-
+/**
+ * @author Lovera
+ * Classe util para detectar bordas
+ */
 public final class LaplaceImg implements ImgTransformavel, Gravavel{
 	
 	private BufferedImage imgTemp;

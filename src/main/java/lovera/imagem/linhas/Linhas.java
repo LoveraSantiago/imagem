@@ -14,6 +14,7 @@ public class Linhas {
 //		BufferedImage img = carregarImg_modoIO(Imagens.REDACAO_PNG);
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		CorrosaoImg corrosao = FactoryModelo.factoryCorrosaoImgFromBufferedImage(img);
+		corrosao.gravar();
 		UniaoImg uniao = new UniaoImg("redacaoUniaoCorrosao", corrosao, img);
 		uniao.executarTransformacao();
 //		erosao.gravar();

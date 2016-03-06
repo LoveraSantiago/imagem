@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import lovera.comuns.contratos.Gravavel;
 import lovera.img.contratos.ImgTransformavel;
 
-public class CinzaImg implements ImgTransformavel, Gravavel{
+public final class CinzaImg implements ImgTransformavel, Gravavel{
 
 	@Override
 	public void gravar() {
