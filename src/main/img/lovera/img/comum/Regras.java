@@ -6,6 +6,11 @@ import java.util.List;
 
 import lovera.img.contratos.ImgTransformavel;
 
+/**
+ * @author Lovera
+ * @since 06/03/2016
+ * Regras usadas de validacoes utilizadas no source src/main/img 
+ */
 public final class Regras {
 	
 	public static void validarBufferedImgCinza(BufferedImage img){
