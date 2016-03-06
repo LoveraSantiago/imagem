@@ -6,46 +6,34 @@ import java.awt.image.WritableRaster;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
-import lovera.img.comum.Pixel;
 import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.manipulacao.ManipulacaoImg;
+import lovera.img.modelos.LimiarImg;
 
 public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	
-	private BufferedImage imgBinaria;
+	private LimiarImg limiar;
+	private BufferedImage imgBinaria;	
 	
-	/**
-	 * Classe deve receber um buffered image e um objeto Limiar
-	 */
-	@Deprecated	
-	public BinarizacaoImg(LaplaceImg laplace) {
-		Regras.validarBufferedImgCinza(laplace);
+	public BinarizacaoImg(CinzaImg cinza, LimiarImg limiar) {
+		Regras.validarBufferedImgCinza(cinza);
 		
-		this.imgBinaria = ManipulacaoImg.copiarImg(laplace.getImgTransformada());
-	}
-	
-	public BinarizacaoImg(BufferedImage img) {
-		Regras.validarBufferedImgCinza(img);
-		this.imgBinaria = img;
+		this.imgBinaria = cinza.getImgTransformada();
+		this.limiar = limiar;
 	}
 
 	@Override
 	public ImgTransformavel executarTransformacao() {
-		int[] arrayBinario = iniciarArrayBinario();
-		binarizarImg(arrayBinario);		
+		
+		binarizarImg();		
+		this.limiar  = null;		
 		return this;
 	}
 	
-	private int[] iniciarArrayBinario(){
-		int[] pixels = new int[256];
-		for(int i = 0; i < pixels.length; i++) pixels[i] = Pixel.PREENCHIDO;
-		pixels[0] = Pixel.VAZIO;
-		return pixels;
-	}
-	
-	private void binarizarImg(int[] arrayBinario){
+	private void binarizarImg(){
+		int[] arrayBinario = this.limiar.getArrayBinarizado();
+		
 		WritableRaster wRaster = this.imgBinaria.getRaster();
 		
 		for(int i = 0; i < this.imgBinaria.getHeight(); i++)
@@ -66,5 +54,4 @@ public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 		Regras.validarOperacaoExecutada(this.imgBinaria, this);
 		ImgIO.gravarImg(this.imgBinaria, Endereco.TESTES, "redacaoBinaria", TipoImagem.PNG);		
 	}
-
 }
