@@ -2,7 +2,7 @@ package lovera.img.factory;
 
 import java.awt.image.BufferedImage;
 
-import lovera.img.modelos.LimiarImg;
+import lovera.img.modelos.Limiar;
 import lovera.img.modelos_img.BinarizacaoImg;
 import lovera.img.modelos_img.CinzaImg;
 import lovera.img.modelos_img.CorrosaoImg;
@@ -19,7 +19,7 @@ public final class FactoryModelo {
 	
 	public static BinarizacaoImg factoryBinarizacao(BufferedImage img){
 		CinzaImg cinza = factoryCinza(img);
-		LimiarImg limiar = new LimiarImg(cinza);
+		Limiar limiar = new Limiar(cinza);
 		BinarizacaoImg binarizacao = new BinarizacaoImg(cinza, limiar);
 		binarizacao.executarTransformacao();
 		return binarizacao;

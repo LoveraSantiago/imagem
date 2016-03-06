@@ -4,12 +4,12 @@ import lovera.img.comum.Pixel;
 import lovera.img.comum.Regras;
 import lovera.img.modelos_img.CinzaImg;
 
-public final class LimiarImg {
+public final class Limiar {
 	
 	private int[] arrayBinario;
 	private int limiar;
 	
-	public LimiarImg(CinzaImg cinza) {
+	public Limiar(CinzaImg cinza) {
 		Regras.validarBufferedImgCinza(cinza);
 		
 		encontrarLimiar();

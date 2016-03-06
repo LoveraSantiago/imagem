@@ -9,14 +9,14 @@ import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.LimiarImg;
+import lovera.img.modelos.Limiar;
 
 public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	
-	private LimiarImg limiar;
+	private Limiar limiar;
 	private BufferedImage imgBinaria;	
 	
-	public BinarizacaoImg(CinzaImg cinza, LimiarImg limiar) {
+	public BinarizacaoImg(CinzaImg cinza, Limiar limiar) {
 		Regras.validarBufferedImgCinza(cinza);
 		
 		this.imgBinaria = cinza.getImgTransformada();
