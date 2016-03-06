@@ -16,6 +16,10 @@ public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	
 	private BufferedImage imgBinaria;
 	
+	/**
+	 * Classe deve receber um buffered image e um objeto Limiar
+	 */
+	@Deprecated	
 	public BinarizacaoImg(LaplaceImg laplace) {
 		Regras.validarBufferedImgCinza(laplace);
 		
