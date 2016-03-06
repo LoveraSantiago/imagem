@@ -2,6 +2,7 @@ package lovera.img.manipulacao;
 
 import static lovera.img.comum.Regras.validarNivelCinza;
 
+import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
@@ -41,11 +42,11 @@ public final class ManipulacaoImg {
 		return imgCopia;
 	}
 	
-	public static final BufferedImage converterToCinza(BufferedImage img){
+	public static final BufferedImage converterToCinzaARGB(BufferedImage img){
 		int width = img.getWidth();
 		int height = img.getHeight();
 		
-		BufferedImage imgCinza = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+		BufferedImage imgCinza = new BufferedImage(width, height, BufferedImage.TYPE_4BYTE_ABGR_PRE);
 		Graphics2D graphics = imgCinza.createGraphics();
 		graphics.drawImage(img, 0, 0, width, height, null);
 		
@@ -54,6 +55,14 @@ public final class ManipulacaoImg {
 		ColorConvertOp op = new ColorConvertOp(csCinza, csImgCinza, null);
 		op.filter(imgCinza, imgCinza);
 		
+		return imgCinza;
+	}
+	
+	public static final BufferedImage converterToCinzaRGB(BufferedImage img){
+		BufferedImage imgCinza = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
+		Graphics g = imgCinza.getGraphics();
+		g.drawImage(img, 0, 0, null);
+		g.dispose();
 		return imgCinza;
 	}
 	

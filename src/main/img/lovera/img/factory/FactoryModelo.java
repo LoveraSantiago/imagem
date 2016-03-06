@@ -2,26 +2,32 @@ package lovera.img.factory;
 
 import java.awt.image.BufferedImage;
 
+import lovera.img.modelos.LimiarImg;
 import lovera.img.modelos_img.BinarizacaoImg;
+import lovera.img.modelos_img.CinzaImg;
 import lovera.img.modelos_img.CorrosaoImg;
-import lovera.img.modelos_img.GaussImg;
-import lovera.img.modelos_img.LaplaceImg;
 
 public final class FactoryModelo {
 	
-	public static CorrosaoImg factoryCorrosaoImgFromBufferedImage(BufferedImage img){
-		GaussImg gauss = new GaussImg(img);
-		gauss.executarTransformacao();
+	public static CorrosaoImg factoryCorrosao(BufferedImage img){
+		BinarizacaoImg binarizacao = factoryBinarizacao(img);
 		
-		LaplaceImg laplace = new LaplaceImg(gauss);
-		laplace.executarTransformacao();
-		
-		BinarizacaoImg binariza = new BinarizacaoImg(laplace);
-		binariza.executarTransformacao();
-		
-		CorrosaoImg erosao = new CorrosaoImg(binariza);
+		CorrosaoImg erosao = new CorrosaoImg(binarizacao);
 		erosao.executarTransformacao();
-		return (CorrosaoImg) erosao;
+		return erosao;
 	}
 	
+	public static BinarizacaoImg factoryBinarizacao(BufferedImage img){
+		CinzaImg cinza = factoryCinza(img);
+		LimiarImg limiar = new LimiarImg(cinza);
+		BinarizacaoImg binarizacao = new BinarizacaoImg(cinza, limiar);
+		binarizacao.executarTransformacao();
+		return binarizacao;
+	}
+	
+	public static CinzaImg factoryCinza(BufferedImage img){
+		CinzaImg cinza = new CinzaImg(img);
+		cinza.executarTransformacao();
+		return cinza;
+	}
 }

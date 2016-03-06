@@ -6,5 +6,4 @@ public interface ImgTransformavel {
 	
 	ImgTransformavel executarTransformacao();
 	BufferedImage getImgTransformada();
-
 }
