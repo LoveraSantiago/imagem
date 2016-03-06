@@ -7,7 +7,7 @@ import lovera.comuns.recursos.Imagens;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.manipulacao.ManipulacaoImg;
-import lovera.img.modelos.BinarizacaoImg;
+import lovera.img.modelos_img.BinarizacaoImg;
 
 public class TesteBinarizacao {
 	

@@ -1,4 +1,4 @@
-package lovera.img.modelos;
+package lovera.img.modelos_img;
 
 public final class FloodFillImg {
 	//https://en.wikipedia.org/wiki/Flood_fill

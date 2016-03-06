@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.CorrosaoImg;
-import lovera.img.uniaomodelos.UniaoImg;
+import lovera.img.modelos_img.CorrosaoImg;
+import lovera.img.modelos_img.UniaoImg;
 
 public class Linhas {
 	

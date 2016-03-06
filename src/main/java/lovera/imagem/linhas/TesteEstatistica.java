@@ -8,8 +8,8 @@ import lovera.coisas.factorycoisas.FactoryEstatistica;
 import lovera.coisas.factorycoisas.FactoryFreqCinza;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.GaussImg;
-import lovera.img.modelos.LaplaceImg;
+import lovera.img.modelos_img.GaussImg;
+import lovera.img.modelos_img.LaplaceImg;
 
 public class TesteEstatistica {
 	

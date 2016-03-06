@@ -2,10 +2,10 @@ package lovera.img.factory;
 
 import java.awt.image.BufferedImage;
 
-import lovera.img.modelos.BinarizacaoImg;
-import lovera.img.modelos.CorrosaoImg;
-import lovera.img.modelos.GaussImg;
-import lovera.img.modelos.LaplaceImg;
+import lovera.img.modelos_img.BinarizacaoImg;
+import lovera.img.modelos_img.CorrosaoImg;
+import lovera.img.modelos_img.GaussImg;
+import lovera.img.modelos_img.LaplaceImg;
 
 public final class FactoryModelo {
 	

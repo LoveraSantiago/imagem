@@ -1,4 +1,4 @@
-package lovera.img.modelos;
+package lovera.img.modelos_img;
 
 import static lovera.img.comum.Binario.HUM_BINARIO;
 import static lovera.img.comum.Binario.ZERO_BINARIO;

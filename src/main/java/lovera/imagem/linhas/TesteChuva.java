@@ -6,10 +6,10 @@ import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.BinarizacaoImg;
-import lovera.img.modelos.ChuvaImg;
-import lovera.img.modelos.GaussImg;
-import lovera.img.modelos.LaplaceImg;
+import lovera.img.modelos_img.BinarizacaoImg;
+import lovera.img.modelos_img.ChuvaImg;
+import lovera.img.modelos_img.GaussImg;
+import lovera.img.modelos_img.LaplaceImg;
 
 public class TesteChuva {
 	

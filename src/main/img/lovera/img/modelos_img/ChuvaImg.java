@@ -1,4 +1,4 @@
-package lovera.img.modelos;
+package lovera.img.modelos_img;
 
 import static lovera.img.comum.Regras.validarBufferedImgCinza;
 import static lovera.img.comum.Regras.validarListaCoordenadas;
@@ -19,7 +19,6 @@ import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.img.uniaomodelos.UniaoImg;
 
 public final class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, EstatisticaDescritivel{
 	
