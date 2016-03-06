@@ -20,10 +20,6 @@ public final class LaplaceImg implements ImgTransformavel, Gravavel{
 	private BufferedImage imgTemp;
 	private BufferedImage imgLaplace;
 	
-	/**
-	 * Testar resultado vindo de uma imagem binarizada.
-	 */
-	@Deprecated
 	public LaplaceImg(GaussImg gauss) {
 		this.imgTemp = gauss.getImgTransformada();
 	}

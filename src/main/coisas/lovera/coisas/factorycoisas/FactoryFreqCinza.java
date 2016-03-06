@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 
 import lovera.coisas.coisas.FrequenciaDeCinza;
+import lovera.img.contratos.ImgTransformavel;
 
 public final class FactoryFreqCinza {
 	
@@ -78,6 +79,10 @@ public final class FactoryFreqCinza {
 		fCinza.setMenorDerivadaEscalaCinza(cinzaMin);
 		fCinza.setMenorDerivadaCinza(menor);
 		return fCinza;
+	}
+	
+	public static FrequenciaDeCinza factory_FrequenciaDeCinzaDerivadas(ImgTransformavel transformavel){
+		return factory_FrequenciaDeCinza(transformavel.getImgTransformada());
 	}
 
 }

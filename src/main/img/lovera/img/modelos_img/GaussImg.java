@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
 
 public final class GaussImg implements ImgTransformavel, Gravavel{
@@ -16,12 +17,10 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 	private BufferedImage imgTemp;
 	private BufferedImage imgGauss;
 	
-	/**
-	 * Ver comportamento vindo de uma imagem binarizada.
-	 */
-	@Deprecated
-	public GaussImg(BufferedImage img) {
-		this.imgTemp = img;
+	public GaussImg(CinzaImg cinza) {
+		Regras.validarBufferedImgCinza(cinza);
+		
+		this.imgTemp = cinza.getImgTransformada();
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public final class Limiar {
 	
 	private void encontrarLimiar(){
 		//TO DO
-		this.limiar = 254;//VALOR CHEGO DE FORMA MAGICA AINDA!!!!!!!!!
+		this.limiar = 1;//VALOR CHEGO DE FORMA MAGICA AINDA!!!!!!!!!
 	}
 	
 	private void fabricarArrayBinario(){
