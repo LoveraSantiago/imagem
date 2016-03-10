@@ -26,7 +26,8 @@ public class PontosCardeais {
 	}
 	
 	public void reset(){
-		this.norte = this.sul = this.leste = this.oeste = 0;
+		this.norte = this.oeste = Integer.MAX_VALUE;
+		this.sul   = this.leste = Integer.MIN_VALUE;
 	}
 
 }
