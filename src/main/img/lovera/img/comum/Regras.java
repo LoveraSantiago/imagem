@@ -1,6 +1,7 @@
 package lovera.img.comum;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -20,6 +21,11 @@ public final class Regras {
 	
 	public static void validarBufferedImgCinza(ImgTransformavel imgTranformavel){
 		validarBufferedImgCinza(imgTranformavel.getImgTransformada());
+	}
+	
+	public static void validarListaDeAreas(List<Rectangle> lista){
+		if(lista.size() <= 0)
+			throw new IllegalArgumentException("Lista de Areas vazia.");
 	}
 	
 	public static void validarListaCoordenadas(List<Point> lista){

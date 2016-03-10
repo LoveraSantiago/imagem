@@ -1,6 +1,7 @@
 package lovera.img.contratos;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.util.List;
 
 /**
@@ -10,6 +11,11 @@ import java.util.List;
  */
 public interface Coordenadas {
 	
-	List<Point> getCoordenadas();
-
+	default List<Rectangle> getAreas(){ 
+		throw new IllegalStateException("Metodo getAreas da Interface Coordenadas não implementado."); 
+	}
+	
+	default List<Point> getCoordenadas(){ 
+		throw new IllegalStateException("Metodo getCoordenadas da Interface Coordenadas não implementado."); 
+	}
 }

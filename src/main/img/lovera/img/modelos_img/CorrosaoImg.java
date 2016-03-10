@@ -25,6 +25,7 @@ import lovera.img.contratos.ImgTransformavel;;
 /**
  * @author Lovera
  */
+@Deprecated //10/03/2016 Possivelmente nao sera utilizada.
 public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenadas{
 	
 	private BufferedImage imgCorrosao;
