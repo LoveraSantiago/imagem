@@ -11,7 +11,7 @@ import lovera.img.modelos_img.BinarizacaoImg;
 import lovera.img.modelos_img.ChuvaImg;
 import lovera.img.modelos_img.CorrosaoImg;
 import lovera.img.modelos_img.LaplaceImg;
-import lovera.img.modelos_img.UniaoImg;
+import lovera.img.modelos_img.UniaoImgPontos;
 
 public class Testes {
 	
@@ -38,7 +38,7 @@ public class Testes {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		CorrosaoImg corrosao = FactoryModelo.factoryCorrosao(img);
 		
-		UniaoImg uniao = new UniaoImg("uniaoChuva", corrosao, img);
+		UniaoImgPontos uniao = new UniaoImgPontos("uniaoChuva", corrosao, img);
 		uniao.executarTransformacao();
 		uniao.gravar();
 	}

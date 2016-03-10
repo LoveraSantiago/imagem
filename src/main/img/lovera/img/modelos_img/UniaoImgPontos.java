@@ -10,14 +10,13 @@ import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 
-public final class UniaoImg implements UnidorImagens, Gravavel{
+public final class UniaoImgPontos implements UnidorImagens{
 	
 	private final String nomeArquivo;
 	
@@ -26,9 +25,9 @@ public final class UniaoImg implements UnidorImagens, Gravavel{
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
 	
-	public UniaoImg(String nomeArquivo, Coordenadas imgCoordenadas, BufferedImage img) {
+	public UniaoImgPontos(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
 		this.nomeArquivo = nomeArquivo;
-		this.coordenadas = imgCoordenadas.getCoordenadas();
+		this.coordenadas = coordenadas.getCoordenadas();
 		this.imgTemp = img;
 	}
 
@@ -43,8 +42,8 @@ public final class UniaoImg implements UnidorImagens, Gravavel{
 			graphics.fillOval((int) ponto.getX(), (int) ponto.getY(), 2, 2);
 
 		graphics.dispose();
-		this.imgTemp = null;
 		
+		this.imgTemp = null;		
 		return this;
 	}
 

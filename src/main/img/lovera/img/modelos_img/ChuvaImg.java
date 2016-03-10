@@ -58,7 +58,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, 
 	private void desenharImg(){
 		this.imgChuva = new BufferedImage(this.imgTemp.getWidth(), this.imgTemp.getHeight(), BufferedImage.TYPE_INT_RGB);
 		
-		UniaoImg uniao = new UniaoImg(null, this, this.imgChuva);
+		UniaoImgPontos uniao = new UniaoImgPontos(null, this, this.imgChuva);
 		uniao.executarTransformacao();
 		this.imgChuva = uniao.getImgTransformada();		
 	}
