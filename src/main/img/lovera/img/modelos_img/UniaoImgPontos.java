@@ -54,8 +54,7 @@ public final class UniaoImgPontos implements UnidorImagens{
 		
 		WritableRaster wRaster = this.imgUniao.getRaster(); 
 		
-		for(Point ponto : this.coordenadas)	
-			wRaster.setSample(ponto.x, ponto.y, 1, Pixel.VAZIO);//Vazio = 0 igual a preto
+		this.coordenadas.forEach((ponto) -> wRaster.setSample(ponto.x, ponto.y, 1, Pixel.VAZIO));
 		
 		this.imgTemp = null;		
 		return this;

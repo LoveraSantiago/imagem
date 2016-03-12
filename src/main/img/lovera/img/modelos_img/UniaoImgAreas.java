@@ -46,9 +46,8 @@ public class UniaoImgAreas implements UnidorImagens{
 		Graphics2D graphics = this.imgUniao.createGraphics();
 		graphics.setColor(Color.green);
 		
-		for(Rectangle rectangle : this.areas)
-			graphics.draw(rectangle);
-		
+		this.areas.forEach((area) -> graphics.draw(area));
+
 		graphics.dispose();
 		
 		this.imgTemp = null;
