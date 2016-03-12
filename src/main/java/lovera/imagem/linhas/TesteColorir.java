@@ -36,7 +36,7 @@ public class TesteColorir {
 		BufferedImage clone = ManipulacaoImg.copiarImg(img, BufferedImage.TYPE_INT_RGB);
 		WritableRaster wRaster = clone.getRaster();
 		wRaster.setSample(228, 104, 1, 0);
-		DebugImgModelo.debugarImg(clone, "ponto");
+		DebugImgModelo.debugarImg(clone, "ponto", true);
 	}
 
 }

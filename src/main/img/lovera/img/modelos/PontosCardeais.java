@@ -26,7 +26,7 @@ public class PontosCardeais {
 	 * @return
 	 */
 	public Rectangle getArea(){
-		return new Rectangle(this.norte, this.oeste, this.leste - this.oeste, this.sul - this.norte);
+		return new Rectangle(this.oeste, this.norte, this.leste - this.oeste, this.sul - this.norte);
 	}
 	
 	public void reset(){

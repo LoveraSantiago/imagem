@@ -18,7 +18,7 @@ import lovera.img.modelos_img.UniaoImgPontos;
 public class Testes {
 	
 	public static void main(String[] args) {
-		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LETRA_J);
+		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
 		
 		FloodFillImg flood = new FloodFillImg(binarizacao);

@@ -50,7 +50,7 @@ public final class FloodFillImg implements Coordenadas{
 		if(pixel == Pixel.VAZIO) return;
 		
 		wRaster.setSample(x, y, 0, Pixel.VAZIO);
-		
+		System.out.println(ponto);
 		/*DEBUGAGEM LIGADO*/
 //		DebugImgModelo.debugarImg(this.img);
 		

@@ -18,11 +18,11 @@ import lovera.comuns.recursos.TipoImagem;;
  */
 public final class DebugImgModelo {
 	
-	public static final void debugarImg(BufferedImage img, String nome){
+	public static final void debugarImg(BufferedImage img, String nome, boolean abrir){
 		nome = nome == null ? "" : nome;		
 		String data = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd_MM_yyyy-hhmmss"));
 		String end = gravarImg(img, Endereco.TESTES, "debug_" + nome + "_" + data, TipoImagem.PNG);
-		abrirImg(end);
+		if(abrir) abrirImg(end);
 	}
 
 }
