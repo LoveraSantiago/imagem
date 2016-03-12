@@ -11,9 +11,9 @@ import lovera.img.modelos_img.GaussImg;
 import lovera.img.modelos_img.LaplaceImg;
 
 /**
+ * Classe que fabrica Modelos - serve como atalho para determinado modelo.
  * @author Lovera
  * @since 12/03/2016
- * Classe que fabrica Modelos - serve como atalho para determinado modelo.
  */
 public final class FactoryModelo {
 	

@@ -13,6 +13,7 @@ import lovera.coisas.coisas.FrequenciaDeCinza;
 import lovera.comuns.contratos.Gravavel;
 
 //IMPLEMENTAR GRAVAVEL
+@Deprecated //12/03/2016 - Provavelmente não sera usado
 public final class GraficoEscalaCinza implements Gravavel{
 	
 BufferedImage grafico;

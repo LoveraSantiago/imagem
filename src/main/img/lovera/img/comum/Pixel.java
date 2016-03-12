@@ -1,9 +1,9 @@
 package lovera.img.comum;
 
 /**
+ * Constantes para pixel preenchido ou vazio. 
  * @author Lovera
  * @since 06/03/2016
- * Constantes para pixel preenchido ou vazio. 
  */
 public interface Pixel {
 	

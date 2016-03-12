@@ -1,9 +1,9 @@
 package lovera.img.comum;
 
 /**
+ * Constantes binárias zero ou hum.
  * @author Lovera
  * @since 06/03/2016
- * Constantes binárias zero ou hum.
  */
 public interface Binario {
 

@@ -8,9 +8,9 @@ import java.util.List;
 import lovera.img.contratos.ImgTransformavel;
 
 /**
+ * Regras usadas de validacoes utilizadas no source src/main/img 
  * @author Lovera
  * @since 06/03/2016
- * Regras usadas de validacoes utilizadas no source src/main/img 
  */
 public final class Regras {
 	
