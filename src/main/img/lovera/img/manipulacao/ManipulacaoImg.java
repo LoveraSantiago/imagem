@@ -66,6 +66,7 @@ public final class ManipulacaoImg {
 		return imgCinza;
 	}
 	
+	@Deprecated //ver se esta usando.
 	public static final BufferedImage inverterCores(BufferedImage img){
 		int[] arrayInvertido = new int[TAMANHO];
 		for(int i = 0; i < TAMANHO; i++) arrayInvertido[i] = 255 - i;

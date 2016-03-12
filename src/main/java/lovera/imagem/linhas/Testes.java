@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.floodfill.FloodFillImg;
+import lovera.img.modelos.floodfill.FloodFillLetras;
 import lovera.img.modelos_img.BinarizacaoImg;
 import lovera.img.modelos_img.UniaoImgAreas;
 
@@ -15,7 +15,7 @@ public class Testes {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
 		
-		FloodFillImg flood = new FloodFillImg(binarizacao);
+		FloodFillLetras flood = new FloodFillLetras(binarizacao);
 		UniaoImgAreas uniao = new UniaoImgAreas("redacaoFloodFill", flood, img);
 		uniao.executarTransformacao();
 		uniao.gravar();

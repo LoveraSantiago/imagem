@@ -13,18 +13,19 @@ import lovera.img.contratos.Coordenadas;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos_img.BinarizacaoImg;
 
-public final class FloodFillImg implements Coordenadas{
+public final class FloodFillLetras implements Coordenadas{
 
-	private List<Rectangle> listaAreas;
+	private List<RetanguloInfo> listaRetangInfo;
 
 	private BufferedImage img;	
 	
-	public FloodFillImg(BinarizacaoImg binarizacao) {
+	public FloodFillLetras(BinarizacaoImg binarizacao) {
 		Regras.validarBufferedImgCinza(binarizacao);		
 		this.img = ManipulacaoImg.copiarImg(binarizacao.getImgTransformada());	
-		this.listaAreas = new ArrayList<>(); 
+		this.listaRetangInfo = new ArrayList<>(); 
 		
 		floodfill();
+		filtragemListaCoordenadas();
 	}
 	
 	private void floodfill(){
@@ -35,7 +36,7 @@ public final class FloodFillImg implements Coordenadas{
 			for(int j = 0; j < this.img.getWidth(); j++){				
 				
 				floodfillNoPonto(new Point(j, i) , wRaster, pCardeais);
-				this.listaAreas.add(pCardeais.getArea());
+				this.listaRetangInfo.add(pCardeais.getAreaInfo());
 				pCardeais.reset();
 			}
 		
@@ -68,9 +69,14 @@ public final class FloodFillImg implements Coordenadas{
 		}catch(IndexOutOfBoundsException e){}
 	}
 	
+	private void filtragemListaCoordenadas(){
+		
+	}
+	
 	@Override
 	public List<Rectangle> getAreas() {
-		Regras.validarListaDeAreas(this.listaAreas);
-		return this.listaAreas;
+		List<Rectangle> listaAreas = RetangInfoUtils.listaDeRetangulosInfoParaArea(listaRetangInfo);
+		Regras.validarListaDeAreas(listaAreas);
+		return listaAreas;
 	}
 }
