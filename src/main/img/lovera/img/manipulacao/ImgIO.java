@@ -1,12 +1,14 @@
 package lovera.img.manipulacao;
 
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -20,6 +22,22 @@ import lovera.comuns.recursos.TipoImagem;
 public final class ImgIO {
 	
 	private static final Logger log = Logger.getLogger(ImgIO.class);
+	
+	public static final void abrirImg(String endImg){
+		if(!Desktop.isDesktopSupported())
+			throw new RuntimeException("Desktop não é possivel abrir a imagem.");
+		
+		File arquivo = new File(endImg);
+		if(!arquivo.exists())
+			throw new IllegalArgumentException("Arquivo para abrir não existe.");
+		
+		Desktop desktop = Desktop.getDesktop();
+		try {
+			desktop.open(arquivo);
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}		
+	}
 	
 	public static final BufferedImage carregarImg_modoIO(Imagens imagem){
 		BufferedImage img = null;
@@ -55,7 +73,7 @@ public final class ImgIO {
 		return carregarImg_modoMediaTracker(imagem, new UtilComponent());
 	}
 	
-	public static final void gravarImg(BufferedImage img, Endereco endereco, String nomeArquivo, TipoImagem extensao){			
+	public static final String gravarImg(BufferedImage img, Endereco endereco, String nomeArquivo, TipoImagem extensao){			
 		String enderecoCpto = validarNomeArquivo(endereco.getEndereco() + "/" + nomeArquivo + "." + extensao.getTipo());
 		 try {
 			 File arquivo = new File(enderecoCpto);
@@ -65,6 +83,7 @@ public final class ImgIO {
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
+		return enderecoCpto;
 	}
 	
 	private static String validarNomeArquivo(String endereco){

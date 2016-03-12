@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
+import java.util.ArrayList;
 import java.util.List;
 
 import lovera.img.comum.Pixel;
@@ -20,7 +21,8 @@ public final class FloodFillImg implements Coordenadas{
 	
 	public FloodFillImg(BinarizacaoImg binarizacao) {
 		Regras.validarBufferedImgCinza(binarizacao);		
-		this.img = ManipulacaoImg.copiarImg(binarizacao.getImgTransformada());		
+		this.img = ManipulacaoImg.copiarImg(binarizacao.getImgTransformada());	
+		this.listaAreas = new ArrayList<>(); 
 		
 		floodfill();
 	}
@@ -33,7 +35,7 @@ public final class FloodFillImg implements Coordenadas{
 			for(int j = 0; j < this.img.getWidth(); j++){				
 				
 				floodfillNoPonto(new Point(j, i) , wRaster, pCardeais);
-				listaAreas.add(pCardeais.getArea());
+				this.listaAreas.add(pCardeais.getArea());
 				pCardeais.reset();
 			}
 		
@@ -46,7 +48,7 @@ public final class FloodFillImg implements Coordenadas{
 		int pixel = wRaster.getSample(x, y, 0);
 		if(pixel == Pixel.VAZIO) return;
 		
-		wRaster.setSample(x, y, 0, Pixel.VAZIO);
+		wRaster.setSample(x, y, 1, 255);
 		
 		pCardeais.inspecionarPonto(ponto);
 		

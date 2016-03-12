@@ -15,6 +15,8 @@ import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
+import lovera.img.manipulacao.ImgIO;
+import lovera.img.manipulacao.ManipulacaoImg;
 
 public final class UniaoImgPontos implements UnidorImagens{
 	
@@ -25,9 +27,20 @@ public final class UniaoImgPontos implements UnidorImagens{
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
 	
+	private String endImgSalva;
+	
 	public UniaoImgPontos(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
 		this.nomeArquivo = nomeArquivo;
 		this.coordenadas = coordenadas.getCoordenadas();
+		this.imgTemp = img;
+	}
+	
+	/**
+	 * Construtor para debug 
+	 */
+	public UniaoImgPontos(String nomeArquivo, List<Point> coordenadas, BufferedImage img) {
+		this.nomeArquivo = nomeArquivo;
+		this.coordenadas = coordenadas;
 		this.imgTemp = img;
 	}
 
@@ -52,10 +65,15 @@ public final class UniaoImgPontos implements UnidorImagens{
 		validarOperacaoExecutada(this.imgUniao, this);
 		return this.imgUniao;
 	}
+	
+	@Override
+	public void abrir() {
+		ImgIO.abrirImg(this.endImgSalva);
+	}
 
 	@Override
 	public void gravar() {
 		validarOperacaoExecutada(this.imgUniao, this);
-		gravarImg(this.imgUniao, Endereco.TESTES, this.nomeArquivo, TipoImagem.PNG);		
+		this.endImgSalva = gravarImg(this.imgUniao, Endereco.TESTES, this.nomeArquivo, TipoImagem.PNG);		
 	}
 }

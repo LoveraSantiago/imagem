@@ -14,6 +14,7 @@ import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
+import lovera.img.manipulacao.ImgIO;
 import lovera.img.manipulacao.ManipulacaoImg;
 
 public class UniaoImgAreas implements UnidorImagens{
@@ -24,6 +25,8 @@ public class UniaoImgAreas implements UnidorImagens{
 	
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
+
+	private String endImgSalva;
 	
 	public UniaoImgAreas(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
 		this.nomeArquivo = nomeArquivo;
@@ -52,10 +55,16 @@ public class UniaoImgAreas implements UnidorImagens{
 		validarOperacaoExecutada(this.imgUniao, this);
 		return this.imgUniao;
 	}
+	
+	@Override
+	public void abrir() {
+		ImgIO.abrirImg(this.endImgSalva);
+		
+	}
 
 	@Override
 	public void gravar() {
 		validarOperacaoExecutada(this.imgUniao, this);
-		gravarImg(this.imgUniao, Endereco.TESTES, this.nomeArquivo, TipoImagem.PNG);
+		this.endImgSalva = gravarImg(this.imgUniao, Endereco.TESTES, this.nomeArquivo, TipoImagem.PNG);
 	}
 }

@@ -19,7 +19,10 @@ import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
-
+/**
+ * @author Lovera
+ */
+@Deprecated //10/03/2016 Possivelmente nao sera utilizada.
 public final class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas, EstatisticaDescritivel{
 	
 	private BufferedImage imgTemp;

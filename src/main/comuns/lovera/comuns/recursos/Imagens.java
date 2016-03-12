@@ -2,7 +2,8 @@ package lovera.comuns.recursos;
 
 public enum Imagens {	
 		
-	REDACAO_PNG("redacao.png");
+	REDACAO_PNG("redacao.png"), 
+	LETRA_J("j.png");
 	
 	private static final String RAIZ = "C:/Users/santi_000/Desktop/Proces_Imagens/Imagens/originais/";
 		

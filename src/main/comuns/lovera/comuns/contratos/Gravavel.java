@@ -2,6 +2,7 @@ package lovera.comuns.contratos;
 
 public interface Gravavel {
 	
-	void gravar();
+	void gravar();	
+	default void abrir(){};
 
 }

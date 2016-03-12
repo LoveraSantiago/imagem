@@ -21,6 +21,10 @@ public class PontosCardeais {
 		this.leste = Math.max(this.leste, ponto.x);		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public Rectangle getArea(){
 		return new Rectangle(this.norte, this.oeste, this.leste - this.oeste, this.sul - this.norte);
 	}
