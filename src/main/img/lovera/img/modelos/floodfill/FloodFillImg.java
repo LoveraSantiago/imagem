@@ -1,4 +1,4 @@
-package lovera.img.modelos;
+package lovera.img.modelos.floodfill;
 
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -10,7 +10,6 @@ import java.util.List;
 import lovera.img.comum.Pixel;
 import lovera.img.comum.Regras;
 import lovera.img.contratos.Coordenadas;
-import lovera.img.debug.DebugImgModelo;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos_img.BinarizacaoImg;
 
@@ -50,10 +49,6 @@ public final class FloodFillImg implements Coordenadas{
 		if(pixel == Pixel.VAZIO) return;
 		
 		wRaster.setSample(x, y, 0, Pixel.VAZIO);
-		System.out.println(ponto);
-		/*DEBUGAGEM LIGADO*/
-//		DebugImgModelo.debugarImg(this.img);
-		
 		pCardeais.inspecionarPonto(ponto);
 		
 		try{

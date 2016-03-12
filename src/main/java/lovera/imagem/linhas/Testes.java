@@ -2,18 +2,12 @@ package lovera.imagem.linhas;
 
 import java.awt.image.BufferedImage;
 
-import lovera.coisas.coisas.FrequenciaDeCinza;
-import lovera.coisas.factorycoisas.FactoryFreqCinza;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.FloodFillImg;
+import lovera.img.modelos.floodfill.FloodFillImg;
 import lovera.img.modelos_img.BinarizacaoImg;
-import lovera.img.modelos_img.ChuvaImg;
-import lovera.img.modelos_img.CorrosaoImg;
-import lovera.img.modelos_img.LaplaceImg;
 import lovera.img.modelos_img.UniaoImgAreas;
-import lovera.img.modelos_img.UniaoImgPontos;
 
 public class Testes {
 	
@@ -22,7 +16,7 @@ public class Testes {
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
 		
 		FloodFillImg flood = new FloodFillImg(binarizacao);
-		UniaoImgAreas uniao = new UniaoImgAreas("floodFillJ", flood, img);
+		UniaoImgAreas uniao = new UniaoImgAreas("redacaoFloodFill", flood, img);
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

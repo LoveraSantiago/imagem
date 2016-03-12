@@ -1,9 +1,9 @@
-package lovera.img.modelos;
+package lovera.img.modelos.floodfill;
 
 import java.awt.Point;
 import java.awt.Rectangle;
 
-public class PontosCardeais {
+class PontosCardeais {
 	
 	private int norte;
 	private int sul;
