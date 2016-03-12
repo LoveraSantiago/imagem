@@ -10,6 +10,11 @@ import lovera.img.modelos_img.CorrosaoImg;
 import lovera.img.modelos_img.GaussImg;
 import lovera.img.modelos_img.LaplaceImg;
 
+/**
+ * @author Lovera
+ * @since 12/03/2016
+ * Classe que fabrica Modelos - serve como atalho para determinado modelo.
+ */
 public final class FactoryModelo {
 	
 	public static BinarizacaoImg factoryBinarizacao(BufferedImage img){
