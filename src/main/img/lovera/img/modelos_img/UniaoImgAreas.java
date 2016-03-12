@@ -17,6 +17,11 @@ import lovera.img.contratos.UnidorImagens;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.manipulacao.ManipulacaoImg;
 
+/**
+ * Classe que desenha retangulos de uma lista para uma imagem.
+ * @author Lovera
+ * @since 12/03/2016
+ */
 public class UniaoImgAreas implements UnidorImagens{
 	
 	private final String nomeArquivo;

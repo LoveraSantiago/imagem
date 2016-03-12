@@ -4,20 +4,24 @@ import static lovera.img.comum.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
+import java.awt.image.WritableRaster;
 import java.util.List;
 
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
+import lovera.img.comum.Pixel;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.manipulacao.ManipulacaoImg;
 
+/**
+ * Classe que desenha pontos de uma lista de pontos em uma imagem.
+ * @author Lovera
+ * @since 12/03/2016
+ */
 public final class UniaoImgPontos implements UnidorImagens{
 	
 	private final String nomeArquivo;
@@ -48,13 +52,10 @@ public final class UniaoImgPontos implements UnidorImagens{
 	public ImgTransformavel executarTransformacao() {
 		this.imgUniao = copiarImg(imgTemp, BufferedImage.TYPE_INT_RGB);
 		
-		Graphics2D graphics = this.imgUniao.createGraphics();
-		graphics.setColor(Color.red);
+		WritableRaster wRaster = this.imgUniao.getRaster(); 
 		
 		for(Point ponto : this.coordenadas)	
-			graphics.fillOval((int) ponto.getX(), (int) ponto.getY(), 2, 2);
-
-		graphics.dispose();
+			wRaster.setSample(ponto.x, ponto.y, 1, Pixel.VAZIO);//Vazio = 0 igual a preto
 		
 		this.imgTemp = null;		
 		return this;
