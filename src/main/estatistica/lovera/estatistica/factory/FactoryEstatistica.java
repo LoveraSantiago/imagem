@@ -20,7 +20,19 @@ public final class FactoryEstatistica {
 				stats.addValue(raster.getSample(j, i, 0));
 			}
 		
+		return descriptiveStatisticsParaEstatistica(stats);
+	}
+	
+	public static final Estatistica factory_EstatisticaAltura(List<Rectangle> lista){
+		DescriptiveStatistics stats = new DescriptiveStatistics();
+		lista.forEach((rect) -> stats.addValue(rect.height));
+		
+		return descriptiveStatisticsParaEstatistica(stats);
+	}
+	
+	private static final Estatistica descriptiveStatisticsParaEstatistica(DescriptiveStatistics stats){
 		Estatistica estatistica = new Estatistica();
+		
 		estatistica.setKurtosis(stats.getKurtosis());
 		estatistica.setMaximo(stats.getMax());
 		estatistica.setMedia(stats.getMean());
@@ -32,11 +44,8 @@ public final class FactoryEstatistica {
 				
 		double coefVariacao = (stats.getStandardDeviation() / stats.getMean()) * 100.0;
 		estatistica.setCoefVariacao(coefVariacao);
+		
 		return estatistica;
-	}
-	
-	public static final Estatistica factory_EstatisticaAltura(List<Rectangle> lista){
-		return null;
 	}
 
 }

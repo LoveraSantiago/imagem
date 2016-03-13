@@ -3,6 +3,8 @@ package lovera.imagem.linhas;
 import java.awt.image.BufferedImage;
 
 import lovera.comuns.recursos.Imagens;
+import lovera.estatistica.descritiva.Estatistica;
+import lovera.estatistica.modelos.AlturaDeAreas;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.floodfill.FloodFillLetras;
@@ -16,10 +18,15 @@ public class Testes {
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
 		
 		FloodFillLetras flood = new FloodFillLetras(binarizacao);
-		UniaoImgAreas uniao = new UniaoImgAreas("redacaoFloodFill", flood, img);
-		uniao.executarTransformacao();
-		uniao.gravar();
-		uniao.abrir();
+//		UniaoImgAreas uniao = new UniaoImgAreas("redacaoFloodFill", flood, img);
+//		uniao.executarTransformacao();
+//		uniao.gravar();
+//		uniao.abrir();
+		
+		AlturaDeAreas alturas = new AlturaDeAreas(flood);
+		alturas.gerarEstatistica();
+		Estatistica estats = alturas.getEstatistica();
+		System.out.println(estats);
 	}
 	
 //	public static void main(String[] args) {
