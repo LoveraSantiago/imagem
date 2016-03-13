@@ -11,15 +11,16 @@ import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.manipulacao.ManipulacaoImg;
-import lovera.img.modelos_img.BinarizacaoImg;
+import lovera.img.modelos.img.BinarizacaoImg;
 
-public final class FloodFillLetras implements Coordenadas{
+//CCs Componentes Conectados
+public final class FloodFillCCs implements Coordenadas{
 
 	private List<RetanguloInfo> listaRI;
 
 	private BufferedImage img;	
 	
-	public FloodFillLetras(BinarizacaoImg binarizacao) {
+	public FloodFillCCs(BinarizacaoImg binarizacao) {
 		Regras.validarBufferedImgCinza(binarizacao);		
 		this.img = ManipulacaoImg.copiarImg(binarizacao.getImgTransformada());	
 		this.listaRI = new ArrayList<>(); 
@@ -76,7 +77,7 @@ public final class FloodFillLetras implements Coordenadas{
 	@Override
 	public List<Rectangle> getAreas() {
 		List<Rectangle> listaAreas = RetangInfoUtils.listaDeRetangulosInfoParaArea(this.listaRI);
-		Regras.validarListaDeAreas(listaAreas);
+		Regras.validarListaDeAreas(listaAreas, this.getClass());
 		return listaAreas;
 	}
 }

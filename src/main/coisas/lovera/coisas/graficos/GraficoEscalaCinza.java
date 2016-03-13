@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import lovera.comuns.contratos.Gravavel;
-import lovera.estatistica.descritiva.FrequenciaDeCinza;
+import lovera.estatistica.grao.FrequenciaDeCinza;
 
 //IMPLEMENTAR GRAVAVEL
 @Deprecated //12/03/2016 - Provavelmente não sera usado

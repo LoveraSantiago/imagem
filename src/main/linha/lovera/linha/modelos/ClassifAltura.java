@@ -6,28 +6,29 @@ import java.util.List;
 
 import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.recursos.Regras;
-import lovera.estatistica.descritiva.Estatistica;
+import lovera.estatistica.grao.Estatistica;
 import lovera.linha.comum.Subset;
+import lovera.linha.grao.AlturaSubset;
 
-public class ClassificadorAltura implements Coordenadas{
+public class ClassifAltura implements Coordenadas{
 	
 	private final double altMedia;
 	
 	private List<Rectangle> listaAreas;
-	private List<AlturaClasse> lClassificada;
+	private List<AlturaSubset> lClassificada;
 	
-	public ClassificadorAltura(Coordenadas coordenadas, Estatistica estats) {
+	public ClassifAltura(Coordenadas coordenadas, Estatistica estats) {
 		this.listaAreas = coordenadas.getAreas();
 		this.altMedia   = estats.getMedia();
 	}
 	
-	public List<AlturaClasse> classificarAreas(){
+	public ClassifAltura classificarAreas(){
 		this.lClassificada = new ArrayList<>(this.listaAreas.size());
 		
 		this.listaAreas.forEach((area) -> 
-			this.lClassificada.add(new AlturaClasse(classificarSubset(area), area)));
+			this.lClassificada.add(new AlturaSubset(classificarSubset(area), area)));
 		
-		return lClassificada;
+		return this;
 	}
 	
 	private Subset classificarSubset(Rectangle area){
@@ -60,11 +61,11 @@ public class ClassificadorAltura implements Coordenadas{
 	public List<Rectangle> getAreas() {		
 		List<Rectangle> listaAreas = new ArrayList<>(this.listaAreas.size());
 		this.listaAreas.forEach((area) -> listaAreas.add(area));
-		Regras.validarListaDeAreas(listaAreas);
+		Regras.validarListaDeAreas(listaAreas, this.getClass());
 		return listaAreas;
 	}
 	
-	public List<AlturaClasse> getAlturasClassificadas(){
+	public List<AlturaSubset> getAlturasClassificadas(){
 		Regras.validarClassificacaoAlturas(this.lClassificada, this);
 		return this.lClassificada;
 	}

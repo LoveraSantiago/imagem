@@ -1,4 +1,4 @@
-package lovera.img.modelos_img;
+package lovera.img.modelos.img;
 
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ImgIO.gravarImg;

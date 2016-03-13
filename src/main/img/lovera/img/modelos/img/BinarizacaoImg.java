@@ -1,4 +1,4 @@
-package lovera.img.modelos_img;
+package lovera.img.modelos.img;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;

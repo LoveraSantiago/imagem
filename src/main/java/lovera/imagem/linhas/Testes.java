@@ -6,16 +6,16 @@ import java.util.List;
 import org.apache.log4j.net.SyslogAppender;
 
 import lovera.comuns.recursos.Imagens;
-import lovera.estatistica.descritiva.Estatistica;
-import lovera.estatistica.modelos.AlturaDeAreas;
+import lovera.estatistica.grao.Estatistica;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
-import lovera.img.modelos.floodfill.FloodFillLetras;
-import lovera.img.modelos_img.BinarizacaoImg;
-import lovera.img.modelos_img.UniaoImgAreas;
-import lovera.img.modelos_img.UniaoImgAreasCor;
-import lovera.linha.modelos.AlturaClasse;
-import lovera.linha.modelos.ClassificadorAltura;
+import lovera.img.modelos.floodfill.FloodFillCCs;
+import lovera.img.modelos.img.BinarizacaoImg;
+import lovera.img.modelos.img.UniaoImgAreas;
+import lovera.img.modelos.img.UniaoImgAreasCor;
+import lovera.linha.grao.AlturaSubset;
+import lovera.linha.modelos.AlturaDeAreas;
+import lovera.linha.modelos.ClassifAltura;
 
 public class Testes {
 	
@@ -23,7 +23,7 @@ public class Testes {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
 		
-		FloodFillLetras flood = new FloodFillLetras(binarizacao);
+		FloodFillCCs flood = new FloodFillCCs(binarizacao);
 //		UniaoImgAreas uniao = new UniaoImgAreas("redacaoFloodFill", flood, img);
 //		uniao.executarTransformacao();
 //		uniao.gravar();
@@ -33,7 +33,7 @@ public class Testes {
 		alturas.gerarEstatistica();
 		Estatistica estats = alturas.getEstatistica();		
 //		System.out.println(estats);
-		ClassificadorAltura classAltura = new ClassificadorAltura(flood, estats);
+		ClassifAltura classAltura = new ClassifAltura(flood, estats);
 		classAltura.classificarAreas();
 		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", classAltura, img);
 		uniao.executarTransformacao();

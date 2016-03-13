@@ -7,9 +7,9 @@ import java.util.List;
 
 import lovera.comuns.contratos.Coordenadas;
 import lovera.estatistica.contratos.EstatsDesc;
-import lovera.estatistica.descritiva.Estatistica;
+import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.linha.modelos.AlturaClasse;
+import lovera.linha.grao.AlturaSubset;
 
 /**
  * Regras usadas de validacoes utilizadas no source src/main/img.
@@ -28,19 +28,19 @@ public final class Regras {
 		validarBufferedImgCinza(imgTranformavel.getImgTransformada());
 	}
 	
-	public static void validarClassificacaoAlturas(List<AlturaClasse> lista, Coordenadas coordenadas){
+	public static void validarClassificacaoAlturas(List<AlturaSubset> lista, Coordenadas coordenadas){
 		if(lista == null)
-			throw new IllegalStateException("Metodo classificarAreas não foi chamada na classe " + coordenadas.getClass().getSimpleName());
+			throw new IllegalStateException("Metodo classificarAreas não foi chamada na classe " + coordenadas.getClass().getSimpleName() + ".");
 	}
 
 	public static void validarEstatistica(Estatistica estats, EstatsDesc classe){
 		if(estats == null)
-			throw new IllegalStateException("Metodo gerarEstatistica não foi chamado na classe " + classe.getClass().getSimpleName());
+			throw new IllegalStateException("Metodo gerarEstatistica não foi chamado na classe " + classe.getClass().getSimpleName() + ".");
 	}
 	
-	public static void validarListaDeAreas(List<Rectangle> lista){
+	public static void validarListaDeAreas(List<Rectangle> lista, Class<?> classe){
 		if(lista.size() <= 0)
-			throw new IllegalArgumentException("Lista de Areas vazia.");
+			throw new IllegalStateException("Lista de Areas vazia. Na classe " + classe.getSimpleName() + ".");
 	}
 	
 	public static void validarListaCoordenadas(List<Point> lista){

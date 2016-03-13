@@ -1,4 +1,4 @@
-package lovera.img.modelos_img;
+package lovera.img.modelos.img;
 
 import static lovera.comuns.recursos.Regras.validarBufferedImgCinza;
 import static lovera.comuns.recursos.Regras.validarListaCoordenadas;

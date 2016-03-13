@@ -7,7 +7,7 @@ import java.util.List;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
-import lovera.estatistica.descritiva.Estatistica;
+import lovera.estatistica.grao.Estatistica;
 
 public final class FactoryEstatistica {
 	

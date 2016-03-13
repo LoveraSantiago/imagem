@@ -1,4 +1,4 @@
-package lovera.estatistica.descritiva;
+package lovera.estatistica.grao;
 
 import lovera.comuns.contratos.Gravavel;
 //IMPLEMENTAR GRAVAVEL

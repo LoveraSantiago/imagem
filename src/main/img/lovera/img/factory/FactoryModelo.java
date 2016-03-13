@@ -3,12 +3,12 @@ package lovera.img.factory;
 import java.awt.image.BufferedImage;
 
 import lovera.img.modelos.Limiar;
-import lovera.img.modelos_img.BinarizacaoImg;
-import lovera.img.modelos_img.ChuvaImg;
-import lovera.img.modelos_img.CinzaImg;
-import lovera.img.modelos_img.CorrosaoImg;
-import lovera.img.modelos_img.GaussImg;
-import lovera.img.modelos_img.LaplaceImg;
+import lovera.img.modelos.img.BinarizacaoImg;
+import lovera.img.modelos.img.ChuvaImg;
+import lovera.img.modelos.img.CinzaImg;
+import lovera.img.modelos.img.CorrosaoImg;
+import lovera.img.modelos.img.GaussImg;
+import lovera.img.modelos.img.LaplaceImg;
 
 /**
  * Classe que fabrica Modelos - serve como atalho para determinado modelo.

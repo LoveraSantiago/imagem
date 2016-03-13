@@ -1,6 +1,6 @@
 package lovera.estatistica.contratos;
 
-import lovera.estatistica.descritiva.Estatistica;
+import lovera.estatistica.grao.Estatistica;
 
 public interface EstatsDesc {
 	

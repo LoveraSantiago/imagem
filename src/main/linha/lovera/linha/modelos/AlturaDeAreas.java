@@ -1,30 +1,26 @@
-package lovera.estatistica.modelos;
+package lovera.linha.modelos;
 
 import java.awt.Rectangle;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.contratos.EstatsDesc;
-import lovera.estatistica.descritiva.Estatistica;
 import lovera.estatistica.factory.FactoryEstatistica;
+import lovera.estatistica.grao.Estatistica;
 
-public class AlturaDeAreas implements EstatsDesc{
+class AlturaDeAreas implements EstatsDesc{
 	
 	private List<Rectangle> listaAreas;
 	
 	private Estatistica estatistica;	 
 	
-	public AlturaDeAreas(Coordenadas coordenadas) {
-		this.listaAreas = coordenadas.getAreas();
+	public AlturaDeAreas(List<Rectangle> listaAreas) {
+		this.listaAreas = listaAreas;
 	}
 
 	@Override
-	public EstatsDesc gerarEstatistica() {
-		Regras.validarListaDeAreas(this.listaAreas);
-		
-		alturaDeAreasParaEstatistica();
-		
+	public EstatsDesc gerarEstatistica() {		
+		alturaDeAreasParaEstatistica();		
 		this.listaAreas = null;
 		return this;
 	}
@@ -38,5 +34,4 @@ public class AlturaDeAreas implements EstatsDesc{
 		Regras.validarEstatistica(this.estatistica, this);
 		return this.estatistica;
 	}
-
 }
