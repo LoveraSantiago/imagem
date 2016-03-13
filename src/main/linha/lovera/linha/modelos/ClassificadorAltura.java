@@ -21,20 +21,37 @@ public class ClassificadorAltura {
 	
 	public List<AlturaClasse> classificarAreas(){
 		List<AlturaClasse> lClassificada = new ArrayList<>(this.listaAreas.size());
-		this.listaAreas.forEach((area) -> lClassificada.add(new AlturaClasse(classificarSubset(area), area)));
+		
+		this.listaAreas.forEach((area) -> 
+			lClassificada.add(new AlturaClasse(classificarSubset(area), area)));
+		
+		return lClassificada;
+	}
+	
+	private Subset classificarSubset(Rectangle area){
+		if(casoSubset1(area)) return Subset.S1;
+		if(casoSubset2(area)) return Subset.S2;
+		if(casoSubset3(area)) return Subset.S3;
 		return null;
 	}
 	
-	private int classificarSubset(Rectangle area){
-		if(casoSubset1(area)) return Subset.S1;
-		return 0;
-	}
-	
-	private boolean casoSubset1(Rectangle area){
-		
+	private boolean casoSubset1(Rectangle area){		
 		boolean sentenca1 = ((0.5 * this.altMedia) <= area.height) && (area.height < (3 * this.altMedia));
 		boolean sentenca2 = ((0.5 * this.altMedia) <= area.width);
+		
 		return sentenca1 && sentenca2;
+	}
+	
+	private boolean casoSubset2(Rectangle area){
+		
+		return area.height >= 3 * this.altMedia;
+	}
+	
+	private boolean casoSubset3(Rectangle area){		
+		boolean sentenca1 = (area.height < (3 * this.altMedia)) && ((0.5 * this.altMedia) > area.width);
+		boolean sentenca2 = (area.height < (0.5 * this.altMedia)) && ((0.5 * this.altMedia) < area.width);
+		
+		return sentenca1 || sentenca2;
 	}
 
 }

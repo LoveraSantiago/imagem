@@ -21,4 +21,10 @@ public class AlturaClasse {
 	public Rectangle getArea() {
 		return area;
 	}
+	
+	@Override
+	public String toString() {		
+		return "Retang ( " + this.area.x + ", " + this.area.y + ", " + 
+				this.area.width + ", " + this.area.height + ") - Subset : " + this.subset.getSet();
+	}
 }

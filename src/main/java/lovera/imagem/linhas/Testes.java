@@ -1,6 +1,9 @@
 package lovera.imagem.linhas;
 
 import java.awt.image.BufferedImage;
+import java.util.List;
+
+import org.apache.log4j.net.SyslogAppender;
 
 import lovera.comuns.recursos.Imagens;
 import lovera.estatistica.descritiva.Estatistica;
@@ -10,6 +13,8 @@ import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.floodfill.FloodFillLetras;
 import lovera.img.modelos_img.BinarizacaoImg;
 import lovera.img.modelos_img.UniaoImgAreas;
+import lovera.linha.modelos.AlturaClasse;
+import lovera.linha.modelos.ClassificadorAltura;
 
 public class Testes {
 	
@@ -25,8 +30,11 @@ public class Testes {
 		
 		AlturaDeAreas alturas = new AlturaDeAreas(flood);
 		alturas.gerarEstatistica();
-		Estatistica estats = alturas.getEstatistica();
-		System.out.println(estats);
+		Estatistica estats = alturas.getEstatistica();		
+//		System.out.println(estats);
+		ClassificadorAltura classAltura = new ClassificadorAltura(flood, estats);
+		List<AlturaClasse> listaClassificacao = classAltura.classificarAreas();
+		listaClassificacao.forEach((altura) -> System.out.println(altura));
 	}
 	
 //	public static void main(String[] args) {
