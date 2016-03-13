@@ -1,9 +1,9 @@
-package lovera.coisas.factorycoisas;
+package lovera.estatistica.factory;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 
-import lovera.coisas.coisas.FrequenciaDeCinza;
+import lovera.estatistica.descritiva.FrequenciaDeCinza;
 import lovera.img.contratos.ImgTransformavel;
 
 public final class FactoryFreqCinza {

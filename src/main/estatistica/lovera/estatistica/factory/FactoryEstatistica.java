@@ -1,11 +1,11 @@
-package lovera.coisas.factorycoisas;
+package lovera.estatistica.factory;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
-import lovera.coisas.coisas.Estatistica;
+import lovera.estatistica.descritiva.Estatistica;
 
 public final class FactoryEstatistica {
 	

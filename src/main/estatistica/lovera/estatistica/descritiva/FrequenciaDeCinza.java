@@ -1,4 +1,4 @@
-package lovera.coisas.coisas;
+package lovera.estatistica.descritiva;
 
 import static lovera.img.comum.Regras.validarNivelCinza;
 

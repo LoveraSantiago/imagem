@@ -9,8 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import lovera.coisas.coisas.FrequenciaDeCinza;
 import lovera.comuns.contratos.Gravavel;
+import lovera.estatistica.descritiva.FrequenciaDeCinza;
 
 //IMPLEMENTAR GRAVAVEL
 @Deprecated //12/03/2016 - Provavelmente não sera usado

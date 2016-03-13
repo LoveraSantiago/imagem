@@ -1,6 +1,6 @@
-package lovera.comuns.contratos;
+package lovera.estatistica.contratos;
 
-import lovera.coisas.coisas.Estatistica;
+import lovera.estatistica.descritiva.Estatistica;
 
 public interface EstatisticaDescritivel {
 	
