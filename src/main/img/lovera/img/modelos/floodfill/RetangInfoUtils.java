@@ -7,7 +7,7 @@ import java.util.List;
 class RetangInfoUtils {
 	
 	public final static List<Rectangle> listaDeRetangulosInfoParaArea(List<RetanguloInfo> listaPCardeais){
-		List<Rectangle> listaArea = new ArrayList<>();		
+		List<Rectangle> listaArea = new ArrayList<>(listaPCardeais.size());		
 		listaPCardeais.forEach((area)-> listaArea.add(area.area));		
 		return listaArea;
 	}
