@@ -22,13 +22,13 @@ class PontosCardeais {
 	}
 	
 	public boolean retanguloInfoValido(){
+		if(this.norte == Integer.MAX_VALUE && this.oeste == Integer.MAX_VALUE) return false;
+		if(this.sul   == Integer.MIN_VALUE && this.leste == Integer.MIN_VALUE) return false;
+
 		if(this.norte == this.sul && this.oeste == this.leste) return false;
 		
 		if((this.leste - this.oeste) == 0) return false;
-		if((this.sul   - this.norte) == 0) return false;
-		
-		if(this.norte == Integer.MAX_VALUE && this.oeste == Integer.MAX_VALUE) return false;
-		if(this.sul   == Integer.MIN_VALUE && this.leste == Integer.MIN_VALUE) return false;
+		if((this.sul   - this.norte) == 0) return false;		
 		
 		return true;
 	}
