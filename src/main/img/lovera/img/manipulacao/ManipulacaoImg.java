@@ -10,6 +10,12 @@ import java.awt.image.ColorConvertOp;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
+/**
+ * Classe com metodos estaticos para manipular a imagem.</br> 
+ * Manipulacao diferente de filtragem.
+ * @author Lovera
+ * @since 13/03/2016
+ */
 public final class ManipulacaoImg {
 
 	private static final int TAMANHO = 256;	
@@ -66,7 +72,7 @@ public final class ManipulacaoImg {
 		return imgCinza;
 	}
 	
-	@Deprecated //ver se esta usando.
+	@Deprecated //ver se esta usando. 13/03/2016
 	public static final BufferedImage inverterCores(BufferedImage img){
 		int[] arrayInvertido = new int[TAMANHO];
 		for(int i = 0; i < TAMANHO; i++) arrayInvertido[i] = 255 - i;

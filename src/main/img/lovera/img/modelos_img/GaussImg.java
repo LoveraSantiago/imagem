@@ -1,7 +1,7 @@
 package lovera.img.modelos_img;
 
 import static lovera.img.comum.Regras.validarOperacaoExecutada;
-import static lovera.img.manipulacao.Filtros.Gauss;
+import static lovera.img.manipulacao.Filtros.gauss;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.image.BufferedImage;
@@ -25,7 +25,7 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 
 	@Override
 	public ImgTransformavel executarTransformacao() {
-		this.imgGauss = Gauss(this.imgTemp);
+		this.imgGauss = gauss(this.imgTemp);
 		this.imgTemp = null;
 		return this;
 	}

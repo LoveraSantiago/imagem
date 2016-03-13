@@ -1,7 +1,7 @@
 package lovera.img.modelos_img;
 
 import static lovera.img.comum.Regras.validarOperacaoExecutada;
-import static lovera.img.manipulacao.Filtros.Laplace;
+import static lovera.img.manipulacao.Filtros.laplace;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.image.BufferedImage;
@@ -26,7 +26,7 @@ public final class LaplaceImg implements ImgTransformavel, Gravavel{
 
 	@Override
 	public ImgTransformavel executarTransformacao() {
-		this.imgLaplace = Laplace(imgTemp);
+		this.imgLaplace = laplace(imgTemp);
 		this.imgTemp = null;
 		return this;
 	}

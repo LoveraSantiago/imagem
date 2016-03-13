@@ -8,7 +8,6 @@ import java.awt.MediaTracker;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -19,6 +18,11 @@ import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.Imagens;
 import lovera.comuns.recursos.TipoImagem;
 
+/**
+ * Classe com metodos IO (entrada - saida) para imagens. 
+ * @author Lovera
+ * @since 13/03/2016
+ */
 public final class ImgIO {
 	
 	private static final Logger log = Logger.getLogger(ImgIO.class);

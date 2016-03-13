@@ -6,6 +6,12 @@ import java.awt.image.Kernel;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
 
+/**
+ * Classe com metodos estaticos para filtragem de imagens.</br>
+ * Usados pelas classes "modelos-imagens".
+ * @author Lovera
+ * @since 13/03/2016
+ */
 public final class Filtros {
 	
 	/**
@@ -14,7 +20,7 @@ public final class Filtros {
 	 * peso mais alto para o pixel central. Usado para tirar ruidos e 
 	 * é um filtro passa baixo.
 	 */
-	public static final BufferedImage Gauss(BufferedImage img){
+	public static final BufferedImage gauss(BufferedImage img){
 
 		float matrizGauss[] = new float[]{1/16f, 2/16f, 1/16f,
 										  2/16f, 4/16f, 2/16f,
@@ -29,7 +35,7 @@ public final class Filtros {
 	 * detecção de bordas dado sua sensibilidade a ruidos. Por isso é feito antes o 
 	 * Gaussiano. (JÁ TESTEI TAL AFIRMAÇÂO VERDADEIRA)
 	 */
-	public static final BufferedImage Laplace(BufferedImage img){
+	public static final BufferedImage laplace(BufferedImage img){
 		float[] matrizLaplace = new float[]{ 0f,  1f,  0f,
   			     							 1f, -4f,  1f,
   			     							 0f,  1f,  0f};
