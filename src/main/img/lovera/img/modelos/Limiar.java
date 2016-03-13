@@ -24,7 +24,7 @@ public final class Limiar {
 	private void fabricarArrayBinario(){
 		this.arrayBinario = new int[256];
 		for(int i=0; i < this.arrayBinario.length; i++)
-			this.arrayBinario[i] = i < this.limiar ? Pixel.VAZIO : Pixel.PREENCHIDO;
+			this.arrayBinario[i] = i < this.limiar ? Pixel.VAZIO.getValor() : Pixel.PREENCHIDO.getValor();
 	}
 	
 	public int[] getArrayBinarizado(){
