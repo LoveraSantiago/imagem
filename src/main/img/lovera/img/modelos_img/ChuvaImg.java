@@ -50,7 +50,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, Coordenadas{
 		
 		for(int j = 0; j < this.imgTemp.getWidth(); j++)
 			for(int i = 0; i < this.imgTemp.getHeight(); i++)
-				if(raster.getSample(j, i, 0) != Pixel.VAZIO){
+				if(raster.getSample(j, i, 0) != Pixel.VAZIO.getValor()){
 					this.coordenadas.add(new Point(j, i));
 					break;
 				}		

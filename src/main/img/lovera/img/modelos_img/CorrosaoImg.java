@@ -58,14 +58,14 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	}
 	
 	private int[] getVizinhanca(int x, int y, Raster raster){
-		int[] array = new int[6];
+		int[] array = new int[6];	
 		
-		array[0] = (raster.getSample(x - 1, y    , 0) == 0) ? ZERO_BINARIO : HUM_BINARIO;
-		array[1] = (raster.getSample(x    , y    , 0) == 0) ? ZERO_BINARIO : HUM_BINARIO;
-		array[2] = (raster.getSample(x + 1, y    , 0) == 0) ? ZERO_BINARIO : HUM_BINARIO;
-		array[3] = (raster.getSample(x - 1, y + 1, 0) == 0) ? ZERO_BINARIO : HUM_BINARIO;
-		array[4] = (raster.getSample(x    , y + 1, 0) == 0) ? ZERO_BINARIO : HUM_BINARIO;
-		array[5] = (raster.getSample(x + 1, y + 1, 0) == 0) ? ZERO_BINARIO : HUM_BINARIO;
+		array[0] = (raster.getSample(x - 1, y    , 0) == 0) ? ZERO_BINARIO.getValor() : HUM_BINARIO.getValor();
+		array[1] = (raster.getSample(x    , y    , 0) == 0) ? ZERO_BINARIO.getValor() : HUM_BINARIO.getValor();
+		array[2] = (raster.getSample(x + 1, y    , 0) == 0) ? ZERO_BINARIO.getValor() : HUM_BINARIO.getValor();
+		array[3] = (raster.getSample(x - 1, y + 1, 0) == 0) ? ZERO_BINARIO.getValor() : HUM_BINARIO.getValor();
+		array[4] = (raster.getSample(x    , y + 1, 0) == 0) ? ZERO_BINARIO.getValor() : HUM_BINARIO.getValor();
+		array[5] = (raster.getSample(x + 1, y + 1, 0) == 0) ? ZERO_BINARIO.getValor() : HUM_BINARIO.getValor();
 		
 		return array;
 	}
@@ -87,7 +87,9 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	
 	private int[] casoParaVizinhanca(int caso, int[] array){
 		for(int i = array.length - 1, contador = 0; i >= 0; i--, contador++){
-			array[contador] = ((caso & (HUM_BINARIO << i)) != ZERO_BINARIO) ? Pixel.PREENCHIDO : Pixel.VAZIO; 
+			array[contador] = 
+					((caso & (HUM_BINARIO.getValor() << i)) != ZERO_BINARIO.getValor()) ? 
+							Pixel.PREENCHIDO.getValor() : Pixel.VAZIO.getValor(); 
 		}
 		return array;
 	}
@@ -176,7 +178,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 		WritableRaster raster = this.imgCorrosao.getRaster();
 		for(int i = 0; i < this.imgCorrosao.getHeight(); i++)
 			for(int j = 0; j < this.imgCorrosao.getWidth(); j++)
-				if(raster.getSample(j, i, 0) == Pixel.PREENCHIDO)
+				if(raster.getSample(j, i, 0) == Pixel.PREENCHIDO.getValor())
 					this.coordenadas.add(new Point(j, i));		
 	}
 

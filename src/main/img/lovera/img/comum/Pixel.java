@@ -5,9 +5,18 @@ package lovera.img.comum;
  * @author Lovera
  * @since 06/03/2016
  */
-public interface Pixel {
+public enum Pixel {
 	
-	int VAZIO = 0;		 //Preto
-	int PREENCHIDO = 255;//Branco
+	VAZIO(0),		 //Preto
+	PREENCHIDO(255);//Branco
 	
+	private int valor;
+	
+	private Pixel(int valor) {
+		this.valor = valor;
+	}
+	
+	public int getValor() {
+		return this.valor;
+	}
 }

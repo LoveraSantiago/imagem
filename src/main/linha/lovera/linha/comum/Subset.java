@@ -1,9 +1,18 @@
 package lovera.linha.comum;
 //substituir por enuns
-public interface Subset {
+public enum Subset {
 	
-	int S1 = 1;
-	int S2 = 2;
-	int S3 = 3;
+	S1(1),
+	S2(2),
+	S3(3);
 
+	private int set;
+	
+	private Subset(int set) {
+		this.set = set;
+	}
+	
+	public int getSet() {
+		return this.set;
+	}
 }

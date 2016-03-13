@@ -47,9 +47,9 @@ public final class FloodFillLetras implements Coordenadas{
 		int x = ponto.x;
 		int y = ponto.y;
 		int pixel = wRaster.getSample(x, y, 0);
-		if(pixel == Pixel.VAZIO) return;
+		if(pixel == Pixel.VAZIO.getValor()) return;
 		
-		wRaster.setSample(x, y, 0, Pixel.VAZIO);
+		wRaster.setSample(x, y, 0, Pixel.VAZIO.getValor());
 		pCardeais.inspecionarPonto(ponto);
 		
 		try{

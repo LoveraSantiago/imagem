@@ -5,8 +5,19 @@ package lovera.img.comum;
  * @author Lovera
  * @since 06/03/2016
  */
-public interface Binario {
+@Deprecated //13/03/2016
+public enum Binario {
 
-	int ZERO_BINARIO = 0;
-	int HUM_BINARIO  = 1;
+	ZERO_BINARIO(0),
+	HUM_BINARIO(1);
+	
+	private int valor;
+	
+	private Binario(int valor) {
+		this.valor = valor;
+	}
+	
+	public int getValor() {
+		return this.valor;
+	}
 }
