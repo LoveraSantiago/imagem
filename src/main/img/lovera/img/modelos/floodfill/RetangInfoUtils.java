@@ -47,9 +47,4 @@ class RetangInfoUtils {
 		lista.sort((rInf1, rInf2) -> (int)((rInf2.area.height + rInf2.area.width) - (rInf1.area.height + rInf1.area.width)));
 		return lista;		
 	}
-
-	public static void main(String[] args) {
-		System.out.println(Integer.MAX_VALUE + ", " + Integer.MIN_VALUE);
-	}
-
 }

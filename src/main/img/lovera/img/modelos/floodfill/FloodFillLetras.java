@@ -7,9 +7,9 @@ import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 
+import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
-import lovera.img.comum.Regras;
-import lovera.img.contratos.Coordenadas;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos_img.BinarizacaoImg;
 

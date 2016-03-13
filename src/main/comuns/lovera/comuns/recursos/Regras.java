@@ -1,13 +1,15 @@
-package lovera.img.comum;
+package lovera.comuns.recursos;
 
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import lovera.comuns.contratos.Coordenadas;
 import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.descritiva.Estatistica;
 import lovera.img.contratos.ImgTransformavel;
+import lovera.linha.modelos.AlturaClasse;
 
 /**
  * Regras usadas de validacoes utilizadas no source src/main/img.
@@ -26,6 +28,11 @@ public final class Regras {
 		validarBufferedImgCinza(imgTranformavel.getImgTransformada());
 	}
 	
+	public static void validarClassificacaoAlturas(List<AlturaClasse> lista, Coordenadas coordenadas){
+		if(lista == null)
+			throw new IllegalStateException("Metodo classificarAreas não foi chamada na classe " + coordenadas.getClass().getSimpleName());
+	}
+
 	public static void validarEstatistica(Estatistica estats, EstatsDesc classe){
 		if(estats == null)
 			throw new IllegalStateException("Metodo gerarEstatistica não foi chamado na classe " + classe.getClass().getSimpleName());

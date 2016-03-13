@@ -1,4 +1,4 @@
-package lovera.img.contratos;
+package lovera.comuns.contratos;
 
 import java.awt.Point;
 import java.awt.Rectangle;

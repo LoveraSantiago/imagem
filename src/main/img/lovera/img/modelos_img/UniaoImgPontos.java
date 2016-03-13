@@ -1,6 +1,6 @@
 package lovera.img.modelos_img;
 
-import static lovera.img.comum.Regras.validarOperacaoExecutada;
+import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
@@ -9,10 +9,10 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
+import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
-import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 import lovera.img.manipulacao.ImgIO;

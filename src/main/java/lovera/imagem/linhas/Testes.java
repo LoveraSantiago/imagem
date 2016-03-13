@@ -13,6 +13,7 @@ import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.floodfill.FloodFillLetras;
 import lovera.img.modelos_img.BinarizacaoImg;
 import lovera.img.modelos_img.UniaoImgAreas;
+import lovera.img.modelos_img.UniaoImgAreasCor;
 import lovera.linha.modelos.AlturaClasse;
 import lovera.linha.modelos.ClassificadorAltura;
 
@@ -33,8 +34,11 @@ public class Testes {
 		Estatistica estats = alturas.getEstatistica();		
 //		System.out.println(estats);
 		ClassificadorAltura classAltura = new ClassificadorAltura(flood, estats);
-		List<AlturaClasse> listaClassificacao = classAltura.classificarAreas();
-		listaClassificacao.forEach((altura) -> System.out.println(altura));
+		classAltura.classificarAreas();
+		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", classAltura, img);
+		uniao.executarTransformacao();
+		uniao.gravar();
+		uniao.abrir();
 	}
 	
 //	public static void main(String[] args) {

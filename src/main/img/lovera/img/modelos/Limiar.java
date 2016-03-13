@@ -1,7 +1,7 @@
 package lovera.img.modelos;
 
+import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
-import lovera.img.comum.Regras;
 import lovera.img.modelos_img.CinzaImg;
 
 public final class Limiar {

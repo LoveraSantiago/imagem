@@ -1,6 +1,6 @@
 package lovera.estatistica.descritiva;
 
-import static lovera.img.comum.Regras.validarNivelCinza;
+import static lovera.comuns.recursos.Regras.validarNivelCinza;
 
 import lovera.comuns.contratos.Gravavel;
 

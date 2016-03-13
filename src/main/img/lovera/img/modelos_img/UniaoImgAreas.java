@@ -1,6 +1,6 @@
 package lovera.img.modelos_img;
 
-import static lovera.img.comum.Regras.validarOperacaoExecutada;
+import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.Color;
@@ -9,9 +9,9 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
-import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 import lovera.img.manipulacao.ImgIO;
@@ -26,10 +26,10 @@ public class UniaoImgAreas implements UnidorImagens{
 	
 	private final String nomeArquivo;
 	
-	private final List<Rectangle> areas;
+	private List<Rectangle> areas;
 	
 	private BufferedImage imgTemp;
-	private BufferedImage imgUniao;
+	protected BufferedImage imgUniao;
 
 	private String endImgSalva;
 	
@@ -41,7 +41,7 @@ public class UniaoImgAreas implements UnidorImagens{
 
 	@Override
 	public ImgTransformavel executarTransformacao() {
-		this.imgUniao = ManipulacaoImg.copiarImg(imgTemp, BufferedImage.TYPE_INT_RGB);
+		this.imgUniao = copiarImg();
 		
 		Graphics2D graphics = this.imgUniao.createGraphics();
 		graphics.setColor(Color.green);
@@ -51,7 +51,12 @@ public class UniaoImgAreas implements UnidorImagens{
 		graphics.dispose();
 		
 		this.imgTemp = null;
+		this.areas   = null;
 		return this;
+	}
+	
+	protected BufferedImage copiarImg(){
+		return ManipulacaoImg.copiarImg(this.imgTemp, BufferedImage.TYPE_INT_RGB);
 	}
 
 	@Override

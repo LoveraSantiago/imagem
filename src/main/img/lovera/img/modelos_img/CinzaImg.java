@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
+import lovera.comuns.recursos.Regras;
 import lovera.comuns.recursos.TipoImagem;
-import lovera.img.comum.Regras;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.manipulacao.ManipulacaoImg;

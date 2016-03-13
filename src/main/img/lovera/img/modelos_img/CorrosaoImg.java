@@ -1,10 +1,10 @@
 package lovera.img.modelos_img;
 
+import static lovera.comuns.recursos.Regras.validarBufferedImgCinza;
+import static lovera.comuns.recursos.Regras.validarListaCoordenadas;
+import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.comum.Binario.HUM_BINARIO;
 import static lovera.img.comum.Binario.ZERO_BINARIO;
-import static lovera.img.comum.Regras.validarBufferedImgCinza;
-import static lovera.img.comum.Regras.validarListaCoordenadas;
-import static lovera.img.comum.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.ImgIO.gravarImg;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
@@ -15,11 +15,11 @@ import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 
+import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
-import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;;
 
 /**

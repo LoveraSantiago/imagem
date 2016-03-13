@@ -3,11 +3,11 @@ package lovera.estatistica.modelos;
 import java.awt.Rectangle;
 import java.util.List;
 
+import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.recursos.Regras;
 import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.descritiva.Estatistica;
 import lovera.estatistica.factory.FactoryEstatistica;
-import lovera.img.comum.Regras;
-import lovera.img.contratos.Coordenadas;
 
 public class AlturaDeAreas implements EstatsDesc{
 	

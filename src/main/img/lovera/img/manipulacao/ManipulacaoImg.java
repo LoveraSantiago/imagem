@@ -1,6 +1,6 @@
 package lovera.img.manipulacao;
 
-import static lovera.img.comum.Regras.validarNivelCinza;
+import static lovera.comuns.recursos.Regras.validarNivelCinza;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
