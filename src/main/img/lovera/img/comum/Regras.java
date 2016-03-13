@@ -5,10 +5,13 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import lovera.estatistica.contratos.EstatsDesc;
+import lovera.estatistica.descritiva.Estatistica;
 import lovera.img.contratos.ImgTransformavel;
 
 /**
- * Regras usadas de validacoes utilizadas no source src/main/img 
+ * Regras usadas de validacoes utilizadas no source src/main/img.
+ * REDISTRIBUIR REGRAS CONFORME USO PARA OS DEVIDOS FOLDERS SOURCES 13/03/2016
  * @author Lovera
  * @since 06/03/2016
  */
@@ -21,6 +24,11 @@ public final class Regras {
 	
 	public static void validarBufferedImgCinza(ImgTransformavel imgTranformavel){
 		validarBufferedImgCinza(imgTranformavel.getImgTransformada());
+	}
+	
+	public static void validarEstatistica(Estatistica estats, EstatsDesc classe){
+		if(estats == null)
+			throw new IllegalStateException("Metodo gerarEstatistica não foi chamado na classe " + classe.getClass().getSimpleName());
 	}
 	
 	public static void validarListaDeAreas(List<Rectangle> lista){
@@ -42,6 +50,6 @@ public final class Regras {
 	
 	public static void validarOperacaoExecutada(BufferedImage img, ImgTransformavel classe){
 		if(img == null)
-			throw new IllegalArgumentException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getSimpleName());
+			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getSimpleName());
 	}
 }

@@ -1,7 +1,9 @@
 package lovera.estatistica.factory;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
+import java.util.List;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
@@ -31,6 +33,10 @@ public final class FactoryEstatistica {
 		double coefVariacao = (stats.getStandardDeviation() / stats.getMean()) * 100.0;
 		estatistica.setCoefVariacao(coefVariacao);
 		return estatistica;
+	}
+	
+	public static final Estatistica factory_EstatisticaAltura(List<Rectangle> lista){
+		return null;
 	}
 
 }

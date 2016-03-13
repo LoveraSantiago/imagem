@@ -2,9 +2,9 @@ package lovera.estatistica.contratos;
 
 import lovera.estatistica.descritiva.Estatistica;
 
-public interface EstatisticaDescritivel {
+public interface EstatsDesc {
 	
-	void gerarEstatistica();
+	EstatsDesc gerarEstatistica();
 	Estatistica getEstatistica();
 
 }

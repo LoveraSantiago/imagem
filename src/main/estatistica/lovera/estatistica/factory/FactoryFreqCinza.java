@@ -5,7 +5,7 @@ import java.awt.image.Raster;
 
 import lovera.estatistica.descritiva.FrequenciaDeCinza;
 import lovera.img.contratos.ImgTransformavel;
-
+@Deprecated //13/03/2016 - ver uso 
 public final class FactoryFreqCinza {
 	
 	public static final FrequenciaDeCinza factory_FrequenciaDeCinza(BufferedImage img){

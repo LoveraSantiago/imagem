@@ -5,6 +5,7 @@ import static lovera.img.comum.Regras.validarNivelCinza;
 import lovera.comuns.contratos.Gravavel;
 
 //IMPLEMENTAR GRAVAVEL
+@Deprecated //13/03/2016 - ver uso 
 public final class FrequenciaDeCinza implements Gravavel{
 	
 	private int amplitude;
