@@ -11,21 +11,22 @@ import lovera.linha.grao.AlturaSubset;
 
 class FiltroSubset1 implements Coordenadas{
 	
-	List<AlturaSubset> listaClassif;
+	List<AlturaSubset> listaFiltrada;
 	List<Rectangle> listaAreas;
 	
-	public FiltroSubset1(ClassifAltura classificador) {
-		this.listaClassif = classificador.getAlturasClassificadas();
+	public FiltroSubset1(List<AlturaSubset> listaParaClassificar) {
+		this.listaFiltrada = listaParaClassificar;
 	}
 	
 	public FiltroSubset1 filtrarListaDeAreas(){
 		List<Rectangle> listaFiltrada = new ArrayList<>();
 		
-		this.listaClassif.forEach((classif) -> {
+		this.listaFiltrada.forEach((classif) -> {
 			if(classif.getSubset() == Subset.S1)
 				listaFiltrada.add(classif.getArea());
 		});
 		
+		this.listaAreas = listaFiltrada;
 		return this;
 	}	
 	

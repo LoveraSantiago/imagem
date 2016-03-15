@@ -8,13 +8,13 @@ import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.factory.FactoryEstatistica;
 import lovera.estatistica.grao.Estatistica;
 
-class AlturaDeAreas implements EstatsDesc{
+class EstatisticaAltura implements EstatsDesc{
 	
 	private List<Rectangle> listaAreas;
 	
 	private Estatistica estatistica;	 
 	
-	public AlturaDeAreas(List<Rectangle> listaAreas) {
+	public EstatisticaAltura(List<Rectangle> listaAreas) {
 		this.listaAreas = listaAreas;
 	}
 

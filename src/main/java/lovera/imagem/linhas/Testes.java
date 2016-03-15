@@ -1,21 +1,14 @@
 package lovera.imagem.linhas;
 
 import java.awt.image.BufferedImage;
-import java.util.List;
-
-import org.apache.log4j.net.SyslogAppender;
 
 import lovera.comuns.recursos.Imagens;
-import lovera.estatistica.grao.Estatistica;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
-import lovera.img.modelos.img.UniaoImgAreas;
 import lovera.img.modelos.img.UniaoImgAreasCor;
-import lovera.linha.grao.AlturaSubset;
-import lovera.linha.modelos.AlturaDeAreas;
-import lovera.linha.modelos.ClassifAltura;
+import lovera.linha.modelos.AreasParaBlocos;
 
 public class Testes {
 	
@@ -29,13 +22,12 @@ public class Testes {
 //		uniao.gravar();
 //		uniao.abrir();
 		
-		AlturaDeAreas alturas = new AlturaDeAreas(flood);
-		alturas.gerarEstatistica();
-		Estatistica estats = alturas.getEstatistica();		
-//		System.out.println(estats);
-		ClassifAltura classAltura = new ClassifAltura(flood, estats);
-		classAltura.classificarAreas();
-		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", classAltura, img);
+		AreasParaBlocos blocos = new AreasParaBlocos(flood);
+		blocos.gerarBlocos();				
+
+
+
+		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", null, img);
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

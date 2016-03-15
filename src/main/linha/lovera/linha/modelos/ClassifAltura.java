@@ -10,15 +10,15 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.linha.comum.Subset;
 import lovera.linha.grao.AlturaSubset;
 
-public class ClassifAltura implements Coordenadas{
+class ClassifAltura implements Coordenadas{
 	
 	private final double altMedia;
 	
 	private List<Rectangle> listaAreas;
 	private List<AlturaSubset> lClassificada;
 	
-	public ClassifAltura(Coordenadas coordenadas, Estatistica estats) {
-		this.listaAreas = coordenadas.getAreas();
+	public ClassifAltura(List<Rectangle> listaAreas, Estatistica estats) {
+		this.listaAreas = listaAreas;
 		this.altMedia   = estats.getMedia();
 	}
 	
