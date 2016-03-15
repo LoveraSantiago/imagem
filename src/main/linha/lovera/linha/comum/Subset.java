@@ -2,7 +2,13 @@ package lovera.linha.comum;
 
 import java.awt.Color;
 
-//substituir por enuns
+/**
+ * Classe de constantes para separacao entre 3 subsets.</br>
+ * Usado como pre-processamento.</br> 
+ * Separa de acordo com a largura e da altura do CC (Componente conectado). * 
+ * @author Lovera
+ * @since 15/03/2016
+ */
 public enum Subset {
 	
 	S1(1, Color.blue ),
