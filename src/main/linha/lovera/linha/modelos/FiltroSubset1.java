@@ -4,7 +4,6 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.linha.comum.Subset;
@@ -28,6 +27,7 @@ class FiltroSubset1 implements CoordenadasArea{
 		});
 		
 		this.listaAreas = listaFiltrada;
+		this.listaFiltrada = null;
 		return this;
 	}	
 	

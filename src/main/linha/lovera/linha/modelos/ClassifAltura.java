@@ -20,14 +20,15 @@ public class ClassifAltura implements CoordenadasArea{
 	public ClassifAltura(List<Rectangle> listaAreas, Estatistica estats) {
 		this.listaAreas = listaAreas;
 		this.altMedia   = estats.getMedia();
+		this.lClassificada = new ArrayList<>(this.listaAreas.size());
 	}
 	
 	public ClassifAltura classificarAreas(){
-		this.lClassificada = new ArrayList<>(this.listaAreas.size());
-		
+
 		this.listaAreas.forEach((area) -> 
 			this.lClassificada.add(new AlturaSubset(classificarSubset(area), area)));
 		
+		this.listaAreas = null;
 		return this;
 	}
 	
