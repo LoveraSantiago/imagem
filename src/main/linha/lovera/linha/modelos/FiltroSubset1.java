@@ -5,11 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.linha.comum.Subset;
 import lovera.linha.grao.AlturaSubset;
 
-class FiltroSubset1 implements Coordenadas{
+class FiltroSubset1 implements CoordenadasArea{
 	
 	List<AlturaSubset> listaFiltrada;
 	List<Rectangle> listaAreas;

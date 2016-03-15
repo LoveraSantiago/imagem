@@ -7,7 +7,6 @@ import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
