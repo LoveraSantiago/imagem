@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.contratos.CoordenadasPonto;
 import lovera.comuns.contratos.Gravavel;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
@@ -26,7 +27,7 @@ import lovera.img.contratos.ImgTransformavel;;
  * @author Lovera
  */
 @Deprecated //10/03/2016 Possivelmente nao sera utilizada.
-public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenadas{
+public final class CorrosaoImg implements ImgTransformavel, Gravavel, CoordenadasPonto{
 	
 	private BufferedImage imgCorrosao;
 	

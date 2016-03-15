@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.contratos.CoordenadasArea;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.linha.grao.AlturaSubset;
 import lovera.linha.modelos.ClassifAltura;
@@ -13,7 +13,7 @@ public class UniaoImgAreasCor extends UniaoImgAreas{
 	
 	List<AlturaSubset> listaClassificacao;
 
-	public UniaoImgAreasCor(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
+	public UniaoImgAreasCor(String nomeArquivo, CoordenadasArea coordenadas, BufferedImage img) {
 		super(nomeArquivo, coordenadas, img);
 		this.listaClassificacao = ((ClassifAltura) coordenadas).getAlturasClassificadas();
 	}

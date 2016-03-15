@@ -9,7 +9,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.ImgTransformavel;
@@ -33,7 +33,7 @@ public class UniaoImgAreas implements UnidorImagens{
 
 	private String endImgSalva;
 	
-	public UniaoImgAreas(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
+	public UniaoImgAreas(String nomeArquivo, CoordenadasArea coordenadas, BufferedImage img) {
 		this.nomeArquivo = nomeArquivo;
 		this.areas = coordenadas.getAreas();
 		this.imgTemp = img;

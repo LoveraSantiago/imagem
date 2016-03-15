@@ -10,7 +10,7 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.linha.comum.Subset;
 import lovera.linha.grao.AlturaSubset;
 
-class ClassifAltura implements Coordenadas{
+public class ClassifAltura implements Coordenadas{
 	
 	private final double altMedia;
 	

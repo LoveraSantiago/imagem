@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.img.BinarizacaoImg;
 
 //CCs Componentes Conectados
-public final class FloodFillCCs implements Coordenadas{
+public final class FloodFillCCs implements CoordenadasArea{
 
 	private List<RetanguloInfo> listaRI;
 

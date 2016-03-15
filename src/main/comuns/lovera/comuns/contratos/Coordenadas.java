@@ -11,11 +11,4 @@ import java.util.List;
  */
 public interface Coordenadas {
 	
-	default List<Rectangle> getAreas(){ 
-		throw new IllegalStateException("Metodo getAreas da Interface Coordenadas não implementado."); 
-	}
-	
-	default List<Point> getCoordenadas(){ 
-		throw new IllegalStateException("Metodo getCoordenadas da Interface Coordenadas não implementado."); 
-	}
 }

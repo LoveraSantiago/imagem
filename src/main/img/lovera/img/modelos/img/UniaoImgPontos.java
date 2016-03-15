@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
+import lovera.comuns.contratos.CoordenadasPonto;
 import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
@@ -33,7 +33,7 @@ public final class UniaoImgPontos implements UnidorImagens{
 	
 	private String endImgSalva;
 	
-	public UniaoImgPontos(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
+	public UniaoImgPontos(String nomeArquivo, CoordenadasPonto coordenadas, BufferedImage img) {
 		this.nomeArquivo = nomeArquivo;
 		this.coordenadas = coordenadas.getCoordenadas();
 		this.imgTemp = img;
