@@ -1,12 +1,15 @@
 package lovera.imagem.linhas;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
+import java.util.List;
 
 import lovera.comuns.recursos.Imagens;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
+import lovera.img.modelos.img.UniaoImgAreas;
 import lovera.img.modelos.img.UniaoImgAreasCor;
 import lovera.linha.modelos.AreasParaBlocos;
 
@@ -23,11 +26,10 @@ public class Testes {
 //		uniao.abrir();
 		
 		AreasParaBlocos blocos = new AreasParaBlocos(flood);
-		blocos.gerarBlocos();				
+		blocos.gerarBlocos();
 
-
-
-		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", null, img);
+		UniaoImgAreas uniao = new UniaoImgAreas("redacaoBloco", blocos, img);
+//		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", null, img);
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

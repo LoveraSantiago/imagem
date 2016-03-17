@@ -39,6 +39,8 @@ public final class Regras {
 	}
 	
 	public static void validarListaDeAreas(List<Rectangle> lista, Class<?> classe){
+		if(lista == null)
+			throw new IllegalStateException("Lista de Areas nula. Na classe " + classe.getSimpleName() + ".");
 		if(lista.size() <= 0)
 			throw new IllegalStateException("Lista de Areas vazia. Na classe " + classe.getSimpleName() + ".");
 	}
