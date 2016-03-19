@@ -40,7 +40,7 @@ public class UniaoImgAreas implements UnidorImagens{
 		this.imgUniao = copiarImg();
 		
 		Graphics2D graphics = this.imgUniao.createGraphics();
-		graphics.setColor(Color.green);
+		graphics.setColor(Color.blue);
 		
 		this.areas.forEach((area) -> graphics.draw(area));
 

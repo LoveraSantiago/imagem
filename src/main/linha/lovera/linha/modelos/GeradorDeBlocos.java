@@ -23,27 +23,21 @@ class GeradorDeBlocos implements CoordenadasArea{
 	
 	public GeradorDeBlocos gerarBlocos(){
 		this.listaTemp.forEach((area) -> {
+			
 			int xI = area.x;
 			int divisao = (int) (area.width / this.altMedia);
 			
-			for(int i = divisao; i > 0; i--, xI += this.altMedia)
-				this.listaAreas.add(new Rectangle(xI, area.y, this.altMedia, area.height));			
+			for(int i = divisao; i > 0; i--){
+				Rectangle bloco = new Rectangle(xI, area.y, this.altMedia, area.height);
+				this.listaAreas.add(bloco);			
+				xI += this.altMedia;
+			}
 			
-			if(xI < area.width)
-				this.listaAreas.add(new Rectangle(xI, area.y, area.width- xI, area.height));				
+			if(xI < (area.width + area.x)){
+				Rectangle blocoMenordoFinal = new Rectangle(xI, area.y, (area.width + area.x) - xI, area.height);
+				this.listaAreas.add(blocoMenordoFinal);
+			}
 		});
-		
-//		for(Rectangle area : this.listaTemp){
-//			int xI = area.x;
-//			int divisao = (int) (area.width / this.altMedia);
-//			
-//			for(int i = divisao; i > 0; i--, xI += this.altMedia)
-//				this.listaAreas.add(new Rectangle(xI, area.y, this.altMedia, area.height));			
-//			
-//			if(xI < area.width)
-//				this.listaAreas.add(new Rectangle(xI, area.y, area.width- xI, area.height));	
-//		}
-		
 		return this;
 	}
 	
@@ -52,6 +46,4 @@ class GeradorDeBlocos implements CoordenadasArea{
 		Regras.validarListaDeAreas(this.listaAreas, this.getClass());
 		return this.listaAreas;
 	}
-	
-
 }
