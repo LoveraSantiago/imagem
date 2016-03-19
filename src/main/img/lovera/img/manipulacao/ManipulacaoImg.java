@@ -96,6 +96,7 @@ public final class ManipulacaoImg {
 	}
 	
 	public static final BufferedImage recortar(BufferedImage img, Rectangle area){
-		return img.getSubimage(area.x, area.y, area.width, area.height);
+		BufferedImage imgRecortada = img.getSubimage(area.x, area.y, area.width, area.height);
+		return copiarImg(imgRecortada, imgRecortada.getType());
 	}
 }

@@ -1,15 +1,17 @@
 package lovera.img.modelos.blocos;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.List;
 
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.CoordenadasArea;
+import lovera.img.contratos.CoordenadasPonto;
 import lovera.img.graos.AlturaSubset;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 
-public class AreasParaBlocos implements CoordenadasArea{
+public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 	
 	private List<Rectangle> listaAreas;
 	
@@ -55,6 +57,12 @@ public class AreasParaBlocos implements CoordenadasArea{
 	public List<Rectangle> getAreas() {
 		Regras.validarListaDeAreas(this.listaAreas, this.getClass());
 		return this.listaAreas;
+	}
+
+	@Override
+	public List<Point> getCoordenadas() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
