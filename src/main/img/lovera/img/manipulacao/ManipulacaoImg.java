@@ -4,6 +4,7 @@ import static lovera.comuns.recursos.Regras.validarNivelCinza;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
@@ -16,6 +17,7 @@ import java.awt.image.WritableRaster;
  * @author Lovera
  * @since 13/03/2016
  */
+//QUEBRAR A CLASSE EM SEUS UTILIZADORES
 public final class ManipulacaoImg {
 
 	private static final int TAMANHO = 256;	
@@ -78,7 +80,7 @@ public final class ManipulacaoImg {
 		for(int i = 0; i < TAMANHO; i++) arrayInvertido[i] = 255 - i;
 		
 		return transformarImgPeloArray(img, arrayInvertido);
-	}
+	}	
 	
 	private static final BufferedImage transformarImgPeloArray(BufferedImage img, int[] array){
 		BufferedImage imgRetorno = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_BYTE_GRAY);
@@ -91,5 +93,9 @@ public final class ManipulacaoImg {
 				wRaster.setSample(j, i, 0, array[raster.getSample(j, i, 0)]);
 			
 		return imgRetorno;
+	}
+	
+	public static final BufferedImage recortar(BufferedImage img, Rectangle area){
+		return img.getSubimage(area.x, area.y, area.width, area.height);
 	}
 }
