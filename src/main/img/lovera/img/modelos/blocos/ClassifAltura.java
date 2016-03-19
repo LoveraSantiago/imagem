@@ -10,7 +10,7 @@ import lovera.img.comum.Subset;
 import lovera.img.contratos.CoordenadasArea;
 import lovera.img.graos.AlturaSubset;
 
-class ClassifAltura implements CoordenadasArea{
+public class ClassifAltura implements CoordenadasArea{
 	
 	private final double altMedia;
 	
