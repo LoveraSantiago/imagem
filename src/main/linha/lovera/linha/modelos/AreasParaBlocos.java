@@ -3,7 +3,6 @@ package lovera.linha.modelos;
 import java.awt.Rectangle;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;

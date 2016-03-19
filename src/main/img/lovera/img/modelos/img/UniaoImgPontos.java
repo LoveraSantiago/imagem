@@ -1,7 +1,6 @@
 package lovera.img.modelos.img;
 
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
-import static lovera.img.manipulacao.ImgIO.gravarImg;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
 import java.awt.Point;
@@ -10,12 +9,9 @@ import java.awt.image.WritableRaster;
 import java.util.List;
 
 import lovera.comuns.contratos.CoordenadasPonto;
-import lovera.comuns.recursos.Endereco;
-import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
-import lovera.img.manipulacao.ImgIO;
 
 /**
  * Classe que desenha pontos de uma lista de pontos em uma imagem.
@@ -63,18 +59,17 @@ public final class UniaoImgPontos implements UnidorImagens{
 
 	@Override
 	public BufferedImage getImgTransformada() {
-		validarOperacaoExecutada(this.imgUniao, this);
+		validarOperacaoExecutada(this.imgUniao, this.getClass());
 		return this.imgUniao;
 	}
 	
 	@Override
 	public void abrir() {
-		ImgIO.abrirImg(this.endImgSalva);
+		UnidorImagens.super.abrir(this.endImgSalva);
 	}
 
 	@Override
 	public void gravar() {
-		validarOperacaoExecutada(this.imgUniao, this);
-		this.endImgSalva = gravarImg(this.imgUniao, Endereco.TESTES, this.nomeArquivo, TipoImagem.PNG);		
+		this.endImgSalva = UnidorImagens.super.gravarImg(this.imgUniao, this.nomeArquivo, this);  
 	}
 }

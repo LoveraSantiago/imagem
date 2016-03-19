@@ -1,8 +1,6 @@
 package lovera.estatistica.grao;
 
-import lovera.comuns.contratos.Gravavel;
-//IMPLEMENTAR GRAVAVEL
-public final class Estatistica implements Gravavel{
+public final class Estatistica {
 	
 	private double coefVariacao;
 	private double desvio;
@@ -85,10 +83,5 @@ public final class Estatistica implements Gravavel{
 
 	public void setCoefVariacao(double coefVariacao) {
 		this.coefVariacao = coefVariacao;
-	}
-
-	@Override
-	public void gravar() {
-		// TODO Auto-generated method stub		
 	}
 }

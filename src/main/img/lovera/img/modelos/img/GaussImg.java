@@ -2,14 +2,11 @@ package lovera.img.modelos.img;
 
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.Filtros.gauss;
-import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.image.BufferedImage;
 
 import lovera.comuns.contratos.Gravavel;
-import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.Regras;
-import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.ImgTransformavel;
 
 public final class GaussImg implements ImgTransformavel, Gravavel{
@@ -32,14 +29,13 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 
 	@Override
 	public BufferedImage getImgTransformada() {	
-		validarOperacaoExecutada(this.imgGauss, this);
+		validarOperacaoExecutada(this.imgGauss, this.getClass());
 		return this.imgGauss;
 	}
 
 	@Override
 	public void gravar() {
-		validarOperacaoExecutada(this.imgGauss, this);
-		gravarImg(this.imgGauss, Endereco.TESTES, "redacaoGauss", TipoImagem.PNG);		
+		ImgTransformavel.super.gravarImg(this.imgGauss, "redacaoGauss", this);
 	}
 
 }

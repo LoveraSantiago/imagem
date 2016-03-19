@@ -3,7 +3,6 @@ package lovera.img.modelos.img;
 import static lovera.comuns.recursos.Regras.validarBufferedImgCinza;
 import static lovera.comuns.recursos.Regras.validarListaCoordenadas;
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
-import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.Point;
 import java.awt.image.BufferedImage;
@@ -11,11 +10,8 @@ import java.awt.image.Raster;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.contratos.CoordenadasPonto;
 import lovera.comuns.contratos.Gravavel;
-import lovera.comuns.recursos.Endereco;
-import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.ImgTransformavel;
 /**
@@ -67,7 +63,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 
 	@Override
 	public BufferedImage getImgTransformada() {
-		validarOperacaoExecutada(this.imgChuva, this);
+		validarOperacaoExecutada(this.imgChuva, this.getClass());
 		return this.imgChuva;
 	}
 
@@ -79,7 +75,6 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 
 	@Override
 	public void gravar() {
-		validarOperacaoExecutada(this.imgChuva, this);
-		gravarImg(this.imgChuva, Endereco.TESTES, "redacaoChuva", TipoImagem.PNG);
+		ImgTransformavel.super.gravarImg(this.imgChuva, "redacaoChuva", this);
 	}
 }

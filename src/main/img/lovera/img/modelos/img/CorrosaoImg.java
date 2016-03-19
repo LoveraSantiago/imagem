@@ -5,7 +5,6 @@ import static lovera.comuns.recursos.Regras.validarListaCoordenadas;
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.comum.Binario.HUM_BINARIO;
 import static lovera.img.comum.Binario.ZERO_BINARIO;
-import static lovera.img.manipulacao.ImgIO.gravarImg;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
 import java.awt.Point;
@@ -15,11 +14,8 @@ import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.comuns.contratos.CoordenadasPonto;
 import lovera.comuns.contratos.Gravavel;
-import lovera.comuns.recursos.Endereco;
-import lovera.comuns.recursos.TipoImagem;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.ImgTransformavel;;
 
@@ -188,14 +184,13 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	 */
 	@Override
 	public BufferedImage getImgTransformada() {
-		validarOperacaoExecutada(this.imgCorrosao, this);
+		validarOperacaoExecutada(this.imgCorrosao, this.getClass());
 		return this.imgCorrosao;
 	}
 
 	@Override
 	public void gravar() {
-		validarOperacaoExecutada(this.imgCorrosao, this);
-		gravarImg(this.imgCorrosao, Endereco.TESTES, "RedacaoCorrosao", TipoImagem.PNG);
+		ImgTransformavel.super.gravarImg(this.imgCorrosao, "redacaoCorrosao", this);
 	}
 
 	@Override

@@ -2,14 +2,10 @@ package lovera.img.modelos.img;
 
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import static lovera.img.manipulacao.Filtros.laplace;
-import static lovera.img.manipulacao.ImgIO.gravarImg;
 
 import java.awt.image.BufferedImage;
 
 import lovera.comuns.contratos.Gravavel;
-import lovera.comuns.recursos.Endereco;
-import lovera.comuns.recursos.Regras;
-import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.ImgTransformavel;
 /**
  * @author Lovera
@@ -33,14 +29,13 @@ public final class LaplaceImg implements ImgTransformavel, Gravavel{
 
 	@Override
 	public BufferedImage getImgTransformada() {
-		validarOperacaoExecutada(this.imgLaplace, this);
+		validarOperacaoExecutada(this.imgLaplace, this.getClass());
 		return this.imgLaplace;
 	}
 
 	@Override
 	public void gravar() {
-		Regras.validarOperacaoExecutada(this.imgLaplace, this);
-		gravarImg(this.imgLaplace, Endereco.TESTES, "RedacaoLaplace", TipoImagem.PNG);
+		ImgTransformavel.super.gravarImg(this.imgLaplace, "redacaoLaplace", this);
 	}
 
 }

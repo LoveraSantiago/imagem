@@ -9,12 +9,11 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import lovera.comuns.contratos.Gravavel;
 import lovera.estatistica.grao.FrequenciaDeCinza;
 
 //IMPLEMENTAR GRAVAVEL
 @Deprecated //12/03/2016 - Provavelmente não sera usado
-public final class GraficoEscalaCinza implements Gravavel{
+public final class GraficoEscalaCinza {
 	
 BufferedImage grafico;
 	//REVER ESCALA DO GRAFICO
@@ -54,11 +53,6 @@ BufferedImage grafico;
 			
 			posY = posY + linha + espaco; 
 		}
-	}
-	
-	@Override
-	public void gravar() {
-				
 	}
 
 	public BufferedImage getGrafico(){

@@ -2,11 +2,8 @@ package lovera.estatistica.grao;
 
 import static lovera.comuns.recursos.Regras.validarNivelCinza;
 
-import lovera.comuns.contratos.Gravavel;
-
-//IMPLEMENTAR GRAVAVEL
 @Deprecated //13/03/2016 - ver uso 
-public final class FrequenciaDeCinza implements Gravavel{
+public final class FrequenciaDeCinza {
 	
 	private int amplitude;
 	
@@ -163,11 +160,5 @@ public final class FrequenciaDeCinza implements Gravavel{
 
 	public void setMenorDerivadaCinza(int menorDerivadaCinza) {
 		this.menorDerivadaCinza = menorDerivadaCinza;
-	}
-
-	@Override
-	public void gravar() {
-		// TODO Auto-generated method stub
-		
 	}
 }

@@ -4,11 +4,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 
 import lovera.comuns.contratos.Gravavel;
-import lovera.comuns.recursos.Endereco;
 import lovera.comuns.recursos.Regras;
-import lovera.comuns.recursos.TipoImagem;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.Limiar;
 
 public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
@@ -45,13 +42,12 @@ public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 
 	@Override
 	public BufferedImage getImgTransformada() {
-		Regras.validarOperacaoExecutada(this.imgBinaria, this);
+		Regras.validarOperacaoExecutada(this.imgBinaria, this.getClass());
 		return this.imgBinaria;
 	}
 
 	@Override
 	public void gravar() {
-		Regras.validarOperacaoExecutada(this.imgBinaria, this);
-		ImgIO.gravarImg(this.imgBinaria, Endereco.TESTES, "redacaoBinaria", TipoImagem.PNG);		
+		ImgTransformavel.super.gravarImg(this.imgBinaria, "redacaoBinaria", this);
 	}
 }

@@ -57,7 +57,7 @@ public final class Regras {
 			throw new IllegalArgumentException("O pixel passado não pode ser maior do que 255.");
 	}
 	
-	public static void validarOperacaoExecutada(BufferedImage img, ImgTransformavel classe){
+	public static void validarOperacaoExecutada(BufferedImage img, Class<?> classe){
 		if(img == null)
 			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getSimpleName());
 	}
