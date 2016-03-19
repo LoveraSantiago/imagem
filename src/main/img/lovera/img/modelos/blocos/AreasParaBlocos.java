@@ -31,8 +31,8 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 		Estatistica estats = getEstatisticaDaAltura();
 		List<AlturaSubset> altClassificadas = classificarAlturas(estats);
 		List<Rectangle> areas = filtrarAlturasClassificadas(altClassificadas);		
-						areas = gerarBlocos(areas, estats);
-		this.listaAreas = localizarCentroDosBlocos();
+						areas = gerarBlocos(areas, estats);		
+		this.listaAreas = localizarCentroDosBlocos(areas);
 		this.listaTemp = null;
 		return this;
 	}
@@ -61,8 +61,8 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 		return gerador.getAreas();
 	}
 	
-	private List<AreaPonto> localizarCentroDosBlocos(){
-		CentroDosBlocos centro = new CentroDosBlocos(binarizacao, this.listaTemp);
+	private List<AreaPonto> localizarCentroDosBlocos(List<Rectangle> listaAreas){
+		CentroDosBlocos centro = new CentroDosBlocos(binarizacao, listaAreas);
 		centro.localizarCentros();
 		return centro.getListaAreasComPonto();
 	}

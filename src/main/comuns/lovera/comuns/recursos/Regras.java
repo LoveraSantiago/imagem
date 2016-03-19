@@ -41,16 +41,16 @@ public final class Regras {
 	
 	public static void validarListaDeAreas(List<Rectangle> lista, Class<?> classe){
 		if(lista == null)
-			throw new IllegalStateException("Lista de Areas nula. Na classe " + classe.getSimpleName() + ".");
+			throw new IllegalStateException("Lista de Areas nula. Na classe " + classe.getName() + ".");
 		if(lista.size() <= 0)
-			throw new IllegalStateException("Lista de Areas vazia. Na classe " + classe.getSimpleName() + ".");
+			throw new IllegalStateException("Lista de Areas vazia. Na classe " + classe.getName() + ".");
 	}
 	
 	public static void validarListaDeAreasComPonto(List<AreaPonto> lista, Class<?> classe){
 		if(lista == null)
-			throw new IllegalStateException("Lista de Areas com Ponto nula. Na classe " + classe.getSimpleName() + ".");
+			throw new IllegalStateException("Lista de Areas com Ponto nula. Na classe " + classe.getName() + ".");
 		if(lista.size() <= 0)
-			throw new IllegalStateException("Lista de Areas com Ponto vazia. Na classe " + classe.getSimpleName() + ".");
+			throw new IllegalStateException("Lista de Areas com Ponto vazia. Na classe " + classe.getName() + ".");
 	}
 	
 	public static void validarListaCoordenadas(List<Point> lista){
@@ -67,6 +67,6 @@ public final class Regras {
 	
 	public static void validarOperacaoExecutada(BufferedImage img, Class<?> classe){
 		if(img == null)
-			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getSimpleName());
+			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getName());
 	}
 }
