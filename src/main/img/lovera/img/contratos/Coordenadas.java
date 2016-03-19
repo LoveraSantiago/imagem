@@ -1,4 +1,4 @@
-package lovera.comuns.contratos;
+package lovera.img.contratos;
 
 /**
  * Interface para modelos que produzem Coordenadas para uma imagem.

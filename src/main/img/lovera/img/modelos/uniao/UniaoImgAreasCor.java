@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import lovera.comuns.contratos.CoordenadasArea;
+import lovera.img.contratos.CoordenadasArea;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.graos.AlturaSubset;
 import lovera.img.modelos.blocos.ClassifAltura;

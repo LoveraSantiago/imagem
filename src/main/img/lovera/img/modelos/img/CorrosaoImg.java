@@ -14,9 +14,9 @@ import java.awt.image.WritableRaster;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.CoordenadasPonto;
 import lovera.comuns.contratos.Gravavel;
 import lovera.img.comum.Pixel;
+import lovera.img.contratos.CoordenadasPonto;
 import lovera.img.contratos.ImgTransformavel;;
 
 /**

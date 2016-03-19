@@ -4,10 +4,10 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.comum.Subset;
+import lovera.img.contratos.CoordenadasArea;
 import lovera.img.graos.AlturaSubset;
 
 public class ClassifAltura implements CoordenadasArea{

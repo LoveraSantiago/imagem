@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-import lovera.comuns.contratos.Coordenadas;
 import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.grao.Estatistica;
+import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.graos.AlturaSubset;
 

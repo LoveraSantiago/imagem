@@ -8,8 +8,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
 
-import lovera.comuns.contratos.CoordenadasPonto;
 import lovera.img.comum.Pixel;
+import lovera.img.contratos.CoordenadasPonto;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 

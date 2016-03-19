@@ -4,9 +4,9 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
-import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
+import lovera.img.contratos.CoordenadasArea;
 
 class GeradorDeBlocos implements CoordenadasArea{
 	
