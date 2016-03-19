@@ -10,7 +10,6 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.graos.AreaPonto;
-import lovera.img.manipulacao.ImgIO;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.img.BinarizacaoImg;
 
@@ -21,8 +20,8 @@ class CentroDosBlocos {
 	private List<AreaPonto> listaAreaPontos;
 	private List<Rectangle> listaAreas;
 	
-	public CentroDosBlocos(BinarizacaoImg binarizado, List<Rectangle> listaAreas) {
-		this.img = binarizado.getImgTransformada();
+	public CentroDosBlocos(BinarizacaoImg binarizacao, List<Rectangle> listaAreas) {
+		this.img = binarizacao.getImgTransformada();
 		this.listaAreas = listaAreas;
 		this.listaAreaPontos = new ArrayList<>(listaAreas.size());
 	}
@@ -47,7 +46,9 @@ class CentroDosBlocos {
 		WritableRaster raster = imgRecortada.getRaster();
 		for(int i = 0; i < imgRecortada.getHeight(); i++)
 			for(int j = 0; j < imgRecortada.getWidth(); j++){
+				
 				int sample = raster.getSample(j, i, 0);
+				
 				if(sample == Pixel.PREENCHIDO.getValor()){
 					totalx += area.x + j;
 					totaly += area.y + i;
@@ -63,5 +64,10 @@ class CentroDosBlocos {
 	
 	private BufferedImage recortarImg(Rectangle area){
 		return ManipulacaoImg.recortar(this.img, area);
+	}
+	
+	public List<AreaPonto> getListaAreasComPonto(){
+		Regras.validarListaDeAreasComPonto(this.listaAreaPontos, this.getClass());
+		return this.listaAreaPontos;
 	}
 }

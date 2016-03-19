@@ -10,6 +10,7 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.graos.AlturaSubset;
+import lovera.img.graos.AreaPonto;
 
 /**
  * Regras usadas de validacoes utilizadas no source src/main/img.
@@ -43,6 +44,13 @@ public final class Regras {
 			throw new IllegalStateException("Lista de Areas nula. Na classe " + classe.getSimpleName() + ".");
 		if(lista.size() <= 0)
 			throw new IllegalStateException("Lista de Areas vazia. Na classe " + classe.getSimpleName() + ".");
+	}
+	
+	public static void validarListaDeAreasComPonto(List<AreaPonto> lista, Class<?> classe){
+		if(lista == null)
+			throw new IllegalStateException("Lista de Areas com Ponto nula. Na classe " + classe.getSimpleName() + ".");
+		if(lista.size() <= 0)
+			throw new IllegalStateException("Lista de Areas com Ponto vazia. Na classe " + classe.getSimpleName() + ".");
 	}
 	
 	public static void validarListaCoordenadas(List<Point> lista){
