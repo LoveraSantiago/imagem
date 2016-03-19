@@ -15,6 +15,7 @@ import lovera.img.modelos.img.LaplaceImg;
  * @author Lovera
  * @since 12/03/2016
  */
+@Deprecated//19/03/2016 - VER UTILIZAÇÂO E POSSIVELMENTE QUEBRAR OU DESCARTA-LA
 public final class FactoryModelo {
 	
 	public static BinarizacaoImg factoryBinarizacao(BufferedImage img){
