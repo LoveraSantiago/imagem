@@ -1,4 +1,4 @@
-package lovera.linha.modelos;
+package lovera.img.modelos.blocos;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
@@ -7,8 +7,8 @@ import java.util.List;
 import lovera.comuns.contratos.CoordenadasArea;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
-import lovera.linha.comum.Subset;
-import lovera.linha.grao.AlturaSubset;
+import lovera.img.comum.Subset;
+import lovera.img.graos.AlturaSubset;
 
 public class ClassifAltura implements CoordenadasArea{
 	

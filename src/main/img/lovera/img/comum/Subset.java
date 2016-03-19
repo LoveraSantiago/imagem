@@ -1,4 +1,4 @@
-package lovera.linha.comum;
+package lovera.img.comum;
 
 import java.awt.Color;
 

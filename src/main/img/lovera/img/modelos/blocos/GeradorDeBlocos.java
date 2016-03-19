@@ -1,4 +1,4 @@
-package lovera.linha.modelos;
+package lovera.img.modelos.blocos;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;

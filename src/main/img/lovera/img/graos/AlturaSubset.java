@@ -1,8 +1,8 @@
-package lovera.linha.grao;
+package lovera.img.graos;
 
 import java.awt.Rectangle;
 
-import lovera.linha.comum.Subset;
+import lovera.img.comum.Subset;
 
 public class AlturaSubset {
 	

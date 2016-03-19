@@ -6,8 +6,8 @@ import java.util.List;
 
 import lovera.comuns.contratos.CoordenadasArea;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.linha.grao.AlturaSubset;
-import lovera.linha.modelos.ClassifAltura;
+import lovera.img.graos.AlturaSubset;
+import lovera.img.modelos.blocos.ClassifAltura;
 
 public class UniaoImgAreasCor extends UniaoImgAreas{
 	

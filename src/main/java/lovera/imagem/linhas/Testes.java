@@ -5,10 +5,10 @@ import java.awt.image.BufferedImage;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
+import lovera.img.modelos.blocos.AreasParaBlocos;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
 import lovera.img.modelos.uniao.UniaoImgAreas;
-import lovera.linha.modelos.AreasParaBlocos;
 
 public class Testes {
 	

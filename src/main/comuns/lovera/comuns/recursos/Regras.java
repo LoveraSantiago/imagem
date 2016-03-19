@@ -9,7 +9,7 @@ import lovera.comuns.contratos.Coordenadas;
 import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.linha.grao.AlturaSubset;
+import lovera.img.graos.AlturaSubset;
 
 /**
  * Regras usadas de validacoes utilizadas no source src/main/img.
