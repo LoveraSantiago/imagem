@@ -1,4 +1,4 @@
-package lovera.img.modelos.img;
+package lovera.img.modelos.uniao;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

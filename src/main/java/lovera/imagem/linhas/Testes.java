@@ -7,26 +7,19 @@ import lovera.img.factory.FactoryModelo;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
-import lovera.img.modelos.img.UniaoImgAreas;
+import lovera.img.modelos.uniao.UniaoImgAreas;
 import lovera.linha.modelos.AreasParaBlocos;
 
 public class Testes {
 	
 	public static void main(String[] args) {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
-		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
-		
+		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);		
 		FloodFillCCs flood = new FloodFillCCs(binarizacao);
-//		UniaoImgAreas uniao = new UniaoImgAreas("redacaoFloodFill", flood, img);
-//		uniao.executarTransformacao();
-//		uniao.gravar();
-//		uniao.abrir();
-		
 		AreasParaBlocos blocos = new AreasParaBlocos(flood);
 		blocos.gerarBlocos();
 
 		UniaoImgAreas uniao = new UniaoImgAreas("redacaoBloco", blocos, img);
-//		UniaoImgAreasCor uniao = new UniaoImgAreasCor("redacaoAClassif", null, img);
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

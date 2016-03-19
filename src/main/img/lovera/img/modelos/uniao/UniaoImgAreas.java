@@ -1,4 +1,4 @@
-package lovera.img.modelos.img;
+package lovera.img.modelos.uniao;
 
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 
