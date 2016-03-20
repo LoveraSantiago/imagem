@@ -69,6 +69,6 @@ public final class Regras {
 	
 	public static void validarOperacaoExecutada(BufferedImage img, Class<?> classe){
 		if(img == null)
-			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getClass().getName());
+			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getName());
 	}
 }
