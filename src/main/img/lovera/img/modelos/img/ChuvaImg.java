@@ -70,7 +70,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 
 	@Override
 	public List<Point> getCoordenadas() {
-		validarListaCoordenadas(this.coordenadas);
+		validarListaCoordenadas(this.coordenadas, this.getClass());
 		return this.coordenadas;
 	}
 

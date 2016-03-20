@@ -195,21 +195,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 
 	@Override
 	public List<Point> getCoordenadas() {
-		validarListaCoordenadas(this.coordenadas);
+		validarListaCoordenadas(this.coordenadas, this.getClass());
 		return this.coordenadas;
 	}
-	
-//	Testando conversoes binarias
-//	public static void main(String[] args) {	
-//		
-//		for(int i = 0; i < 64; i++){
-//			int[] array = casoParaVizinhanca(i, new int[6]);
-//			int[] resposta = casoParaVizinhanca(getErosao(i), new int[6]);
-//			
-//			System.out.println("Caso " + String.format("%02d", i) + 
-//					" = " + Arrays.toString(array) + " retornando " + 
-//					" = " + Arrays.toString(resposta));
-//		}
-//		System.out.println("Fim");		
-//	}
 }

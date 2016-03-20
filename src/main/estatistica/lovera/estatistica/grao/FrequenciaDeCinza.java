@@ -57,7 +57,7 @@ public final class FrequenciaDeCinza {
 	 * Seta o tom de cinza que teve a maior frequência.
 	 */
 	public void setMaiorEscalaCinza(int maiorEscalaCinza) {
-		validarNivelCinza(maiorEscalaCinza);
+		validarNivelCinza(maiorEscalaCinza, this.getClass());
 		this.maiorEscalaCinza = maiorEscalaCinza;
 	}
 
@@ -76,7 +76,7 @@ public final class FrequenciaDeCinza {
 	}
 
 	public int getFrequenciaDoTomDeCinza(int escala){
-		validarNivelCinza(escala);		
+		validarNivelCinza(escala, this.getClass());		
 		return this.escalaCinza[escala];		
 	}
 
@@ -126,7 +126,7 @@ public final class FrequenciaDeCinza {
 	}
 	
 	public int getDerivadaDaEscalaDeCinza(int escala){
-		validarNivelCinza(escala);
+		validarNivelCinza(escala, this.getClass());
 		return this.escalaDerivadas[escala];
 	}
 

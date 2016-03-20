@@ -22,8 +22,9 @@ public final class ManipulacaoImg {
 
 	private static final int TAMANHO = 256;	
 	
+	@Deprecated //20/03/2016 - ver refatoracao com classe BinarizacaoImg
 	public static final BufferedImage binarizar(BufferedImage img, int nivelCinza){
-		validarNivelCinza(nivelCinza);
+//		validarNivelCinza(nivelCinza);
 		
 		int branco = 255;
 		int preto = 0;
