@@ -24,6 +24,7 @@ public class Testes {
 		UnidorImagens uniao = new UniaoImgAreas("redacaoBloco", blocos, img);
 		uniao.executarTransformacao();
 		uniao = new UniaoImgPontos("redacaoCentroGravidade", blocos, uniao.getImgTransformada());
+		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();
 	}

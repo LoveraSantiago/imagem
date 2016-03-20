@@ -9,7 +9,6 @@ import java.util.List;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
-import lovera.img.debug.DebugImgModelo;
 import lovera.img.graos.AreaPonto;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.img.BinarizacaoImg;
@@ -57,9 +56,6 @@ class CentroDosBlocos {
 				}
 			}
 		
-		if(contador == 0){
-			DebugImgModelo.debugarImg(imgRecortada, "recorte", true);
-		}
 		int mediax = (int) (Math.round(totalx / contador));
 		int mediay = (int) (Math.round(totaly / contador));
 		
