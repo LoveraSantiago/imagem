@@ -9,7 +9,7 @@ import java.util.List;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
-import lovera.img.graos.AreaPonto;
+import lovera.img.graos.BlocoComPonto;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.img.BinarizacaoImg;
 
@@ -17,7 +17,7 @@ class CentroDosBlocos {
 	
 	private BufferedImage img;
 	
-	private List<AreaPonto> listaAreaPontos;
+	private List<BlocoComPonto> listaAreaPontos;
 	private List<Rectangle> listaAreas;
 	
 	public CentroDosBlocos(BinarizacaoImg binarizacao, List<Rectangle> listaAreas) {
@@ -31,7 +31,7 @@ class CentroDosBlocos {
 			
 			BufferedImage imgRecortada = recortarImg(area);
 			Point ponto = getCentroDaImagem(imgRecortada, area);
-			this.listaAreaPontos.add(new AreaPonto(area, ponto));
+			this.listaAreaPontos.add(new BlocoComPonto(area, ponto));
 		});
 		
 		this.listaAreas = null;
@@ -66,8 +66,8 @@ class CentroDosBlocos {
 		return ManipulacaoImg.recortar(this.img, area);
 	}
 	
-	public List<AreaPonto> getListaAreasComPonto(){
-		Regras.validarListaDeAreasComPonto(this.listaAreaPontos, this.getClass());
+	public List<BlocoComPonto> getListaAreasComPonto(){
+		Regras.validarListaDeBlocosComPonto(this.listaAreaPontos, this.getClass());
 		return this.listaAreaPontos;
 	}
 }

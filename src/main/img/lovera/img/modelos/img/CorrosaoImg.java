@@ -30,7 +30,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	private List<Point> coordenadas;
 	
 	public CorrosaoImg(BinarizacaoImg binarizacao) {
-		validarBufferedImgCinza(binarizacao);
+		validarBufferedImgCinza(binarizacao, this.getClass());
 		
 		this.imgCorrosao = copiarImg(binarizacao.getImgTransformada());		 
 	}

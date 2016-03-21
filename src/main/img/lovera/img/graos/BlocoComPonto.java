@@ -3,12 +3,12 @@ package lovera.img.graos;
 import java.awt.Point;
 import java.awt.Rectangle;
 
-public class AreaPonto {
+public class BlocoComPonto {
 	
 	private final Rectangle area;
 	private final Point ponto;	
 	
-	public AreaPonto(Rectangle area, Point ponto) {
+	public BlocoComPonto(Rectangle area, Point ponto) {
 		super();
 		this.area = area;
 		this.ponto = ponto;

@@ -21,7 +21,7 @@ public final class FloodFillCCs implements CoordenadasArea{
 	private BufferedImage img;	
 	
 	public FloodFillCCs(BinarizacaoImg binarizacao) {
-		Regras.validarBufferedImgCinza(binarizacao);		
+		Regras.validarBufferedImgCinza(binarizacao, this.getClass());		
 		this.img = ManipulacaoImg.copiarImg(binarizacao.getImgTransformada());	
 		this.listaRI = new ArrayList<>(); 
 		

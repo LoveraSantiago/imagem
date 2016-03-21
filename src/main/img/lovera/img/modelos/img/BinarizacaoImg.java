@@ -14,7 +14,7 @@ public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	private BufferedImage imgBinaria;	
 	
 	public BinarizacaoImg(LaplaceImg laplace, Limiar limiar) {
-		Regras.validarBufferedImgCinza(laplace);
+		Regras.validarBufferedImgCinza(laplace, this.getClass());
 		
 		this.imgBinaria = laplace.getImgTransformada();
 		this.limiar = limiar;

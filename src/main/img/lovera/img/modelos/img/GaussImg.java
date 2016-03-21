@@ -15,7 +15,7 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 	private BufferedImage imgGauss;
 	
 	public GaussImg(CinzaImg cinza) {
-		Regras.validarBufferedImgCinza(cinza);
+		Regras.validarBufferedImgCinza(cinza, this.getClass());
 		
 		this.imgTemp = cinza.getImgTransformada();
 	}

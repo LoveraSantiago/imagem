@@ -10,7 +10,7 @@ public final class Limiar {
 	private int limiar;
 	
 	public Limiar(CinzaImg cinza) {
-		Regras.validarBufferedImgCinza(cinza);
+		Regras.validarBufferedImgCinza(cinza, this.getClass());
 		
 		encontrarLimiar();
 		fabricarArrayBinario();

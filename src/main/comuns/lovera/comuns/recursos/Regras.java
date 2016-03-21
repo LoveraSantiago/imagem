@@ -10,11 +10,13 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.graos.AlturaSubset;
-import lovera.img.graos.AreaPonto;
+import lovera.img.graos.BlocoComPonto;
+import lovera.img.modelos.blocos.AreasParaBlocos;
 
 /**
  * Regras usadas de validacoes utilizadas no source src/main/img.
- * REDISTRIBUIR REGRAS CONFORME USO PARA OS DEVIDOS FOLDERS SOURCES 13/03/2016
+ * -REDISTRIBUIR REGRAS CONFORME USO PARA OS DEVIDOS FOLDERS SOURCES 13/03/2016
+ * -ARRUMAR EXCESSO DE CHAMADAS DE REGRAS (EX: NA CLASSE VALIDA ANTES DO GET E DEPOIS DELE)
  * @author Lovera
  * @since 06/03/2016
  */
@@ -25,7 +27,7 @@ public final class Regras {
 			throw new IllegalArgumentException("BufferedImage deve ser do tipo cinza. Na classe " + classe.getName());
 	}
 	
-	public static void validarBufferedImgCinza(ImgTransformavel imgTranformavel){
+	public static void validarBufferedImgCinza(ImgTransformavel imgTranformavel, Class<?> classe){
 		validarBufferedImgCinza(imgTranformavel.getImgTransformada(), imgTranformavel.getClass());
 	}
 	
@@ -46,11 +48,15 @@ public final class Regras {
 			throw new IllegalStateException("Lista de Areas vazia. Na classe " + classe.getName() + ".");
 	}
 	
-	public static void validarListaDeAreasComPonto(List<AreaPonto> lista, Class<?> classe){
+	public static void validarListaDeBlocosComPonto(List<BlocoComPonto> lista, Class<?> classe){
 		if(lista == null)
 			throw new IllegalStateException("Lista de Areas com Ponto nula. Na classe " + classe.getName() + ".");
 		if(lista.size() <= 0)
 			throw new IllegalStateException("Lista de Areas com Ponto vazia. Na classe " + classe.getName() + ".");
+	}
+	
+	public static void validarListaDeBlocosComPonto(AreasParaBlocos areas, Class<?> classe){
+		validarListaDeBlocosComPonto(areas, classe);
 	}
 	
 	public static void validarListaCoordenadas(List<Point> lista, Class<?> classe){

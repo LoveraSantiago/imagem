@@ -10,19 +10,21 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.CoordenadasArea;
 import lovera.img.contratos.CoordenadasPonto;
 import lovera.img.graos.AlturaSubset;
-import lovera.img.graos.AreaPonto;
+import lovera.img.graos.BlocoComPonto;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
 
 public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 	
-	private List<AreaPonto> listaAreas;
+	private List<BlocoComPonto> listaBlocosCPontos;
 	private List<Rectangle> listaTemp;
 	
 	private BinarizacaoImg binarizacao;
 	
 	public AreasParaBlocos(FloodFillCCs ffillCcs, BinarizacaoImg binarizacao) {
 		Regras.validarListaDeAreas(ffillCcs.getAreas(), ffillCcs.getClass());
+		Regras.validarBufferedImgCinza(binarizacao, this.getClass());
+		
 		this.listaTemp = ffillCcs.getAreas();
 		this.binarizacao = binarizacao;
 	}
@@ -32,8 +34,10 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 		List<AlturaSubset> altClassificadas = classificarAlturas(estats);
 		List<Rectangle> areas = filtrarAlturasClassificadas(altClassificadas);		
 						areas = gerarBlocos(areas, estats);		
-		this.listaAreas = localizarCentroDosBlocos(areas);
-		this.listaTemp = null;
+		this.listaBlocosCPontos = localizarCentroDosBlocos(areas);
+		
+		this.binarizacao = null;
+		this.listaTemp   = null;
 		return this;
 	}
 	
@@ -61,7 +65,7 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 		return gerador.getAreas();
 	}
 	
-	private List<AreaPonto> localizarCentroDosBlocos(List<Rectangle> listaAreas){
+	private List<BlocoComPonto> localizarCentroDosBlocos(List<Rectangle> listaAreas){
 		CentroDosBlocos centro = new CentroDosBlocos(binarizacao, listaAreas);
 		centro.localizarCentros();
 		return centro.getListaAreasComPonto();
@@ -69,23 +73,23 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 
 	@Override
 	public List<Rectangle> getAreas() {
-		Regras.validarListaDeAreasComPonto(this.listaAreas, this.getClass());
-		List<Rectangle> listaAreas = new ArrayList<>(this.listaAreas.size());
-		this.listaAreas.forEach((areaPonto) -> listaAreas.add(areaPonto.getArea()));
+		Regras.validarListaDeBlocosComPonto(this.listaBlocosCPontos, this.getClass());
+		List<Rectangle> listaAreas = new ArrayList<>(this.listaBlocosCPontos.size());
+		this.listaBlocosCPontos.forEach((areaPonto) -> listaAreas.add(areaPonto.getArea()));
 		return listaAreas;
 	}
 
 	@Override
 	public List<Point> getCoordenadas() {
-		Regras.validarListaDeAreasComPonto(this.listaAreas, this.getClass());
-		List<Point> listaPontos = new ArrayList<>(this.listaAreas.size());
-		this.listaAreas.forEach((areaPonto) -> listaPontos.add(areaPonto.getPonto()));
+		Regras.validarListaDeBlocosComPonto(this.listaBlocosCPontos, this.getClass());
+		List<Point> listaPontos = new ArrayList<>(this.listaBlocosCPontos.size());
+		this.listaBlocosCPontos.forEach((areaPonto) -> listaPontos.add(areaPonto.getPonto()));
 		return listaPontos;
 	}
 	
-	public List<AreaPonto> getAreasComPontos(){
-		Regras.validarListaDeAreasComPonto(this.listaAreas, this.getClass());
-		return this.listaAreas;		
+	public List<BlocoComPonto> getListaBlocosComPontos(){
+		Regras.validarListaDeBlocosComPonto(this.listaBlocosCPontos, this.getClass());
+		return this.listaBlocosCPontos;		
 	}
 	
 }

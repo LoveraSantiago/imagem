@@ -27,7 +27,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 	private List<Point> coordenadas;
 	
 	public ChuvaImg(BinarizacaoImg binarizacao) {
-		validarBufferedImgCinza(binarizacao);
+		validarBufferedImgCinza(binarizacao, this.getClass());
 		
 		this.imgTemp = binarizacao.getImgTransformada();
 	}
