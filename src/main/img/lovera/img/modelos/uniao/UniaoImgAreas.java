@@ -8,8 +8,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
+import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.CoordenadasArea;
-import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 import lovera.img.manipulacao.ManipulacaoImg;
 
@@ -29,14 +29,14 @@ public class UniaoImgAreas implements UnidorImagens{
 
 	private String endImgSalva;
 	
-	public UniaoImgAreas(String nomeArquivo, CoordenadasArea coordenadas, BufferedImage img) {
+	public UniaoImgAreas(String nomeArquivo, Coordenadas coordenadas, BufferedImage img) {
 		this.nomeArquivo = nomeArquivo;
-		this.areas = coordenadas.getAreas();
+		this.areas = ((CoordenadasArea) coordenadas).getAreas();
 		this.imgTemp = img;
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public UniaoImgAreas executarTransformacao() {
 		this.imgUniao = copiarImg();
 		
 		Graphics2D graphics = this.imgUniao.createGraphics();
@@ -67,7 +67,8 @@ public class UniaoImgAreas implements UnidorImagens{
 	}
 
 	@Override
-	public void gravar() {
-		this.endImgSalva = UnidorImagens.super.gravarImg(this.imgUniao, this.nomeArquivo, this); 
+	public UniaoImgAreas gravar() {
+		this.endImgSalva = UnidorImagens.super.gravarImg(this.imgUniao, this.nomeArquivo, this);
+		return this;
 	}
 }

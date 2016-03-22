@@ -21,7 +21,7 @@ public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public BinarizacaoImg executarTransformacao() {
 		
 		binarizarImg();		
 		this.limiar  = null;		
@@ -47,7 +47,8 @@ public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void gravar() {
+	public BinarizacaoImg gravar() {
 		ImgTransformavel.super.gravarImg(this.imgBinaria, "redacaoBinaria", this);
+		return this;
 	}
 }

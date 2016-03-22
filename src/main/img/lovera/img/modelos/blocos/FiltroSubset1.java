@@ -7,9 +7,10 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Subset;
 import lovera.img.contratos.CoordenadasArea;
+import lovera.img.contratos.Executor;
 import lovera.img.graos.AlturaSubset;
 
-class FiltroSubset1 implements CoordenadasArea{
+class FiltroSubset1 implements CoordenadasArea, Executor{
 	
 	List<AlturaSubset> listaFiltrada;
 	List<Rectangle> listaAreas;
@@ -18,7 +19,13 @@ class FiltroSubset1 implements CoordenadasArea{
 		this.listaFiltrada = listaParaClassificar;
 	}
 	
-	public FiltroSubset1 filtrarListaDeAreas(){
+	@Override
+	public FiltroSubset1 executar() {
+		filtrarListaDeAreas();
+		return this;
+	}
+
+	private FiltroSubset1 filtrarListaDeAreas(){
 		List<Rectangle> listaFiltrada = new ArrayList<>();
 		
 		this.listaFiltrada.forEach((classif) -> {

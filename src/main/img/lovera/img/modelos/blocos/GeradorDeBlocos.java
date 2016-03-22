@@ -7,8 +7,9 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.CoordenadasArea;
+import lovera.img.contratos.Executor;
 
-class GeradorDeBlocos implements CoordenadasArea{
+class GeradorDeBlocos implements CoordenadasArea, Executor{
 	
 	private final int altMedia;
 	
@@ -21,7 +22,13 @@ class GeradorDeBlocos implements CoordenadasArea{
 		this.listaTemp = listaAreas;
 	}
 	
-	public GeradorDeBlocos gerarBlocos(){
+	@Override
+	public GeradorDeBlocos executar() {
+		gerarBlocos();
+		return this;
+	}
+
+	private GeradorDeBlocos gerarBlocos(){
 		this.listaTemp.forEach((area) -> {
 			
 			int xI = area.x;

@@ -21,7 +21,7 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public GaussImg executarTransformacao() {
 		this.imgGauss = gauss(this.imgTemp);
 		this.imgTemp = null;
 		return this;
@@ -34,8 +34,9 @@ public final class GaussImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void gravar() {
+	public GaussImg gravar() {
 		ImgTransformavel.super.gravarImg(this.imgGauss, "redacaoGauss", this);
+		return this;
 	}
 
 }

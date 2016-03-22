@@ -7,10 +7,12 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.comum.Subset;
+import lovera.img.contratos.CoordAClassificadas;
 import lovera.img.contratos.CoordenadasArea;
+import lovera.img.contratos.Executor;
 import lovera.img.graos.AlturaSubset;
 
-public class ClassifAltura implements CoordenadasArea{
+class ClassifAltura implements CoordenadasArea, CoordAClassificadas, Executor{
 	
 	private final double altMedia;
 	
@@ -23,7 +25,13 @@ public class ClassifAltura implements CoordenadasArea{
 		this.lClassificada = new ArrayList<>(this.listaAreas.size());
 	}
 	
-	public ClassifAltura classificarAreas(){
+	@Override
+	public ClassifAltura executar() {
+		classificarAreas();
+		return this;
+	}
+
+	private ClassifAltura classificarAreas(){
 
 		this.listaAreas.forEach((area) -> 
 			this.lClassificada.add(new AlturaSubset(classificarSubset(area), area)));
@@ -66,7 +74,8 @@ public class ClassifAltura implements CoordenadasArea{
 		return listaAreas;
 	}
 	
-	public List<AlturaSubset> getAlturasClassificadas(){
+	@Override
+	public List<AlturaSubset> getListaAreaClassificadas() {
 		Regras.validarClassificacaoAlturas(this.lClassificada, this);
 		return this.lClassificada;
 	}

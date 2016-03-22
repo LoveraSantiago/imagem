@@ -6,9 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import lovera.comuns.recursos.Regras;
+import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.grao.Estatistica;
+import lovera.img.contratos.CoordAClassificadas;
 import lovera.img.contratos.CoordenadasArea;
 import lovera.img.contratos.CoordenadasPonto;
+import lovera.img.contratos.Executor;
 import lovera.img.graos.AlturaSubset;
 import lovera.img.graos.BlocoComPonto;
 import lovera.img.modelos.floodfill.FloodFillCCs;
@@ -42,27 +45,27 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 	}
 	
 	private Estatistica getEstatisticaDaAltura(){
-		EstatisticaAltura estatsAltura = new EstatisticaAltura(this.listaTemp);
+		EstatsDesc estatsAltura = new EstatisticaAltura(this.listaTemp);
 		return estatsAltura.gerarEstatistica()
 						   .getEstatistica();
 	}
 	
 	private List<AlturaSubset> classificarAlturas(Estatistica estats){
-		ClassifAltura classificador = new ClassifAltura(this.listaTemp, estats);
-		return classificador.classificarAreas()
-							.getAlturasClassificadas();
+		Executor classificador = new ClassifAltura(this.listaTemp, estats);
+		classificador.executar();
+		return ((CoordAClassificadas) classificador).getListaAreaClassificadas();
 	}
 	
 	private List<Rectangle> filtrarAlturasClassificadas(List<AlturaSubset> altClassificadas){
-		FiltroSubset1 filtro = new FiltroSubset1(altClassificadas);
-		return filtro.filtrarListaDeAreas()
-					 .getAreas();
+		Executor filtro = new FiltroSubset1(altClassificadas);
+		filtro.executar();
+		return ((CoordenadasArea) filtro).getAreas();
 	}
 	
 	private List<Rectangle> gerarBlocos(List<Rectangle> listaAreas, Estatistica estats){
-		GeradorDeBlocos gerador = new GeradorDeBlocos(listaAreas, estats);
-		gerador.gerarBlocos();
-		return gerador.getAreas();
+		Executor gerador = new GeradorDeBlocos(listaAreas, estats);
+		gerador.executar();
+		return ((CoordenadasArea) gerador).getAreas();
 	}
 	
 	private List<BlocoComPonto> localizarCentroDosBlocos(List<Rectangle> listaAreas){
@@ -91,5 +94,4 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 		Regras.validarListaDeBlocosComPonto(this.listaBlocosCPontos, this.getClass());
 		return this.listaBlocosCPontos;		
 	}
-	
 }

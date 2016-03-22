@@ -21,6 +21,8 @@ class CentroDosBlocos {
 	private List<Rectangle> listaAreas;
 	
 	public CentroDosBlocos(BinarizacaoImg binarizacao, List<Rectangle> listaAreas) {
+		Regras.validarBufferedImgCinza(binarizacao, this.getClass());
+		
 		this.img = binarizacao.getImgTransformada();
 		this.listaAreas = listaAreas;
 		this.listaAreaPontos = new ArrayList<>(listaAreas.size());
@@ -34,6 +36,7 @@ class CentroDosBlocos {
 			this.listaAreaPontos.add(new BlocoComPonto(area, ponto));
 		});
 		
+		this.img = null;
 		this.listaAreas = null;
 		return this;
 	}

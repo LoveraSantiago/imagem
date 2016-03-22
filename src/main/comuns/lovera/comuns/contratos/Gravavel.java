@@ -14,7 +14,7 @@ import lovera.img.manipulacao.ImgIO;
  */
 public interface Gravavel {
 	
-	void gravar();
+	Gravavel gravar();
 	
 	/**
 	 * Metodo pai para gravar imagens. Usado como herança.

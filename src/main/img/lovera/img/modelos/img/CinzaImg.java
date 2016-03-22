@@ -17,7 +17,7 @@ public final class CinzaImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public CinzaImg executarTransformacao() {
 		this.imgCinza = ManipulacaoImg.converterToCinzaRGB(this.imgTemp);
 		
 		return this;
@@ -30,7 +30,8 @@ public final class CinzaImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void gravar() {
+	public CinzaImg gravar() {
 		ImgTransformavel.super.gravarImg(this.imgCinza, "redacaoCinza", this);
+		return this;
 	}
 }

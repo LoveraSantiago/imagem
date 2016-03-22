@@ -21,7 +21,7 @@ public final class LaplaceImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public LaplaceImg executarTransformacao() {
 		this.imgLaplace = laplace(imgTemp);
 		this.imgTemp = null;
 		return this;
@@ -34,8 +34,9 @@ public final class LaplaceImg implements ImgTransformavel, Gravavel{
 	}
 
 	@Override
-	public void gravar() {
+	public LaplaceImg gravar() {
 		ImgTransformavel.super.gravarImg(this.imgLaplace, "redacaoLaplace", this);
+		return this;
 	}
 
 }

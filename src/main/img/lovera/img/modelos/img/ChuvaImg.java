@@ -33,7 +33,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public ChuvaImg executarTransformacao() {
 		carregarCoordenadas();
 		desenharImg();
 		
@@ -75,7 +75,8 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 	}
 
 	@Override
-	public void gravar() {
+	public ChuvaImg gravar() {
 		ImgTransformavel.super.gravarImg(this.imgChuva, "redacaoChuva", this);
+		return this;
 	}
 }

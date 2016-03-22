@@ -10,7 +10,6 @@ import java.util.List;
 
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.CoordenadasPonto;
-import lovera.img.contratos.ImgTransformavel;
 import lovera.img.contratos.UnidorImagens;
 
 /**
@@ -45,7 +44,7 @@ public final class UniaoImgPontos implements UnidorImagens{
 	}
 
 	@Override
-	public ImgTransformavel executarTransformacao() {
+	public UniaoImgPontos executarTransformacao() {
 		this.imgUniao = copiarImg(imgTemp, BufferedImage.TYPE_INT_RGB);
 		
 		WritableRaster wRaster = this.imgUniao.getRaster(); 
@@ -69,7 +68,8 @@ public final class UniaoImgPontos implements UnidorImagens{
 	}
 
 	@Override
-	public void gravar() {
-		this.endImgSalva = UnidorImagens.super.gravarImg(this.imgUniao, this.nomeArquivo, this);  
+	public UniaoImgPontos gravar() {
+		this.endImgSalva = UnidorImagens.super.gravarImg(this.imgUniao, this.nomeArquivo, this);
+		return this;  
 	}
 }
