@@ -1,7 +1,5 @@
 package lovera.img.manipulacao;
 
-import static lovera.comuns.recursos.Regras.validarNivelCinza;
-
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
