@@ -2,6 +2,7 @@ package lovera.img.hough;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ class TransformadaDeHough implements Executor{
 	private Rectangle area;
 	private Point ponto;
 	
-	private List<double[]> listaPolarDosPontos;	
+	private int[][] matrizVotos;
 	
 	static{
 		arraySen = new double[GRAUS];
@@ -42,8 +43,7 @@ class TransformadaDeHough implements Executor{
 		this.img = imgRecortada;
 		this.area = blocoComPonto.getArea();
 		this.ponto = blocoComPonto.getPonto();
-		
-		this.listaPolarDosPontos = new ArrayList<>();
+		this.matrizVotos = new int[GRAUS][Math.max(this.img.getWidth(), this.img.getHeight())];
 	}
 
 	@Override
@@ -68,47 +68,64 @@ class TransformadaDeHough implements Executor{
 				int sample = raster.getSample(j, i, 0);
 				if(sample == Pixel.PREENCHIDO.getValor()){
 					
-					Point ponto = recalcularPonto(j, i);
-					double[] polarDoPonto = calcularPolarDoPonto(ponto);
-					this.listaPolarDosPontos.add(polarDoPonto);
+					Point ponto = recalcularPontoParaOrigem(j, i);
+					int[] polaresDoPonto = calcularPolarDoPonto(ponto);
+					inputarVotos(polaresDoPonto);
 				}
 			}
+		
+		Point polar = coordenadaPolarMaisVotada();
 	}
 	
-	private Point recalcularPonto(int x, int y){
+	private Point recalcularPontoParaOrigem(int x, int y){
 		int novoX = this.ponto.x - x;
 		int novoY = this.ponto.y - y;
 		
 		return new Point(novoX, novoY);
 	}
 	
-	private double[] calcularPolarDoPonto(Point ponto){
-		double[] polar = new double[GRAUS];
+	private int[] calcularPolarDoPonto(Point ponto){
+		int[] polar = new int[GRAUS];
 		
 		for(int i = 1; i <= GRAUS; i++)
-			polar[i] = (ponto.x * arrayCos[i]) + (ponto.y * arraySen[i]);
+			polar[i] =(int)(Math.round((ponto.x * arrayCos[i]) + (ponto.y * arraySen[i])));
 		
 		return polar;
 	}
 	
-	private void realizarVotacao(){
-		int[][] matrizVotos = new int[GRAUS][Math.max(this.img.getWidth(), this.img.getHeight())];
-		this.listaPolarDosPontos.forEach((array) -> {
-			
+	private void inputarVotos(int[] polaresDoPonto){
+		
 			for(int i = 1; i <= GRAUS; i++){
-				matrizVotos[i][(int) Math.round(array[i])]++;
-			}
-		});
+				this.matrizVotos[i][(polaresDoPonto[i])]++;
+			}		
 	}
 	
-	private int[][] inputarVotos(){
-		int[][] matrizVotos = new int[GRAUS][Math.max(this.img.getWidth(), this.img.getHeight())];
-		this.listaPolarDosPontos.forEach((array) -> {
-			
-			for(int i = 1; i <= GRAUS; i++){
-				matrizVotos[i][(int) Math.round(array[i])]++;
+	private Point coordenadaPolarMaisVotada(){
+		int vetorMVot = 0;
+		int anguloMVot = 0;
+		
+		int maisVotos = Integer.MIN_VALUE;
+		
+		for(int i = 1; i <= GRAUS; i++)
+			for(int j = i; j <= this.matrizVotos[i].length; j++){
+				
+				int voto = this.matrizVotos[i][j];
+				if(voto > maisVotos){
+					maisVotos = voto;
+					anguloMVot = i; 
+					vetorMVot = j;
+				}
 			}
-		});
-		return matrizVotos;
+		
+		return new Point(vetorMVot, anguloMVot);
+	}
+	
+	private Line2D polarParaLinha(Point ponto){
+		double pt1X = ponto.x * arraySen[ponto.y];
+		double pt1Y = ponto.x * arrayCos[ponto.y];
+		
+		double pt2x = Math.round(ponto.x / arrayCos[ponto.y]);
+		double pt2Y = 0;
+		
 	}
 }
