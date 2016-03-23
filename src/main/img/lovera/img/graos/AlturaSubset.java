@@ -4,27 +4,22 @@ import java.awt.Rectangle;
 
 import lovera.img.comum.Subset;
 
-public class AlturaSubset {
+public class AlturaSubset extends Area{
 	
 	private final Subset subset;
-	private final Rectangle area;
 	
 	public AlturaSubset(Subset subset, Rectangle area) {
+		super(area);
 		this.subset = subset;
-		this.area = area;
 	}
 
 	public Subset getSubset() {
 		return subset;
 	}
-
-	public Rectangle getArea() {
-		return area;
-	}
 	
 	@Override
 	public String toString() {		
-		return "Retang ( " + this.area.x + ", " + this.area.y + ", " + 
-				this.area.width + ", " + this.area.height + ") - Subset : " + this.subset.getSet();
+		return "Retang ( " + super.area.x + ", " + super.area.y + ", " + 
+				super.area.width + ", " + super.area.height + ") - Subset : " + this.subset.getSet();
 	}
 }
