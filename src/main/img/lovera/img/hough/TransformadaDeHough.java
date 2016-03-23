@@ -5,8 +5,6 @@ import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
-import java.util.ArrayList;
-import java.util.List;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
@@ -26,6 +24,8 @@ class TransformadaDeHough implements Executor{
 	private Point ponto;
 	
 	private int[][] matrizVotos;
+	
+	private Line2D linhaHough;
 	
 	static{
 		arraySen = new double[GRAUS];
@@ -48,8 +48,12 @@ class TransformadaDeHough implements Executor{
 
 	@Override
 	public TransformadaDeHough executar() {
-		recalcularCentro();
 		transformada();
+		
+		this.img         = null;
+		this.area        = null;
+		this.ponto       = null;
+		this.matrizVotos = null;
 		return this;
 	}
 	
@@ -59,7 +63,9 @@ class TransformadaDeHough implements Executor{
 		this.ponto = new Point(origemX, origemY);
 	}
 
-	private void transformada(){		
+	private void transformada(){
+		recalcularCentro();
+		
 		Raster raster = this.img.getRaster();
 		
 		for(int i = 0; i < this.img.getHeight(); i++)
@@ -75,6 +81,9 @@ class TransformadaDeHough implements Executor{
 			}
 		
 		Point polar = coordenadaPolarMaisVotada();
+		Line2D linha = polarParaLinha(polar);
+		linha = recalcularLinha(linha);
+		setLinhaHough(linha);
 	}
 	
 	private Point recalcularPontoParaOrigem(int x, int y){
@@ -124,8 +133,40 @@ class TransformadaDeHough implements Executor{
 		double pt1X = ponto.x * arraySen[ponto.y];
 		double pt1Y = ponto.x * arrayCos[ponto.y];
 		
-		double pt2x = Math.round(ponto.x / arrayCos[ponto.y]);
+		double pt2x = ponto.x / arrayCos[ponto.y];
 		double pt2Y = 0;
 		
+		double coefAngular = (pt2Y - pt1X) / (pt1Y - pt1X);
+		double b = -(coefAngular * pt2x);
+		
+		int x1 = 0;
+		int y1 = (int) (Math.round(b));
+		int x2 = (int) (Math.round(pt2x));
+		int y2 = (int) (Math.round(pt2Y));
+		
+		return new Line2D.Double(x1, y1, x2, y2);
+	}
+	
+	private Line2D recalcularLinha(Line2D linha){
+		int x1 = (int)(linha.getX1() + area.x);
+		int y1 = (int)(linha.getY1() + area.y);
+		int x2 = (int)(linha.getX2() + area.x);
+		int y2 = (int)(linha.getY2() + area.y);
+		
+		x1 = x1 < area.x ? area.x : x1;
+		y1 = y1 < area.y ? area.y : y1;
+		x2 = x2 > (area.x + area.width ) ? area.x + area.width : x2;
+		y2 = y2 > (area.y + area.height) ? area.x + area.width : y2;
+		
+		return new Line2D.Double(x1, y1, x2, y2);
+	}
+
+	public Line2D getLinhaHough() {
+		Regras.validarLinha(this.linhaHough, this.getClass());
+		return linhaHough;
+	}
+
+	private void setLinhaHough(Line2D linhaHough) {
+		this.linhaHough = linhaHough;
 	}
 }

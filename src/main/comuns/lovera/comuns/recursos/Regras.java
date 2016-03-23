@@ -2,6 +2,7 @@ package lovera.comuns.recursos;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -39,6 +40,11 @@ public final class Regras {
 	public static void validarEstatistica(Estatistica estats, EstatsDesc classe){
 		if(estats == null)
 			throw new IllegalStateException("Metodo gerarEstatistica não foi chamado na classe " + classe.getClass().getName() + ".");
+	}
+	
+	public static void validarLinha(Line2D linha, Class<?> classe){
+		if(linha == null)
+			throw new IllegalStateException("Objeto linha nulo. Na classe " + classe.getName());
 	}
 	
 	public static void validarListaDeAreas(List<Rectangle> lista, Class<?> classe){
