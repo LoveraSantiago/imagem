@@ -17,7 +17,7 @@ public class Testes {
 	public static void main(String[] args) {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);		
-		FloodFillCCs flood = new FloodFillCCs(binarizacao);
+		FloodFillCCs flood = new FloodFillCCs(binarizacao);		
 		AreasParaBlocos blocos = new AreasParaBlocos(flood, binarizacao);
 		blocos.gerarBlocos();
 

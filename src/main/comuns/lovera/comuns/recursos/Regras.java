@@ -34,7 +34,7 @@ public final class Regras {
 	
 	public static void validarClassificacaoAlturas(List<AlturaSubset> lista, Coordenadas coordenadas){
 		if(lista == null)
-			throw new IllegalStateException("Metodo classificarAreas não foi chamada na classe " + coordenadas.getClass().getName() + ".");
+			throw new IllegalStateException("Metodo classificarAreas não foi chamado na classe " + coordenadas.getClass().getName() + ".");
 	}
 
 	public static void validarEstatistica(Estatistica estats, EstatsDesc classe){
@@ -56,7 +56,7 @@ public final class Regras {
 	
 	public static void validarListaDeBlocosComPonto(List<BlocoComPonto> lista, Class<?> classe){
 		if(lista == null)
-			throw new IllegalStateException("Lista de Areas com Ponto nula. Na classe " + classe.getName() + ".");
+			throw new IllegalStateException("Lista de Areas com Ponto nulo. Na classe " + classe.getName() + ".");
 		if(lista.size() <= 0)
 			throw new IllegalStateException("Lista de Areas com Ponto vazia. Na classe " + classe.getName() + ".");
 	}
@@ -67,7 +67,14 @@ public final class Regras {
 	
 	public static void validarListaCoordenadas(List<Point> lista, Class<?> classe){
 		if(lista == null)
-			throw new IllegalStateException("Lista de coordenadas. Na classe " + classe.getName() + ".");
+			throw new IllegalStateException("Lista de coordenadas nula. Na classe " + classe.getName() + ".");
+		if(lista.size() <= 0)
+			throw new IllegalArgumentException("Lista de coordenadas vazia. Na classe " + classe.getName() + ".");
+	}
+	
+	public static void validarListaDeLinhas(List<Line2D> lista, Class<?> classe){
+		if(lista == null)
+			throw new IllegalStateException("Lista de linhas nula. Na classe " + classe.getName() + ".");
 		if(lista.size() <= 0)
 			throw new IllegalArgumentException("Lista de coordenadas vazia. Na classe " + classe.getName() + ".");
 	}

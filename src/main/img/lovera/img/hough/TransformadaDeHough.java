@@ -13,7 +13,7 @@ import lovera.img.graos.BlocoComPonto;
 
 class TransformadaDeHough implements Executor{
 	
-	private static final int GRAUS = 360;
+	private static final int GRAUS;;
 	
 	private static double[] arraySen;
 	private static double[] arrayCos;
@@ -28,6 +28,8 @@ class TransformadaDeHough implements Executor{
 	private Line2D linhaHough;
 	
 	static{
+		GRAUS = 360;
+		
 		arraySen = new double[GRAUS];
 		arrayCos = new double[GRAUS];
 		
@@ -35,6 +37,9 @@ class TransformadaDeHough implements Executor{
 			arraySen[i] = Math.sin(i);
 			arrayCos[i] = Math.cos(i);					
 		}
+	}
+	
+	public TransformadaDeHough() {		
 	}
 	
 	public TransformadaDeHough(BufferedImage imgRecortada, BlocoComPonto blocoComPonto) {

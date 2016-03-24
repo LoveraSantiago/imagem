@@ -8,6 +8,7 @@ import lovera.comuns.recursos.Regras;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.modelos.Limiar;
 
+//GERAR CONSTRUTOR SOBRECARREGADO QUE ACEITA IMGTRANFORMAVEL
 public final class BinarizacaoImg implements ImgTransformavel, Gravavel{
 	
 	private Limiar limiar;
