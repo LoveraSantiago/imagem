@@ -14,7 +14,7 @@ import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.blocos.AreasParaBlocos;
 import lovera.img.modelos.img.BinarizacaoImg;
 
-public class HoughDosBlocos implements CoordenadasLinhas{
+public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 	
 	private List<BlocoComPonto> blocos;
 	private BufferedImage img;
@@ -29,7 +29,13 @@ public class HoughDosBlocos implements CoordenadasLinhas{
 		this.listaLinhas = new ArrayList<>(this.blocos.size());
 	}
 	
-	public HoughDosBlocos gerarHoughNosBlocos(){
+	@Override
+	public HoughDosBlocos executar() {
+		gerarHoughNosBlocos();
+		return this;
+	}
+	
+	private HoughDosBlocos gerarHoughNosBlocos(){
 		
 		Executor transformadaH = new TransformadaDeHough();//Para carregar blocos estaticos
 		

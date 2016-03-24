@@ -5,25 +5,33 @@ import java.awt.image.BufferedImage;
 import lovera.comuns.recursos.Imagens;
 import lovera.img.contratos.UnidorImagens;
 import lovera.img.factory.FactoryModelo;
+import lovera.img.hough.HoughDosBlocos;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.blocos.AreasParaBlocos;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
 import lovera.img.modelos.uniao.UniaoImgAreas;
+import lovera.img.modelos.uniao.UniaoImgLinhas;
 import lovera.img.modelos.uniao.UniaoImgPontos;
 
 public class Testes {
 	
 	public static void main(String[] args) {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
-		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);		
-		FloodFillCCs flood = new FloodFillCCs(binarizacao);		
+		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
+		
+		FloodFillCCs flood = new FloodFillCCs(binarizacao);	
+		flood.executar();
+		
 		AreasParaBlocos blocos = new AreasParaBlocos(flood, binarizacao);
-		blocos.gerarBlocos();
-
+		blocos.executar();
+		
+		HoughDosBlocos hough = new HoughDosBlocos(blocos, binarizacao);
+		hough.executar();
+		
 		UnidorImagens uniao = new UniaoImgAreas("redacaoBloco", blocos, img);
 		uniao.executarTransformacao();
-		uniao = new UniaoImgPontos("redacaoCentroGravidade", blocos, uniao.getImgTransformada());
+		uniao = new UniaoImgLinhas("redacaoBlocoGauss", hough, img);		
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

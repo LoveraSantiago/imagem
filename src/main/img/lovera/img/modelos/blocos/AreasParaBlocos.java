@@ -17,7 +17,7 @@ import lovera.img.graos.BlocoComPonto;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
 
-public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
+public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Executor{
 	
 	private List<BlocoComPonto> listaBlocosCPontos;
 	private List<Rectangle> listaTemp;
@@ -31,8 +31,14 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto{
 		this.listaTemp = ffillCcs.getAreas();
 		this.binarizacao = binarizacao;
 	}
+	
+	@Override
+	public AreasParaBlocos executar() {
+		gerarBlocos();
+		return this;
+	}
 
-	public AreasParaBlocos gerarBlocos(){
+	private AreasParaBlocos gerarBlocos(){
 		Estatistica estats = getEstatisticaDaAltura();
 		List<AlturaSubset> altClassificadas = classificarAlturas(estats);
 		List<Rectangle> areas = filtrarAlturasClassificadas(altClassificadas);		

@@ -10,11 +10,12 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.CoordenadasArea;
+import lovera.img.contratos.Executor;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.img.BinarizacaoImg;
 
 //CCs Componentes Conectados
-public final class FloodFillCCs implements CoordenadasArea{
+public final class FloodFillCCs implements Executor, CoordenadasArea{
 
 	private List<RetanguloInfo> listaRI;
 
@@ -24,11 +25,15 @@ public final class FloodFillCCs implements CoordenadasArea{
 		Regras.validarBufferedImgCinza(binarizacao, this.getClass());		
 		this.img = ManipulacaoImg.copiarImg(binarizacao.getImgTransformada());	
 		this.listaRI = new ArrayList<>(); 
-		
-		floodfill();
-		filtragemListaCoordenadas();
 	}
 	
+	@Override
+	public FloodFillCCs executar() {
+		floodfill();
+		filtragemListaCoordenadas();
+		return this;
+	}
+
 	private void floodfill(){
 		PontosCardeais pCardeais = new PontosCardeais();		
 		WritableRaster wRaster = this.img.getRaster();
