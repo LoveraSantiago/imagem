@@ -16,6 +16,7 @@ import lovera.img.modelos.uniao.UniaoImgPontos;
 
 public class Testes {
 	
+	//TESTANDO A TRANSFORMADA NO GERAL
 	public static void main(String[] args) {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		BinarizacaoImg binarizacao = FactoryModelo.factoryBinarizacao(img);
@@ -31,7 +32,7 @@ public class Testes {
 		
 		UnidorImagens uniao = new UniaoImgAreas("redacaoBloco", blocos, img);
 		uniao.executarTransformacao();
-		uniao = new UniaoImgLinhas("redacaoBlocoGauss", hough, img);		
+		uniao = new UniaoImgLinhas("redacaoBlocoGauss", hough, uniao.getImgTransformada());		
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

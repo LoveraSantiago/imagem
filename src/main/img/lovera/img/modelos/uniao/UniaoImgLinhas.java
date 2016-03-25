@@ -22,6 +22,13 @@ public final class UniaoImgLinhas extends UniaoImg{
 		this.linhas = coordenadas.getLinhas();
 		this.imgTemp = img;
 	}
+	
+	//Para fins de debugagem
+	public UniaoImgLinhas(String nomeArquivo, List<Line2D> linhas, BufferedImage img) {
+		super(nomeArquivo);
+		this.linhas = linhas;
+		this.imgTemp = img;
+	}
 
 	@Override
 	public UniaoImgLinhas executarTransformacao() {

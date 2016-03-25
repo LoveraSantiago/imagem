@@ -9,22 +9,22 @@ import java.awt.image.Raster;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Executor;
-import lovera.img.debug.DebugImgModelo;
 import lovera.img.graos.BlocoComPonto;
 
 class TransformadaDeHough implements Executor{
 	
 	private static final int GRAUS;;
-	
+		
 	private static double[] arraySen;
 	private static double[] arrayCos;
+	
+	private int[][] matrizVotos;
+	private int eixoX;
 	
 	private BufferedImage img;
 	
 	private Rectangle area;
-	private Point ponto;
-	
-	private int[][] matrizVotos;
+	private Point ponto;	
 	
 	private Line2D linhaHough;
 	
@@ -49,7 +49,10 @@ class TransformadaDeHough implements Executor{
 		this.img = imgRecortada;
 		this.area = blocoComPonto.getArea();
 		this.ponto = blocoComPonto.getPonto();
-		this.matrizVotos = new int[GRAUS][Math.max(this.img.getWidth(), this.img.getHeight())];
+		
+		this.eixoX = Math.max(this.img.getWidth(), this.img.getHeight());
+		int alturaMatriz = 2 * eixoX;
+		this.matrizVotos = new int[GRAUS + 1][alturaMatriz];
 	}
 
 	@Override
@@ -81,8 +84,8 @@ class TransformadaDeHough implements Executor{
 				int sample = raster.getSample(j, i, 0);
 				if(sample == Pixel.PREENCHIDO.getValor()){
 					
-					DebugImgModelo.debugarImg(img, "debug", true);
-					System.out.println("Chamado dentro do if " + contadorA++ + " vezes.");
+//					DebugImgModelo.debugarImg(img, "debug", true);
+//					System.out.println("Chamado dentro do if " + contadorA++ + " vezes.");
 					
 					Point ponto = recalcularPontoParaOrigem(j, i);
 					int[] polaresDoPonto = calcularPolarDoPonto(ponto);
@@ -113,21 +116,31 @@ class TransformadaDeHough implements Executor{
 	}
 	int contador = 0;
 	private void inputarVotos(int[] polaresDoPonto){
-			System.out.println("Chamado inputar votos " + contador++ + " vezes.");
+//			System.out.println("Chamado inputar votos " + contador++ + " vezes.");
 			for(int i = 1; i <= GRAUS; i++){
-				this.matrizVotos[i][(polaresDoPonto[i])]++;
+				int ajustadoPEixoX = ajustarParaEixoX(polaresDoPonto[i]);
+				this.matrizVotos[i][ajustadoPEixoX]++;
 			}		
 	}
 	
+	private int ajustarParaEixoX(int valorY){
+		return valorY + this.eixoX;
+	}
+	
+	int contadorB = 0;
+	int contadorC = 0;
 	private Point coordenadaPolarMaisVotada(){
 		int vetorMVot = 0;
 		int anguloMVot = 0;
 		
 		int maisVotos = Integer.MIN_VALUE;
 		
-		for(int i = 1; i <= GRAUS; i++)
-			for(int j = i; j <= this.matrizVotos[i].length; j++){
+		for(int i = 1; i <= GRAUS; i++){
+//			System.err.println("matrizVotos graus " + contadorB++);
+			contadorC = 0;
+			for(int j = i; j < this.matrizVotos[i].length; j++){
 				
+//				System.out.println("matrizVotos vetores " + contadorC++);
 				int voto = this.matrizVotos[i][j];
 				if(voto > maisVotos){
 					maisVotos = voto;
@@ -135,8 +148,13 @@ class TransformadaDeHough implements Executor{
 					vetorMVot = j;
 				}
 			}
-		
+		}
+		vetorMVot = ajustarParaEixoOriginal(vetorMVot);
 		return new Point(vetorMVot, anguloMVot);
+	}
+	
+	private int ajustarParaEixoOriginal(int valorY){
+		return valorY - this.eixoX;
 	}
 	
 	private Line2D polarParaLinha(Point ponto){
