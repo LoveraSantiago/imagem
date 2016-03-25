@@ -1,5 +1,6 @@
 package lovera.img.hough;
 
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
@@ -38,10 +39,13 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 	private HoughDosBlocos gerarHoughNosBlocos(){
 		
 		Executor transformadaH = new TransformadaDeHough();//Para carregar blocos estaticos
+		PreProcessamento pre = new PreProcessamento();		
 		
 		for(BlocoComPonto blocoPt : this.blocos){
 			
-			BufferedImage imgRecortada = recortarImgParaArea(blocoPt.getArea());
+			BufferedImage imgRecortada = recortarImgParaArea(blocoPt.getArea());			
+			Point pROrigem = pre.moverPontoEmRelacaoOrigem(blocoPt.getArea(), blocoPt.getPonto());
+			
 			transformadaH = new TransformadaDeHough(imgRecortada, blocoPt);
 			transformadaH.executar();
 			Line2D linha = ((TransformadaDeHough) transformadaH).getLinhaHough();

@@ -23,9 +23,7 @@ class TransformadaDeHough implements Executor{
 	
 	private BufferedImage img;
 	
-	private Rectangle area;
-	private Point pcOriginal;//ponto central original
-	private Point pcRelativo;//ponto central relativo do bloco
+	private Point pontoCentral;
 	
 	private Line2D linhaHough;
 	
@@ -49,7 +47,7 @@ class TransformadaDeHough implements Executor{
 		
 		this.img = imgRecortada;
 		this.area = blocoComPonto.getArea();
-		this.pcOriginal = blocoComPonto.getPonto();
+		this.pontoCentral = blocoComPonto.getPonto();
 		
 		this.eixoX = Math.max(this.img.getWidth(), this.img.getHeight());
 		int alturaMatriz = 2 * eixoX;
@@ -62,7 +60,7 @@ class TransformadaDeHough implements Executor{
 		
 		this.img         = null;
 		this.area        = null;
-		this.pcOriginal  = null;
+		this.pontoCentral  = null;
 		this.pcRelativo  = null;
 		this.matrizVotos = null;
 		return this;
@@ -70,7 +68,6 @@ class TransformadaDeHough implements Executor{
 	
 	int contadorA = 0;
 	private void transformada(){
-		calcularPontoCentralRelativoAoBloco();
 		
 		Raster raster = this.img.getRaster();
 		
@@ -95,11 +92,6 @@ class TransformadaDeHough implements Executor{
 		setLinhaHough(linha);
 	}
 	
-	private void calcularPontoCentralRelativoAoBloco(){
-		int origemX = this.pcOriginal.x - this.area.x;
-		int origemY = this.pcOriginal.y - this.area.y;
-		this.pcRelativo = new Point(origemX, origemY);
-	}
 
 	private Point calcularPontoParaOrigem(int x, int y){
 		int novoX = x - this.pcRelativo.x;
@@ -178,10 +170,10 @@ class TransformadaDeHough implements Executor{
 	}
 	
 	private Line2D recalcularLinha(Line2D linha){
-		int x1 = (int)(linha.getX1() + pcOriginal.x);
-		int y1 = (int)(linha.getY1() + pcOriginal.y);
-		int x2 = (int)(linha.getX2() + pcOriginal.x);
-		int y2 = (int)(linha.getY2() + pcOriginal.y);
+		int x1 = (int)(linha.getX1() + pontoCentral.x);
+		int y1 = (int)(linha.getY1() + pontoCentral.y);
+		int x2 = (int)(linha.getX2() + pontoCentral.x);
+		int y2 = (int)(linha.getY2() + pontoCentral.y);
 		
 		return new Line2D.Double(x1, y1, x2, y2);
 	}
