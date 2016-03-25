@@ -25,7 +25,7 @@ public final class Regras {
 	
 	public static void validarBufferedImgCinza(BufferedImage img, Class<?> classe){
 		if(img.getType() != BufferedImage.TYPE_BYTE_GRAY)
-			throw new IllegalArgumentException("BufferedImage deve ser do tipo cinza. Na classe " + classe.getName());
+			throw new IllegalArgumentException("BufferedImage deve ser do tipo cinza. Na classe " + classe.getName() + ".");
 	}
 	
 	public static void validarBufferedImgCinza(ImgTransformavel imgTranformavel, Class<?> classe){
@@ -44,7 +44,7 @@ public final class Regras {
 	
 	public static void validarLinha(Line2D linha, Class<?> classe){
 		if(linha == null)
-			throw new IllegalStateException("Objeto linha nulo. Na classe " + classe.getName());
+			throw new IllegalStateException("Objeto linha nulo. Na classe " + classe.getName() + ".");
 	}
 	
 	public static void validarListaDeAreas(List<Rectangle> lista, Class<?> classe){
@@ -81,13 +81,24 @@ public final class Regras {
 
 	public static void validarNivelCinza(int nivelCinza, Class<?> classe){
 		if(nivelCinza < 0)   
-			throw new IllegalArgumentException("O pixel passado não pode ser menor do que 0. Na classe " + classe.getName());
+			throw new IllegalArgumentException("O pixel passado não pode ser menor do que 0. Na classe " + classe.getName() + ".");
 		if(nivelCinza > 255) 
-			throw new IllegalArgumentException("O pixel passado não pode ser maior do que 255. Na classe " + classe.getName());
+			throw new IllegalArgumentException("O pixel passado não pode ser maior do que 255. Na classe " + classe.getName() + ".");
 	}
 	
 	public static void validarOperacaoExecutada(BufferedImage img, Class<?> classe){
 		if(img == null)
-			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getName());
+			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getName() + ".");
+	}
+	
+	public static void validarPontoDentroDaImg(BufferedImage img, Point ponto, Class<?> classe){
+		if(ponto.x < 0) 
+			throw new IllegalArgumentException("Coordenada do x menor do que 0. Na classe " + classe.getName() + ".");
+		if(ponto.x > img.getWidth())
+			throw new IllegalArgumentException("Coordenada do x maior do que a largura da imagem. Na classe " + classe.getName() + ".");
+		if(ponto.y < 0)
+			throw new IllegalArgumentException("Coordenada do y menor do que 0. Na classe " + classe.getName() + ".");
+		if(ponto.y > img.getWidth())
+			throw new IllegalArgumentException("Coordenada do y maior do que a altura da imagem. Na classe " + classe.getName() + ".");
 	}
 }

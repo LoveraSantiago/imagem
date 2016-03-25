@@ -1,7 +1,6 @@
 package lovera.img.hough;
 
 import java.awt.Point;
-import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
@@ -9,7 +8,6 @@ import java.awt.image.Raster;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Executor;
-import lovera.img.graos.BlocoComPonto;
 
 class TransformadaDeHough implements Executor{
 	
@@ -23,7 +21,7 @@ class TransformadaDeHough implements Executor{
 	
 	private BufferedImage img;
 	
-	private Point pontoCentral;
+	private Point ponto;
 	
 	private Line2D linhaHough;
 	
@@ -42,12 +40,12 @@ class TransformadaDeHough implements Executor{
 	public TransformadaDeHough() {		
 	}
 	
-	public TransformadaDeHough(BufferedImage imgRecortada, BlocoComPonto blocoComPonto) {
-		Regras.validarBufferedImgCinza(imgRecortada, this.getClass());		
+	public TransformadaDeHough(BufferedImage imgRecortada, Point ponto) {
+		Regras.validarBufferedImgCinza(imgRecortada, this.getClass());	
+		Regras.validarPontoDentroDaImg(imgRecortada, ponto, this.getClass());
 		
 		this.img = imgRecortada;
-		this.area = blocoComPonto.getArea();
-		this.pontoCentral = blocoComPonto.getPonto();
+		this.ponto = ponto;
 		
 		this.eixoX = Math.max(this.img.getWidth(), this.img.getHeight());
 		int alturaMatriz = 2 * eixoX;
@@ -56,13 +54,8 @@ class TransformadaDeHough implements Executor{
 
 	@Override
 	public TransformadaDeHough executar() {
-		transformada();
 		
-		this.img         = null;
-		this.area        = null;
-		this.pontoCentral  = null;
-		this.pcRelativo  = null;
-		this.matrizVotos = null;
+		transformada();		
 		return this;
 	}
 	
@@ -80,24 +73,18 @@ class TransformadaDeHough implements Executor{
 //					DebugImgModelo.debugarImg(img, "debug", true);
 //					System.out.println("Chamado dentro do if " + contadorA++ + " vezes.");
 					
-					Point ponto = calcularPontoParaOrigem(j, i);
-					int[] polaresDoPonto = calcularPolarDoPonto(ponto);
+					int[] polaresDoPonto = calcularPolarDoPonto(this.ponto);
 					inputarVotos(polaresDoPonto);
 				}
 			}
 		
-		Point polar = coordenadaPolarMaisVotada();
+		Point polar = encontrarCoordenadaPolarMaisVotada();
 		Line2D linha = polarParaLinha(polar);
-		linha = recalcularLinha(linha);
 		setLinhaHough(linha);
-	}
-	
-
-	private Point calcularPontoParaOrigem(int x, int y){
-		int novoX = x - this.pcRelativo.x;
-		int novoY = y - this.pcRelativo.y;
 		
-		return new Point(novoX, novoY);
+		this.img         = null;
+		this.ponto       = null;
+		this.matrizVotos = null;
 	}
 	
 	private int[] calcularPolarDoPonto(Point ponto){
@@ -108,6 +95,7 @@ class TransformadaDeHough implements Executor{
 		
 		return polar;
 	}
+	
 	int contador = 0;
 	private void inputarVotos(int[] polaresDoPonto){
 //			System.out.println("Chamado inputar votos " + contador++ + " vezes.");
@@ -123,7 +111,7 @@ class TransformadaDeHough implements Executor{
 	
 	int contadorB = 0;
 	int contadorC = 0;
-	private Point coordenadaPolarMaisVotada(){
+	private Point encontrarCoordenadaPolarMaisVotada(){
 		int vetorMVot = 0;
 		int anguloMVot = 0;
 		
@@ -158,22 +146,12 @@ class TransformadaDeHough implements Executor{
 		double pt2X = ponto.x / arrayCos[ponto.y];
 		double pt2Y = 0;
 		
-		double coefAngular = (pt2Y - pt1Y) / (pt2X - pt1X);
-		double b = -(coefAngular * pt2X);
+		Point reta = EquacaoDaReta.calcularEquacaoDaReta(pt1X, pt1Y, pt2X, pt2Y);
 		
 		int x1 = 0;
-		int y1 = (int) (Math.round(b));
+		int y1 = (int) (Math.round(reta.y));//reta.y é o b 'intercepto de y'
 		int x2 = (int) (Math.round(pt2X));
 		int y2 = (int) (Math.round(pt2Y));
-		
-		return new Line2D.Double(x1, y1, x2, y2);
-	}
-	
-	private Line2D recalcularLinha(Line2D linha){
-		int x1 = (int)(linha.getX1() + pontoCentral.x);
-		int y1 = (int)(linha.getY1() + pontoCentral.y);
-		int x2 = (int)(linha.getX2() + pontoCentral.x);
-		int y2 = (int)(linha.getY2() + pontoCentral.y);
 		
 		return new Line2D.Double(x1, y1, x2, y2);
 	}

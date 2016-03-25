@@ -39,16 +39,19 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 	private HoughDosBlocos gerarHoughNosBlocos(){
 		
 		Executor transformadaH = new TransformadaDeHough();//Para carregar blocos estaticos
-		PreProcessamento pre = new PreProcessamento();		
+		Processamento processamento = new Processamento();
 		
 		for(BlocoComPonto blocoPt : this.blocos){
 			
 			BufferedImage imgRecortada = recortarImgParaArea(blocoPt.getArea());			
-			Point pROrigem = pre.moverPontoEmRelacaoOrigem(blocoPt.getArea(), blocoPt.getPonto());
+			Point pROrigem = processamento.pre.moverPontoEmRelacaoOrigem(blocoPt.getArea(), blocoPt.getPonto());
 			
-			transformadaH = new TransformadaDeHough(imgRecortada, blocoPt);
+			transformadaH = new TransformadaDeHough(imgRecortada, pROrigem);
 			transformadaH.executar();
 			Line2D linha = ((TransformadaDeHough) transformadaH).getLinhaHough();
+			
+			linha = processamento.pos.moverRetaPCentralDoBloco(linha, blocoPt.getArea(), blocoPt.getPonto());
+			
 			this.listaLinhas.add(linha);
 		}
 			
