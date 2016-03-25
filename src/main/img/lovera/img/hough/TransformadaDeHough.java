@@ -24,7 +24,8 @@ class TransformadaDeHough implements Executor{
 	private BufferedImage img;
 	
 	private Rectangle area;
-	private Point ponto;	
+	private Point pcOriginal;//ponto central original
+	private Point pcRelativo;//ponto central relativo do bloco
 	
 	private Line2D linhaHough;
 	
@@ -35,8 +36,8 @@ class TransformadaDeHough implements Executor{
 		arrayCos = new double[GRAUS + 1];
 		
 		for(int i = 1; i <= GRAUS; i++){
-			arraySen[i] = Math.sin(i);
-			arrayCos[i] = Math.cos(i);					
+			arraySen[i] = Math.sin(Math.toRadians(i));
+			arrayCos[i] = Math.cos(Math.toRadians(i));					
 		}
 	}
 	
@@ -48,7 +49,7 @@ class TransformadaDeHough implements Executor{
 		
 		this.img = imgRecortada;
 		this.area = blocoComPonto.getArea();
-		this.ponto = blocoComPonto.getPonto();
+		this.pcOriginal = blocoComPonto.getPonto();
 		
 		this.eixoX = Math.max(this.img.getWidth(), this.img.getHeight());
 		int alturaMatriz = 2 * eixoX;
@@ -61,20 +62,15 @@ class TransformadaDeHough implements Executor{
 		
 		this.img         = null;
 		this.area        = null;
-		this.ponto       = null;
+		this.pcOriginal  = null;
+		this.pcRelativo  = null;
 		this.matrizVotos = null;
 		return this;
 	}
 	
-	private void recalcularCentro(){
-		int origemX = this.ponto.x - this.area.x;
-		int origemY = this.ponto.y - this.area.y;
-		this.ponto = new Point(origemX, origemY);
-	}
-
 	int contadorA = 0;
 	private void transformada(){
-		recalcularCentro();
+		calcularPontoCentralRelativoAoBloco();
 		
 		Raster raster = this.img.getRaster();
 		
@@ -87,7 +83,7 @@ class TransformadaDeHough implements Executor{
 //					DebugImgModelo.debugarImg(img, "debug", true);
 //					System.out.println("Chamado dentro do if " + contadorA++ + " vezes.");
 					
-					Point ponto = recalcularPontoParaOrigem(j, i);
+					Point ponto = calcularPontoParaOrigem(j, i);
 					int[] polaresDoPonto = calcularPolarDoPonto(ponto);
 					inputarVotos(polaresDoPonto);
 				}
@@ -99,9 +95,15 @@ class TransformadaDeHough implements Executor{
 		setLinhaHough(linha);
 	}
 	
-	private Point recalcularPontoParaOrigem(int x, int y){
-		int novoX = x - this.ponto.x;
-		int novoY = y - this.ponto.y;
+	private void calcularPontoCentralRelativoAoBloco(){
+		int origemX = this.pcOriginal.x - this.area.x;
+		int origemY = this.pcOriginal.y - this.area.y;
+		this.pcRelativo = new Point(origemX, origemY);
+	}
+
+	private Point calcularPontoParaOrigem(int x, int y){
+		int novoX = x - this.pcRelativo.x;
+		int novoY = y - this.pcRelativo.y;
 		
 		return new Point(novoX, novoY);
 	}
@@ -159,32 +161,32 @@ class TransformadaDeHough implements Executor{
 	
 	private Line2D polarParaLinha(Point ponto){
 		double pt1X = ponto.x * arraySen[ponto.y];
-		double pt1Y = ponto.x * arrayCos[ponto.y];
+//		double pt1Y = ponto.x * arrayCos[ponto.y];
 		
-		double pt2x = ponto.x / arrayCos[ponto.y];
+		double pt2X = ponto.x / arrayCos[ponto.y];
 		double pt2Y = 0;
 		
-		double coefAngular = (pt2Y - pt1X) / (pt1Y - pt1X);
-		double b = -(coefAngular * pt2x);
+		double coefAngular = (pt2Y - pt1X) / (pt2X - pt1X);
+		double b = -(coefAngular * pt2X);
 		
 		int x1 = 0;
 		int y1 = (int) (Math.round(b));
-		int x2 = (int) (Math.round(pt2x));
+		int x2 = (int) (Math.round(pt2X));
 		int y2 = (int) (Math.round(pt2Y));
 		
 		return new Line2D.Double(x1, y1, x2, y2);
 	}
 	
 	private Line2D recalcularLinha(Line2D linha){
-		int x1 = (int)(linha.getX1() + area.x);
-		int y1 = (int)(linha.getY1() + area.y);
-		int x2 = (int)(linha.getX2() + area.x);
-		int y2 = (int)(linha.getY2() + area.y);
+		int x1 = (int)(linha.getX1() + pcOriginal.x);
+		int y1 = (int)(linha.getY1() + pcOriginal.y);
+		int x2 = (int)(linha.getX2() + pcOriginal.x);
+		int y2 = (int)(linha.getY2() + pcOriginal.y);
 		
-		x1 = x1 < area.x ? area.x : x1;
-		y1 = y1 < area.y ? area.y : y1;
-		x2 = x2 > (area.x + area.width ) ? area.x + area.width : x2;
-		y2 = y2 > (area.y + area.height) ? area.x + area.width : y2;
+//		x1 = x1 < area.x ? area.x : x1;
+//		y1 = y1 < area.y ? area.y : y1;
+//		x2 = x2 > (area.x + area.width ) ? area.x + area.width : x2;
+//		y2 = y2 > (area.y + area.height) ? area.x + area.width : y2;
 		
 		return new Line2D.Double(x1, y1, x2, y2);
 	}

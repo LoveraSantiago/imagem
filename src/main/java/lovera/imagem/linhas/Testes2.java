@@ -24,7 +24,7 @@ public class Testes2 {
 		lista.add(new Point(13, 40));
 		
 		List<Line2D> linhas = new ArrayList<>();
-		linhas.add(new Line2D.Double(0, 2, -5, 0));
+		linhas.add(new Line2D.Double(0, 8, 8, 0));
 		
 		UnidorImagens uniaoPontos = new UniaoImgPontos("pontoDebugCentro", lista, recortado);
 		uniaoPontos.executarTransformacao();
