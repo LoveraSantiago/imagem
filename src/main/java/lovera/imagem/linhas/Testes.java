@@ -30,9 +30,11 @@ public class Testes {
 		HoughDosBlocos hough = new HoughDosBlocos(blocos, binarizacao);
 		hough.executar();
 		
-		UnidorImagens uniao = new UniaoImgAreas("redacaoBloco", blocos, img);
+		UnidorImagens uniao = new UniaoImgAreas("redacaoBlocoGauss", blocos, img);
 		uniao.executarTransformacao();
 		uniao = new UniaoImgLinhas("redacaoBlocoGauss", hough, uniao.getImgTransformada());		
+		uniao.executarTransformacao();
+		uniao = new UniaoImgPontos("redacaoBlocoGauss", blocos, uniao.getImgTransformada());
 		uniao.executarTransformacao();
 		uniao.gravar();
 		uniao.abrir();

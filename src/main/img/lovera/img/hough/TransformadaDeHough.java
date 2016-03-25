@@ -161,12 +161,12 @@ class TransformadaDeHough implements Executor{
 	
 	private Line2D polarParaLinha(Point ponto){
 		double pt1X = ponto.x * arraySen[ponto.y];
-//		double pt1Y = ponto.x * arrayCos[ponto.y];
+		double pt1Y = ponto.x * arrayCos[ponto.y];
 		
 		double pt2X = ponto.x / arrayCos[ponto.y];
 		double pt2Y = 0;
 		
-		double coefAngular = (pt2Y - pt1X) / (pt2X - pt1X);
+		double coefAngular = (pt2Y - pt1Y) / (pt2X - pt1X);
 		double b = -(coefAngular * pt2X);
 		
 		int x1 = 0;
@@ -182,11 +182,6 @@ class TransformadaDeHough implements Executor{
 		int y1 = (int)(linha.getY1() + pcOriginal.y);
 		int x2 = (int)(linha.getX2() + pcOriginal.x);
 		int y2 = (int)(linha.getY2() + pcOriginal.y);
-		
-//		x1 = x1 < area.x ? area.x : x1;
-//		y1 = y1 < area.y ? area.y : y1;
-//		x2 = x2 > (area.x + area.width ) ? area.x + area.width : x2;
-//		y2 = y2 > (area.y + area.height) ? area.x + area.width : y2;
 		
 		return new Line2D.Double(x1, y1, x2, y2);
 	}
