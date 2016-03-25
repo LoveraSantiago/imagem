@@ -9,6 +9,7 @@ import java.awt.image.Raster;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Executor;
+import lovera.img.debug.DebugImgModelo;
 import lovera.img.graos.BlocoComPonto;
 
 class TransformadaDeHough implements Executor{
@@ -30,8 +31,8 @@ class TransformadaDeHough implements Executor{
 	static{
 		GRAUS = 360;
 		
-		arraySen = new double[GRAUS];
-		arrayCos = new double[GRAUS];
+		arraySen = new double[GRAUS + 1];
+		arrayCos = new double[GRAUS + 1];
 		
 		for(int i = 1; i <= GRAUS; i++){
 			arraySen[i] = Math.sin(i);
@@ -63,11 +64,12 @@ class TransformadaDeHough implements Executor{
 	}
 	
 	private void recalcularCentro(){
-		int origemX = this.area.x - this.ponto.x;
-		int origemY = this.area.y - this.ponto.y;
+		int origemX = this.ponto.x - this.area.x;
+		int origemY = this.ponto.y - this.area.y;
 		this.ponto = new Point(origemX, origemY);
 	}
 
+	int contadorA = 0;
 	private void transformada(){
 		recalcularCentro();
 		
@@ -78,6 +80,9 @@ class TransformadaDeHough implements Executor{
 				
 				int sample = raster.getSample(j, i, 0);
 				if(sample == Pixel.PREENCHIDO.getValor()){
+					
+					DebugImgModelo.debugarImg(img, "debug", true);
+					System.out.println("Chamado dentro do if " + contadorA++ + " vezes.");
 					
 					Point ponto = recalcularPontoParaOrigem(j, i);
 					int[] polaresDoPonto = calcularPolarDoPonto(ponto);
@@ -92,23 +97,23 @@ class TransformadaDeHough implements Executor{
 	}
 	
 	private Point recalcularPontoParaOrigem(int x, int y){
-		int novoX = this.ponto.x - x;
-		int novoY = this.ponto.y - y;
+		int novoX = x - this.ponto.x;
+		int novoY = y - this.ponto.y;
 		
 		return new Point(novoX, novoY);
 	}
 	
 	private int[] calcularPolarDoPonto(Point ponto){
-		int[] polar = new int[GRAUS];
+		int[] polar = new int[GRAUS + 1];
 		
 		for(int i = 1; i <= GRAUS; i++)
 			polar[i] =(int)(Math.round((ponto.x * arrayCos[i]) + (ponto.y * arraySen[i])));
 		
 		return polar;
 	}
-	
+	int contador = 0;
 	private void inputarVotos(int[] polaresDoPonto){
-		
+			System.out.println("Chamado inputar votos " + contador++ + " vezes.");
 			for(int i = 1; i <= GRAUS; i++){
 				this.matrizVotos[i][(polaresDoPonto[i])]++;
 			}		

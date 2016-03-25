@@ -54,8 +54,20 @@ public final class ImgIO {
 		return img;
 	}
 	
+	public static final BufferedImage carregarImg_modoMediaTracker(Imagens imagem) {		
+		return carregarImg_modoMediaTracker(imagem, new UtilComponent());
+	}
+
 	public static final BufferedImage carregarImg_modoMediaTracker(Imagens imagem, Component cpt) {
-		Image image = Toolkit.getDefaultToolkit().getImage(imagem.getEndereco());
+		return carregarImg_modoMediaTracker(imagem.getEndereco(), cpt);
+	}
+
+	public static final BufferedImage carregarImg_modoMediaTracker(String endereco) {
+		return carregarImg_modoMediaTracker(endereco, new UtilComponent());
+	}
+	
+	public static final BufferedImage carregarImg_modoMediaTracker(String endereco, Component cpt) {
+		Image image = Toolkit.getDefaultToolkit().getImage(endereco);
 		MediaTracker mt = new MediaTracker(cpt);
 		mt.addImage(image, 0);
 		
@@ -63,7 +75,7 @@ public final class ImgIO {
 			mt.waitForID(0);
 		} catch (InterruptedException e) {			
 			e.printStackTrace();
-			log.error("Img não carregada! End: " + imagem.getEndereco() + " Modo: MediaTracker");
+			log.error("Img não carregada! End: " + endereco + " Modo: MediaTracker");
 		}
 		
 		BufferedImage img = new BufferedImage(image.getWidth(null), image.getHeight(null), BufferedImage.TYPE_BYTE_GRAY);
@@ -71,10 +83,6 @@ public final class ImgIO {
 		graphics.drawImage(image, 0, 0, null);
 		graphics.dispose();		
 		return img;
-	}
-	
-	public static final BufferedImage carregarImg_modoMediaTracker(Imagens imagem) {		
-		return carregarImg_modoMediaTracker(imagem, new UtilComponent());
 	}
 	
 	public static final String gravarImg(BufferedImage img, Endereco endereco, String nomeArquivo, TipoImagem extensao){			
