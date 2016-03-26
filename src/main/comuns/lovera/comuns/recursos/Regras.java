@@ -98,7 +98,7 @@ public final class Regras {
 			throw new IllegalArgumentException("Coordenada do x maior do que a largura da imagem. Na classe " + classe.getName() + ".");
 		if(ponto.y < 0)
 			throw new IllegalArgumentException("Coordenada do y menor do que 0. Na classe " + classe.getName() + ".");
-		if(ponto.y > img.getWidth())
+		if(ponto.y > img.getHeight())
 			throw new IllegalArgumentException("Coordenada do y maior do que a altura da imagem. Na classe " + classe.getName() + ".");
 	}
 }

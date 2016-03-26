@@ -49,6 +49,7 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 			transformadaH = new TransformadaDeHough(imgRecortada, pROrigem);
 			transformadaH.executar();
 			Line2D linha = ((TransformadaDeHough) transformadaH).getLinhaHough();
+			System.out.println("Hough linha " + linha.getX1() + ", " + linha.getY1() + ", " + linha.getX2() + ", " + linha.getY2());
 			
 			linha = processamento.pos.moverRetaPCentralDoBloco(linha, blocoPt.getArea(), blocoPt.getPonto());
 			

@@ -4,6 +4,7 @@ import java.awt.Point;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
+import java.util.Arrays;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
@@ -40,7 +41,8 @@ class TransformadaDeHough implements Executor{
 	public TransformadaDeHough() {		
 	}
 	
-	public TransformadaDeHough(BufferedImage imgRecortada, Point ponto) {
+	
+	public TransformadaDeHough(BufferedImage imgRecortada, Point ponto) {		
 		Regras.validarBufferedImgCinza(imgRecortada, this.getClass());	
 		Regras.validarPontoDentroDaImg(imgRecortada, ponto, this.getClass());
 		
@@ -73,7 +75,7 @@ class TransformadaDeHough implements Executor{
 //					DebugImgModelo.debugarImg(img, "debug", true);
 //					System.out.println("Chamado dentro do if " + contadorA++ + " vezes.");
 					
-					int[] polaresDoPonto = calcularPolarDoPonto(this.ponto);
+					int[] polaresDoPonto = calcularPolarDoPonto(j, i);
 					inputarVotos(polaresDoPonto);
 				}
 			}
@@ -87,21 +89,33 @@ class TransformadaDeHough implements Executor{
 		this.matrizVotos = null;
 	}
 	
-	private int[] calcularPolarDoPonto(Point ponto){
+	private int[] calcularPolarDoPonto(int x, int y){
 		int[] polar = new int[GRAUS + 1];
 		
 		for(int i = 1; i <= GRAUS; i++)
-			polar[i] =(int)(Math.round((ponto.x * arrayCos[i]) + (ponto.y * arraySen[i])));
+			polar[i] =(int)(Math.round((x * arrayCos[i]) + (y * arraySen[i])));
 		
 		return polar;
 	}
 	
 	int contador = 0;
+	int exception = 0;
 	private void inputarVotos(int[] polaresDoPonto){
-//			System.out.println("Chamado inputar votos " + contador++ + " vezes.");
+			System.out.println("Chamado inputar votos " + contador++ + " vezes.");
 			for(int i = 1; i <= GRAUS; i++){
+				try{ 
+				if(contador == 108 && i == 66){
+					System.out.println("Novo break");
+				}
+//				System.out.println("Imputando votos " + polaresDoPonto[i]);
 				int ajustadoPEixoX = ajustarParaEixoX(polaresDoPonto[i]);
 				this.matrizVotos[i][ajustadoPEixoX]++;
+				}
+				catch(IndexOutOfBoundsException e){
+					System.out.println("valor de estouro " + polaresDoPonto[i]);
+					System.out.println(Arrays.toString(polaresDoPonto));
+//					System.out.println("break aqui quebrado " + exception++);
+				}
 			}		
 	}
 	

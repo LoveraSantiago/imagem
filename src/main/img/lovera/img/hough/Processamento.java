@@ -26,6 +26,13 @@ class Processamento {
 	
 	public class Pos {
 		
+		/**
+		 * Ajusta a linha encontrada pela transformada de Hough para o bloco da imagem.  
+		 * @param linha : Line2d - linha encontrada pela transformada de Hough
+		 * @param area : Rectangle - area que representa o bloco da imagem. 
+		 * @param pontoCentral : Point - centro de gravidade da imagem.
+		 * @return : Line2D - linha com coordenadas ajustadas ao bloco.
+		 */
 		public Line2D moverRetaPCentralDoBloco(Line2D linha, Rectangle area, Point pontoCentral){
 			
 			Line2D linhaMovida = recalcularLinha(linha, pontoCentral);
@@ -34,6 +41,14 @@ class Processamento {
 			return linhaAjustada;
 		}
 		
+		/**
+		 * A linha retornada pela transformada de Hough 'que possue coordenadas em relação a um ponto de origem (0,0)' é deslocada 
+		 * levada para o ponto central do bloco.</br>
+		 * O ponto central do bloco para ser a nova origem.
+		 * @param linha : Line2d - linha encontrada pela transformada de Hough
+		 * @param ponto : Point - centro de gravidade da imagem.
+		 * @return linha : Line2D - linha com coordenadas de um novo ponto de origem.
+		 */
 		private Line2D recalcularLinha(Line2D linha, Point ponto){
 			int x1 = (int)(linha.getX1() + ponto.x);
 			int y1 = (int)(linha.getY1() + ponto.y);
@@ -49,8 +64,8 @@ class Processamento {
 		
 		private Line2D ajustarRetaNaArea(Point reta, Rectangle area, Point pontoCentral){
 			
-			int pHMin = area.x - pontoCentral.x;
-			int pHMax = (area.x + area.width) - pontoCentral.x;
+			int pHMin = area.x;
+			int pHMax = area.x + area.width;
 			
 			int x1 = Integer.MAX_VALUE;
 			int y1 = 0;
@@ -60,6 +75,7 @@ class Processamento {
 			for(int i = pHMin; i <= pHMax; i++){
 				
 				int resultado = (i * reta.x) + reta.y;//reta.x coef. angular reta.y intercepto
+				resultado += pontoCentral.y;
 				boolean pertenceArea = resultadoDentroDaArea(resultado, area); 
 				if(pertenceArea){
 					
