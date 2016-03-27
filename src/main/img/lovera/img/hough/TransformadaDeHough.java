@@ -132,10 +132,10 @@ class TransformadaDeHough implements Executor{
 		double pt2X = ponto.x / arrayCos[ponto.y];
 		double pt2Y = 0;
 		
-		Point reta = EquacaoDaReta.calcularEquacaoDaReta(pt1X, pt1Y, pt2X, pt2Y);
+		EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
 		
 		int x1 = 0;
-		int y1 = (int) (Math.round(reta.y));//reta.y é o b 'intercepto de y'
+		int y1 = (int) (Math.round(reta.getCoefAngular()));//reta.y é o b 'intercepto de y'
 		int x2 = (int) (Math.round(pt2X));
 		int y2 = (int) (Math.round(pt2Y));
 		

@@ -36,7 +36,7 @@ class Processamento {
 		public Line2D moverRetaPCentralDoBloco(Line2D linha, Rectangle area, Point pontoCentral){
 			
 			Line2D linhaMovida = recalcularLinha(linha, pontoCentral);
-			Point reta = linhaParaEquacaoDaReta(linhaMovida);
+			EquacaoDaReta reta = linhaParaEquacaoDaReta(linhaMovida);
 			Line2D linhaAjustada = ajustarRetaNaArea(reta, area, pontoCentral);
 			return linhaAjustada;
 		}
@@ -58,11 +58,11 @@ class Processamento {
 			return new Line2D.Double(x1, y1, x2, y2);
 		}
 		
-		private Point linhaParaEquacaoDaReta(Line2D linha){
-			return EquacaoDaReta.calcularEquacaoDaReta(linha);
+		private EquacaoDaReta linhaParaEquacaoDaReta(Line2D linha){
+			return FactoryEquacaoDaReta.factory_EqDaReta(linha);
 		}
 		
-		private Line2D ajustarRetaNaArea(Point reta, Rectangle area, Point pontoCentral){
+		private Line2D ajustarRetaNaArea(EquacaoDaReta reta, Rectangle area, Point pontoCentral){
 			
 			int pHMin = area.x;
 			int pHMax = area.x + area.width;
@@ -74,26 +74,25 @@ class Processamento {
 			
 			for(int i = pHMin; i <= pHMax; i++){
 				
-				int resultado = (i * reta.x) + reta.y;//reta.x coef. angular reta.y intercepto
-				resultado += pontoCentral.y;
+				double resultado = (i * reta.getCoefAngular()) + reta.getIntercepto();//reta.x coef. angular reta.y intercepto
 				boolean pertenceArea = resultadoDentroDaArea(resultado, area); 
 				if(pertenceArea){
 					
 					if(i <= x1){
 						x1 = i;
-						y1 = resultado;
+						y1 = (int) resultado;
 					}
 					
 					if(i >= x2){
 						x2 = i;
-						y2 = resultado;
+						y2 = (int) resultado;
 					}
 				}
 			}			
 			return new Line2D.Double(x1, y1, x2, y2);
 		}
 		
-		private boolean resultadoDentroDaArea(int resultado, Rectangle area){
+		private boolean resultadoDentroDaArea(double resultado, Rectangle area){
 			if(resultado < area.y) return false;
 			if(resultado > (area.y + area.height)) return false;
 			return true;
