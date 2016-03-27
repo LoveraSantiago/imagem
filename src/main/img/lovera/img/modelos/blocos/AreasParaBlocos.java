@@ -38,7 +38,7 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 		return this;
 	}
 
-	private AreasParaBlocos gerarBlocos(){
+	private void gerarBlocos(){
 		Estatistica estats = getEstatisticaDaAltura();
 		List<AlturaSubset> altClassificadas = classificarAlturas(estats);
 		List<Rectangle> areas = filtrarAlturasClassificadas(altClassificadas);		
@@ -47,7 +47,6 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 		
 		this.binarizacao = null;
 		this.listaTemp   = null;
-		return this;
 	}
 	
 	private Estatistica getEstatisticaDaAltura(){

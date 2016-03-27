@@ -1,8 +1,12 @@
 package lovera.img.contratos;
 
+/**
+ * Interface para classes que lidam com apenas uma responsabilidade de executar uma ação.
+ * @author Lovera
+ * @since 27/03/2016
+ */
 public interface Executor {
 	
-	//CORRIGIR CLASSES QUE USAM EXECUTOR CHAMANDO UM METODO PRIVADO QUE RETORNA A PROPRIA CLASSE
 	public Executor executar();
 
 }

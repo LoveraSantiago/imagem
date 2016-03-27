@@ -25,7 +25,7 @@ class FiltroSubset1 implements CoordenadasArea, Executor{
 		return this;
 	}
 
-	private FiltroSubset1 filtrarListaDeAreas(){
+	private void filtrarListaDeAreas(){
 		List<Rectangle> listaFiltrada = new ArrayList<>();
 		
 		this.listaFiltrada.forEach((classif) -> {
@@ -35,7 +35,6 @@ class FiltroSubset1 implements CoordenadasArea, Executor{
 		
 		this.listaAreas = listaFiltrada;
 		this.listaFiltrada = null;
-		return this;
 	}	
 	
 	@Override	

@@ -36,7 +36,7 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 		return this;
 	}
 	
-	private HoughDosBlocos gerarHoughNosBlocos(){
+	private void gerarHoughNosBlocos(){
 		
 		Executor transformadaH = new TransformadaDeHough();//Para carregar blocos estaticos
 		Processamento processamento = new Processamento();
@@ -58,7 +58,6 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 			
 		this.blocos = null;
 		this.img    = null;
-		return this;
 	}
 	
 	private BufferedImage recortarImgParaArea(Rectangle area){

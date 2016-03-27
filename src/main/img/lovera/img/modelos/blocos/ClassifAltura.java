@@ -31,13 +31,12 @@ class ClassifAltura implements CoordenadasArea, CoordAClassificadas, Executor{
 		return this;
 	}
 
-	private ClassifAltura classificarAreas(){
+	private void classificarAreas(){
 
 		this.listaAreas.forEach((area) -> 
 			this.lClassificada.add(new AlturaSubset(classificarSubset(area), area)));
 		
 		this.listaAreas = null;
-		return this;
 	}
 	
 	private Subset classificarSubset(Rectangle area){

@@ -28,7 +28,7 @@ class GeradorDeBlocos implements CoordenadasArea, Executor{
 		return this;
 	}
 
-	private GeradorDeBlocos gerarBlocos(){
+	private void gerarBlocos(){
 		this.listaTemp.forEach((area) -> {
 			
 			int xI = area.x;
@@ -45,7 +45,6 @@ class GeradorDeBlocos implements CoordenadasArea, Executor{
 				this.listaAreas.add(blocoMenordoFinal);
 			}
 		});
-		return this;
 	}
 	
 	@Override

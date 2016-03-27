@@ -27,6 +27,7 @@ public final class FloodFillCCs implements Executor, CoordenadasArea{
 		this.listaRI = new ArrayList<>(); 
 	}
 	
+	//Refatorar fazer como outras classes que no executar chama apenas um metodo.
 	@Override
 	public FloodFillCCs executar() {
 		floodfill();
