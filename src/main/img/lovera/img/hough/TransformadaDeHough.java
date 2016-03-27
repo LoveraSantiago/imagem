@@ -45,7 +45,7 @@ class TransformadaDeHough implements Executor{
 		
 		this.img = imgRecortada;
 		
-		int alturaMatriz = 4 * Math.max(this.img.getWidth(), this.img.getHeight());		
+		int alturaMatriz = 4 * Math.max(this.img.getWidth(), this.img.getHeight());//o dobro para positivo e o dobro para negativo		
 		this.eixoX = alturaMatriz / 2;
 		this.matrizVotos = new int[GRAUS + 1][alturaMatriz];
 	}
