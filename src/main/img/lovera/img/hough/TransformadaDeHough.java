@@ -9,7 +9,7 @@ import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Executor;
 
-class TransformadaDeHough implements Executor{
+public class TransformadaDeHough implements Executor{
 	
 	private static final int GRAUS;;
 		
@@ -68,6 +68,7 @@ class TransformadaDeHough implements Executor{
 				if(sample == Pixel.PREENCHIDO.getValor()){
 					
 					int[] polaresDoPonto = calcularPolarDoPonto(j, i);
+					System.out.println("pontos com pixels x = " + j + ", y = " + i);
 					inputarVotos(polaresDoPonto);
 				}
 			}
@@ -83,9 +84,10 @@ class TransformadaDeHough implements Executor{
 	private int[] calcularPolarDoPonto(int x, int y){
 		int[] polar = new int[GRAUS + 1];
 		
-		for(int i = 1; i <= GRAUS; i++)
+		for(int i = 1; i <= GRAUS; i++){
 			polar[i] =(int)(Math.round((x * arrayCos[i]) + (y * arraySen[i])));
-		
+			System.out.println("Resultado = " + ((x * arrayCos[i]) + (y * arraySen[i])) + " arredondado = " + polar[i]);
+		}
 		return polar;
 	}
 	
