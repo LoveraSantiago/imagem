@@ -1,18 +1,16 @@
 package lovera.img.hough;
 
 import java.awt.Point;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.Executor;
-import lovera.img.manipulacao.ImgIO;
 
 public class TransformadaDeHough implements Executor{
 	
-	private static final int GRAUS;;
+	private static final int GRAUS;
 		
 	private static double[] arraySen;
 	private static double[] arrayCos;
@@ -22,7 +20,7 @@ public class TransformadaDeHough implements Executor{
 	
 	private BufferedImage img;
 
-	private Line2D linhaHough;
+	private Point linhaPolar;
 	
 	static{
 		GRAUS = 360;
@@ -37,8 +35,7 @@ public class TransformadaDeHough implements Executor{
 	}
 	
 	public TransformadaDeHough() {		
-	}
-	
+	}	
 	
 	public TransformadaDeHough(BufferedImage imgRecortada, Point ponto) {		
 		Regras.validarBufferedImgCinza(imgRecortada, this.getClass());	
@@ -73,9 +70,8 @@ public class TransformadaDeHough implements Executor{
 				}
 			}
 		
-		Point polar = encontrarCoordenadaPolarMaisVotada(); //ENCERRAR HOUGH AKI
-		Line2D linha = polarParaLinha(polar); //TRANSFERIR PARA POS-PROCESSAMENTO
-		setLinhaHough(linha);//MUDAR OBJETO LINHA PARA COORDENADA POLAR COM OBJETO POINT
+		Point polar = encontrarCoordenadaPolarMaisVotada();
+		setLinhaPolar(polar);
 		
 		this.img         = null;
 		this.matrizVotos = null;
@@ -125,39 +121,13 @@ public class TransformadaDeHough implements Executor{
 	private int ajustarParaEixoOriginal(int valorY){
 		return valorY - this.eixoX;
 	}
-	
-	
-	private Line2D polarParaLinha(Point ponto){
-		double pt1X = ponto.x * arrayCos[ponto.y];
-		double pt1Y = ponto.x * arraySen[ponto.y];
-		
-		double pt2X = ponto.x / arrayCos[ponto.y];
-		double pt2Y = 0;
-		
-		EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
-		
-		int x1 = 0;
-		int y1 = (int) (Math.round((x1 * reta.getCoefAngular()) + (reta.getIntercepto())));
-		System.out.println(y1);
-		int x2 = 50;
-		int y2 = (int) (Math.round((x2 * reta.getCoefAngular()) + (reta.getIntercepto())));
-		
-		return new Line2D.Double(x1, y1, x2, y2);
+
+	public Point getLinhaPolar() {
+		Regras.validarPonto(this.linhaPolar, this.getClass());
+		return linhaPolar;
 	}
 
-	public Line2D getLinhaHough() {
-		Regras.validarLinha(this.linhaHough, this.getClass());
-		return linhaHough;
-	}
-
-	private void setLinhaHough(Line2D linhaHough) {
-		this.linhaHough = linhaHough;
-	}
-	
-	public static void main(String[] args) {
-		BufferedImage img = ImgIO.carregarImg_modoMediaTracker("C:/Users/resource/Pictures/linhaHorizontal.png");
-		TransformadaDeHough tr = new TransformadaDeHough(img, new Point(0, 0));
-		tr.executar();
-		System.out.println("fim");
+	private void setLinhaPolar(Point linhaHough) {
+		this.linhaPolar = linhaHough;
 	}
 }

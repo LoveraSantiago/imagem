@@ -91,7 +91,13 @@ public final class Regras {
 			throw new IllegalStateException("Metodo executarOperação não foi chamada na classe " + classe.getName() + ".");
 	}
 	
+	public static void validarPonto(Point ponto, Class<?> classe){
+		if(ponto == null)
+			throw new IllegalStateException("Objeto ponto nulo na classe " + classe.getName() + ".");
+	}
+	
 	public static void validarPontoDentroDaImg(BufferedImage img, Point ponto, Class<?> classe){
+		validarPonto(ponto, classe);
 		if(ponto.x < 0) 
 			throw new IllegalArgumentException("Coordenada do x menor do que 0. Na classe " + classe.getName() + ".");
 		if(ponto.x > img.getWidth())
@@ -101,4 +107,5 @@ public final class Regras {
 		if(ponto.y > img.getHeight())
 			throw new IllegalArgumentException("Coordenada do y maior do que a altura da imagem. Na classe " + classe.getName() + ".");
 	}
+	
 }

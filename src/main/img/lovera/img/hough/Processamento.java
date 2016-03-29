@@ -97,5 +97,22 @@ class Processamento {
 			if(resultado > (area.y + area.height)) return false;
 			return true;
 		}
+		
+		private Line2D polarParaLinha(Point ponto){
+			double pt1X = ponto.x * arrayCos[ponto.y];
+			double pt1Y = ponto.x * arraySen[ponto.y];
+			
+			double pt2X = ponto.x / arrayCos[ponto.y];
+			double pt2Y = 0;
+			
+			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
+			
+			int x1 = 0;
+			int y1 = (int) (Math.round((x1 * reta.getCoefAngular()) + (reta.getIntercepto())));
+			int x2 = 50;
+			int y2 = (int) (Math.round((x2 * reta.getCoefAngular()) + (reta.getIntercepto())));
+			
+			return new Line2D.Double(x1, y1, x2, y2);
+		}
 	}
 }
