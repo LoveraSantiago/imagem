@@ -4,7 +4,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 
-class Processamento {
+public class Processamento {
 	
 	public Pre pre;
 	public Pos pos;
@@ -27,20 +27,39 @@ class Processamento {
 	public class Pos {
 		
 		/**
-		 * Ajusta a linha encontrada pela transformada de Hough para o bloco da imagem.  
-		 * @param linha : Line2d - linha encontrada pela transformada de Hough
+		 * Ajusta a linha polar encontrada pela transformada de Hough para centro de gravidade do bloco da imagem.  
+		 * @param linhaPolar : Point - linha em formato polar encontrada pela transformada de Hough
 		 * @param area : Rectangle - area que representa o bloco da imagem. 
 		 * @param pontoCentral : Point - centro de gravidade da imagem.
 		 * @return : Line2D - linha com coordenadas ajustadas ao bloco.
 		 */
-		public Line2D moverRetaPCentralDoBloco(Line2D linha, Rectangle area, Point pontoCentral){
-			
+		public Line2D moverRetaParaCentroDeGravidadeDoBloco(Point linhaPolar, Rectangle area, Point pontoCentral){
+			Line2D linha = polarParaLinha(linhaPolar, area);
 			Line2D linhaMovida = recalcularLinha(linha, pontoCentral);
 			EquacaoDaReta reta = linhaParaEquacaoDaReta(linhaMovida);
 			Line2D linhaAjustada = ajustarRetaNaArea(reta, area, pontoCentral);
 			return linhaAjustada;
 		}
 		
+		private Line2D polarParaLinha(Point ponto, Rectangle area){
+			double cosseno = Math.cos(Math.toRadians(ponto.y));
+			
+			double pt1X = ponto.x * cosseno;
+			double pt1Y = ponto.x * Math.sin(Math.toRadians(ponto.y));
+			
+			double pt2X = ponto.x / cosseno;
+			double pt2Y = 0;
+			
+			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
+			
+			int x1 = 0;
+			int y1 = (int) (Math.round((x1 * reta.getCoefAngular()) + (reta.getIntercepto())));
+			int x2 = (int) area.getWidth();
+			int y2 = (int) (Math.round((x2 * reta.getCoefAngular()) + (reta.getIntercepto())));
+			
+			return new Line2D.Double(x1, y1, x2, y2);
+		}
+
 		/**
 		 * A linha retornada pela transformada de Hough 'que possue coordenadas em relação a um ponto de origem (0,0)' é deslocada 
 		 * levada para o ponto central do bloco.</br>
@@ -96,23 +115,6 @@ class Processamento {
 			if(resultado < area.y) return false;
 			if(resultado > (area.y + area.height)) return false;
 			return true;
-		}
-		
-		private Line2D polarParaLinha(Point ponto){
-			double pt1X = ponto.x * arrayCos[ponto.y];
-			double pt1Y = ponto.x * arraySen[ponto.y];
-			
-			double pt2X = ponto.x / arrayCos[ponto.y];
-			double pt2Y = 0;
-			
-			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
-			
-			int x1 = 0;
-			int y1 = (int) (Math.round((x1 * reta.getCoefAngular()) + (reta.getIntercepto())));
-			int x2 = 50;
-			int y2 = (int) (Math.round((x2 * reta.getCoefAngular()) + (reta.getIntercepto())));
-			
-			return new Line2D.Double(x1, y1, x2, y2);
 		}
 	}
 }

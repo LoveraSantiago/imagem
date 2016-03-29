@@ -1,6 +1,7 @@
 package lovera.imagem;
 
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 import org.junit.Test;
 
 import lovera.comuns.recursos.Imagens;
+import lovera.img.hough.Processamento;
 import lovera.img.hough.TransformadaDeHough;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.uniao.UniaoImgLinhas;
@@ -40,11 +42,20 @@ public class TransformaDeHoughTest {
 	}
 	
 	private void executarTransformada(BufferedImage img, String nomeArquivo){
+		
+		Point cGravidade = new Point(0, 0);
+		Rectangle area = new Rectangle(0, 0, img.getWidth(), img.getHeight());		
 		List<Line2D> linhas = new ArrayList<>();		
 		
-		TransformadaDeHough tr = new TransformadaDeHough(img, new Point(0, 0));
+		TransformadaDeHough tr = new TransformadaDeHough(img, cGravidade);
 		tr.executar();
-		linhas.add(tr.getLinhaHough());
+		Point linhaPolar = tr.getLinhaPolar();
+		
+		Processamento processamento = new Processamento();
+		Line2D linhaHough = processamento.pos.moverRetaParaCentroDeGravidadeDoBloco(linhaPolar, area, cGravidade);
+				
+		
+		linhas.add(linhaHough);
 		
 		UniaoImgLinhas u = new UniaoImgLinhas(nomeArquivo, linhas, img);
 		u.executarTransformacao();
