@@ -10,7 +10,6 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.img.contratos.CoordenadasLinhas;
 import lovera.img.contratos.Executor;
-import lovera.img.debug.DebugImgModelo;
 import lovera.img.graos.BlocoComPonto;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.blocos.AreasParaBlocos;
@@ -45,13 +44,11 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 		for(BlocoComPonto blocoPt : this.blocos){
 			
 			BufferedImage imgRecortada = recortarImgParaArea(blocoPt.getArea());	
-//			DebugImgModelo.debugarImg(imgRecortada, "imgRecorte", true);
 			Point pROrigem = processamento.pre.moverPontoEmRelacaoOrigem(blocoPt.getArea(), blocoPt.getPonto());
 			
 			transformadaH = new TransformadaDeHough(imgRecortada, pROrigem);
 			transformadaH.executar();
 			Line2D linha = ((TransformadaDeHough) transformadaH).getLinhaHough();
-			System.out.println("Hough linha " + linha.getX1() + ", " + linha.getY1() + ", " + linha.getX2() + ", " + linha.getY2());
 			
 			linha = processamento.pos.moverRetaPCentralDoBloco(linha, blocoPt.getArea(), blocoPt.getPonto());
 			

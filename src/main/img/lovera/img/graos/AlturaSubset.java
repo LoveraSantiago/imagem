@@ -4,6 +4,12 @@ import java.awt.Rectangle;
 
 import lovera.img.comum.Subset;
 
+/**
+ * Objeto que armazena informações sobre os blocos que estao em volta dos CCs 'componentes conectados'. </br>
+ * Há 3 subsets conforme enum Subset. Cada bloco ou area 'Rectangle' é classificado com um subset. 
+ * @author Lovera
+ * @since 29/03/2016
+ */
 public class AlturaSubset extends Area{
 	
 	private final Subset subset;
