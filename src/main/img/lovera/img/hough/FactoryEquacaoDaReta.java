@@ -1,5 +1,6 @@
 package lovera.img.hough;
 
+import java.awt.Point;
 import java.awt.geom.Line2D;
 
 class FactoryEquacaoDaReta {
@@ -14,6 +15,14 @@ class FactoryEquacaoDaReta {
 	public static EquacaoDaReta factory_EqDaReta(Line2D linha){
 		
 		return factory_EqDaReta(linha.getX1(), linha.getY1(), linha.getX2(), linha.getY2());
+	}
+	
+	public static EquacaoDaReta factory_EqDaRetaOrtogonal(EquacaoDaReta reta, Point pontoDaReta){
+		double coefAngular = -(1 / reta.getCoefAngular());
+		double b = pontoDaReta.y / coefAngular;
+		
+		return new EquacaoDaReta(coefAngular, b);
+		
 	}
 
 }

@@ -44,11 +44,11 @@ public class Processamento {
 		private Line2D polarParaLinha(Point ponto, Rectangle area){
 			double cosseno = Math.cos(Math.toRadians(ponto.y));
 			
-			int pt1X = (int) Math.round(ponto.x * cosseno);
-			int pt1Y = (int) Math.round(ponto.x * Math.sin(Math.toRadians(ponto.y)));
+			double pt1X = ponto.x * cosseno;
+			double pt1Y = ponto.x * Math.sin(Math.toRadians(ponto.y));
 			
-			int pt2X = (int) Math.round(ponto.x / cosseno);
-			int pt2Y = 0;
+			double pt2X = ponto.x / cosseno;
+			double pt2Y = 0;
 			
 			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
 			

@@ -43,7 +43,7 @@ public class TransformaDeHoughTest {
 	
 	private void executarTransformada(BufferedImage img, String nomeArquivo){
 		
-		Point cGravidade = new Point(0, 0);
+		Point cGravidade = new Point(10, 20);
 		Rectangle area = new Rectangle(0, 0, img.getWidth(), img.getHeight());		
 		List<Line2D> linhas = new ArrayList<>();		
 		
