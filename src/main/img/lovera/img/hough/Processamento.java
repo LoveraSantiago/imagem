@@ -33,7 +33,7 @@ public class Processamento {
 		 * @param pontoCentral : Point - centro de gravidade da imagem.
 		 * @return : Line2D - linha com coordenadas ajustadas ao bloco.
 		 */
-		public Line2D moverRetaParaCentroDeGravidadeDoBloco(Point linhaPolar, Rectangle area, Point pontoCentral){
+		public Line2D moverRetaParaCentroDeGravidadeDoBloco2(Point linhaPolar, Rectangle area, Point pontoCentral){
 			Line2D linha = polarParaLinha(linhaPolar, area);
 			Line2D linhaMovida = recalcularLinha(linha, pontoCentral);
 			EquacaoDaReta reta = linhaParaEquacaoDaReta(linhaMovida);
@@ -115,6 +115,64 @@ public class Processamento {
 			if(resultado < area.y) return false;
 			if(resultado > (area.y + area.height)) return false;
 			return true;
+		}
+		public Line2D moverRetaParaCentroDeGravidadeDoBloco(Point linhaPolar, Rectangle area, Point pontoCentral){
+			
+			//POLAR PARA LINHA
+			double cosseno = Math.cos(Math.toRadians(linhaPolar.y));
+			
+			double pt1X = linhaPolar.x * cosseno;
+			double pt1Y = linhaPolar.x * Math.sin(Math.toRadians(linhaPolar.y));
+			
+			double pt2X = linhaPolar.x / cosseno;
+			double pt2Y = 0;
+			
+			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
+			
+			double x1 = 0;
+			double y1 = (x1 * reta.getCoefAngular()) + (reta.getIntercepto());
+			double x2 = area.getWidth();
+			double y2 = (x2 * reta.getCoefAngular()) + (reta.getIntercepto());
+			Line2D linha = new Line2D.Double(x1, y1, x2, y2);
+			
+			//RECALCULAR LINHA
+			x1 = linha.getX1() + pontoCentral.x;
+			y1 = linha.getY1() + pontoCentral.y;
+			x2 = linha.getX2() + pontoCentral.x;
+			y2 = linha.getY2() + pontoCentral.y;
+			
+			Line2D linhaMovida = new Line2D.Double(x1, y1, x2, y2);
+			
+			//LINHA PARA EQUACAO DA RETA
+			reta = FactoryEquacaoDaReta.factory_EqDaReta(linhaMovida);
+			
+			//AJUSTAR NA RETA
+			int pHMin = area.x;
+			int pHMax = area.x + area.width;
+			
+			x1 = Integer.MAX_VALUE;
+			y1 = 0;
+			x2 = Integer.MIN_VALUE;
+			y2 = 0;
+			
+			for(int i = pHMin; i <= pHMax; i++){
+				
+				double resultado = (i * reta.getCoefAngular()) + reta.getIntercepto();//reta.x coef. angular reta.y intercepto
+				boolean pertenceArea = resultadoDentroDaArea(resultado, area); 
+				if(pertenceArea){
+					
+					if(i <= x1){
+						x1 = i;
+						y1 = resultado;
+					}
+					
+					if(i >= x2){
+						x2 = i;
+						y2 = resultado;
+					}
+				}
+			}			
+			return new Line2D.Double(x1, y1, x2, y2);
 		}
 	}
 }
