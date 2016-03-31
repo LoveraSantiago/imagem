@@ -37,6 +37,7 @@ public class Processamento {
 			Line2D linha = polarParaLinha(linhaPolar, area);
 			Line2D linhaMovida = recalcularLinha(linha, pontoCentral);
 			EquacaoDaReta reta = linhaParaEquacaoDaReta(linhaMovida);
+			System.out.println(reta);
 			Line2D linhaAjustada = ajustarRetaNaArea(reta, area, pontoCentral);
 			return linhaAjustada;
 		}
@@ -51,6 +52,7 @@ public class Processamento {
 			double pt2Y = 0;
 			
 			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
+			System.out.println(reta);
 			
 			int x1 = 0;
 			int y1 = (int) (Math.round((x1 * reta.getCoefAngular()) + (reta.getIntercepto())));
@@ -116,6 +118,7 @@ public class Processamento {
 			if(resultado > (area.y + area.height)) return false;
 			return true;
 		}
+		
 		public Line2D moverRetaParaCentroDeGravidadeDoBloco(Point linhaPolar, Rectangle area, Point pontoCentral){
 			
 			//POLAR PARA LINHA
@@ -128,6 +131,7 @@ public class Processamento {
 			double pt2Y = 0;
 			
 			EquacaoDaReta reta = FactoryEquacaoDaReta.factory_EqDaReta(pt1X, pt1Y, pt2X, pt2Y);
+			System.out.println(reta);
 			
 			double x1 = 0;
 			double y1 = (x1 * reta.getCoefAngular()) + (reta.getIntercepto());
@@ -145,34 +149,50 @@ public class Processamento {
 			
 			//LINHA PARA EQUACAO DA RETA
 			reta = FactoryEquacaoDaReta.factory_EqDaReta(linhaMovida);
+			System.out.println(reta);
 			
 			//AJUSTAR NA RETA
-			int pHMin = area.x;
-			int pHMax = area.x + area.width;
-			
-			x1 = Integer.MAX_VALUE;
-			y1 = 0;
-			x2 = Integer.MIN_VALUE;
-			y2 = 0;
-			
-			for(int i = pHMin; i <= pHMax; i++){
-				
-				double resultado = (i * reta.getCoefAngular()) + reta.getIntercepto();//reta.x coef. angular reta.y intercepto
-				boolean pertenceArea = resultadoDentroDaArea(resultado, area); 
-				if(pertenceArea){
-					
-					if(i <= x1){
-						x1 = i;
-						y1 = resultado;
-					}
-					
-					if(i >= x2){
-						x2 = i;
-						y2 = resultado;
-					}
-				}
-			}			
-			return new Line2D.Double(x1, y1, x2, y2);
+//			int pHMin = area.x;
+//			int pHMax = area.x + area.width;
+//			
+//			x1 = Integer.MAX_VALUE;
+//			y1 = 0;
+//			x2 = Integer.MIN_VALUE;
+//			y2 = 0;
+//			
+//			for(int i = pHMin; i <= pHMax; i++){
+//				
+//				double resultado = (i * reta.getCoefAngular()) + reta.getIntercepto();//reta.x coef. angular reta.y intercepto
+//				boolean pertenceArea = resultadoDentroDaArea(resultado, area); 
+//				if(pertenceArea){
+//					
+//					if(i <= x1){
+//						x1 = i;
+//						y1 = resultado;
+//					}
+//					
+//					if(i >= x2){
+//						x2 = i;
+//						y2 = resultado;
+//					}
+//				}
+//			}			
+//			return new Line2D.Double(x1, y1, x2, y2);
 		}
+		
+		public EquacaoDaReta[] retanguloParaEquacoesDaReta(Rectangle area){
+			EquacaoDaReta[] retas = new EquacaoDaReta[4];
+			
+			EquacaoDaReta cima  = FactoryEquacaoDaReta.factory_EqDaReta(area.x, area.y, p2x, p2y);
+			EquacaoDaReta baixo = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+			EquacaoDaReta esq   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+			EquacaoDaReta dir   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+			
+			retas[0] = cima;
+			retas[1] = baixo;
+			retas[2] = esq;
+			retas[3] = dir;
+		}
+		
 	}
 }

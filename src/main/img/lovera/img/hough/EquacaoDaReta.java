@@ -10,6 +10,11 @@ class EquacaoDaReta {
 		this.coefAngular = coefAngular;
 		this.intercepto = intercepto;
 	}
+	
+	@Override
+	public String toString() {		
+		return "Eq. da Reta y = " + coefAngular + "x + " + intercepto + ".";
+	}
 
 	public double getCoefAngular() {
 		return coefAngular;
