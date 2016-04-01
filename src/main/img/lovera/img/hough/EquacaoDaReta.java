@@ -1,5 +1,6 @@
 package lovera.img.hough;
 
+@Deprecated //Classe problema para linhas verticais.
 class EquacaoDaReta {	
 	
 	private final double coefAngular;

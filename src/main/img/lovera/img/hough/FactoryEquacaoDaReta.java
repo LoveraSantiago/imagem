@@ -3,6 +3,7 @@ package lovera.img.hough;
 import java.awt.Point;
 import java.awt.geom.Line2D;
 
+@Deprecated //Classe problema para linhas verticais.
 class FactoryEquacaoDaReta {
 	
 	public static EquacaoDaReta factory_EqDaReta(double p1x, double p1y, double p2x, double p2y){

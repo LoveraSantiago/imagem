@@ -3,7 +3,6 @@ package lovera.img.hough;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
-import java.util.Arrays;
 
 public class Processamento {
 	
@@ -210,6 +209,11 @@ public class Processamento {
 			System.out.println("dir   " + dir);
 			
 			return retas;
+		}
+		
+		public void desenharOrtogonalDaCoordenadaPolarNoBloco(Point linhaPolar, Rectangle area, Point pontoCentral){
+			
+			
 		}
 		
 	}
