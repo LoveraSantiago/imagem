@@ -24,5 +24,9 @@ class FactoryEquacaoDaReta {
 		return new EquacaoDaReta(coefAngular, b);
 		
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(FactoryEquacaoDaReta.factory_EqDaReta(0, 0, 40, 30));
+	}
 
 }

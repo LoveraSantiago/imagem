@@ -3,6 +3,7 @@ package lovera.img.hough;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
+import java.util.Arrays;
 
 public class Processamento {
 	
@@ -182,20 +183,33 @@ public class Processamento {
 			return null;
 		}
 		
+		@Deprecated //NAO VAI FUNCIONAR
 		public EquacaoDaReta[] retanguloParaEquacoesDaReta(Rectangle area){
 			EquacaoDaReta[] retas = new EquacaoDaReta[4];
 			
-//			EquacaoDaReta cima  = FactoryEquacaoDaReta.factory_EqDaReta(area.x, area.y, p2x, p2y);
-//			EquacaoDaReta baixo = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
-//			EquacaoDaReta esq   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
-////			EquacaoDaReta dir   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
-//			
-//			retas[0] = cima;
-//			retas[1] = baixo;
-//			retas[2] = esq;
-//			retas[3] = dir;
+			EquacaoDaReta cima  = FactoryEquacaoDaReta.factory_EqDaReta(area.x             , area.y               ,//p1 
+																		area.x + area.width, area.y              );//p2
 			
-			return null;
+			EquacaoDaReta baixo = FactoryEquacaoDaReta.factory_EqDaReta(area.x             , area.y + area.height ,//p1
+																		area.x + area.width, area.y + area.height);//p2
+			
+			EquacaoDaReta esq   = FactoryEquacaoDaReta.factory_EqDaReta(area.x             , area.y               ,//p1
+																		area.x             , area.y + area.height);//p2
+			
+			EquacaoDaReta dir   = FactoryEquacaoDaReta.factory_EqDaReta(area.x + area.width, area.y               ,//p1
+																		area.x + area.width, area.y + area.height);//p2
+			
+			retas[0] = cima;
+			retas[1] = baixo;
+			retas[2] = esq;
+			retas[3] = dir;
+			
+			System.out.println("cima  " + cima);
+			System.out.println("baixo " + baixo);
+			System.out.println("esq   " + esq);
+			System.out.println("dir   " + dir);
+			
+			return retas;
 		}
 		
 	}

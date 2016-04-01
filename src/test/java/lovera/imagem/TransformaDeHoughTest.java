@@ -17,11 +17,11 @@ import lovera.img.modelos.uniao.UniaoImgLinhas;
 
 public class TransformaDeHoughTest {
 	
-	@Test
-	public void deveDesenharLinhaHorizontal(){
-		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LINHA_HORIZONTAL);
-		executarTransformada(img, "tHorizontal");
-	}
+//	@Test
+//	public void deveDesenharLinhaHorizontal(){
+//		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LINHA_HORIZONTAL);
+//		executarTransformada(img, "tHorizontal");
+//	}
 	
 	@Test
 	public void deveDesenharLinhaVertical(){
@@ -29,17 +29,17 @@ public class TransformaDeHoughTest {
 		executarTransformada(img, "tVertical");
 	}
 	
-	@Test
-	public void deveDesenharLinhaDescendo(){
-		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LINHA_DESCENDO);
-		executarTransformada(img, "tDescendo");
-	}
-	
-	@Test
-	public void deveDesenharLinhaSubindo(){
-		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LINHA_SUBINDO);
-		executarTransformada(img, "tSubindo");
-	}
+//	@Test
+//	public void deveDesenharLinhaDescendo(){
+//		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LINHA_DESCENDO);
+//		executarTransformada(img, "tDescendo");
+//	}
+//	
+//	@Test
+//	public void deveDesenharLinhaSubindo(){
+//		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.LINHA_SUBINDO);
+//		executarTransformada(img, "tSubindo");
+//	}
 	
 	private void executarTransformada(BufferedImage img, String nomeArquivo){
 		
@@ -60,6 +60,6 @@ public class TransformaDeHoughTest {
 		UniaoImgLinhas u = new UniaoImgLinhas(nomeArquivo, linhas, img);
 		u.executarTransformacao();
 		u.gravar();
-		u.abrir();
+//		u.abrir();
 	}
 }
