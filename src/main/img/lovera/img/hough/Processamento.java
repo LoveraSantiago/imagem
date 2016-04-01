@@ -178,20 +178,24 @@ public class Processamento {
 //				}
 //			}			
 //			return new Line2D.Double(x1, y1, x2, y2);
+			
+			return null;
 		}
 		
 		public EquacaoDaReta[] retanguloParaEquacoesDaReta(Rectangle area){
 			EquacaoDaReta[] retas = new EquacaoDaReta[4];
 			
-			EquacaoDaReta cima  = FactoryEquacaoDaReta.factory_EqDaReta(area.x, area.y, p2x, p2y);
-			EquacaoDaReta baixo = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
-			EquacaoDaReta esq   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
-			EquacaoDaReta dir   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+//			EquacaoDaReta cima  = FactoryEquacaoDaReta.factory_EqDaReta(area.x, area.y, p2x, p2y);
+//			EquacaoDaReta baixo = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+//			EquacaoDaReta esq   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+////			EquacaoDaReta dir   = FactoryEquacaoDaReta.factory_EqDaReta(p1x, p1y, p2x, p2y);
+//			
+//			retas[0] = cima;
+//			retas[1] = baixo;
+//			retas[2] = esq;
+//			retas[3] = dir;
 			
-			retas[0] = cima;
-			retas[1] = baixo;
-			retas[2] = esq;
-			retas[3] = dir;
+			return null;
 		}
 		
 	}
