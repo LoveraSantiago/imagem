@@ -30,6 +30,8 @@ import lovera.img.modelos.img.BinarizacaoImg;
  */
 public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Executor{
 	
+	private double alturaMediaBloco;
+	
 	private List<BlocoComPonto> listaBlocosCPontos;
 	private List<Rectangle> listaTemp;
 	
@@ -50,7 +52,9 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 	}
 
 	private void gerarBlocos(){
-		Estatistica estats = getEstatisticaDaAltura();
+		Estatistica estats = getEstatisticaDaAltura();		
+		setAlturaMediaBloco(estats);
+		
 		List<AreaSubset> altClassificadas = classificarAlturas(estats);
 		List<Rectangle> areas = filtrarAlturasClassificadas(altClassificadas);		
 						areas = gerarBlocos(areas, estats);		
@@ -109,5 +113,13 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 	public List<BlocoComPonto> getListaBlocosComPontos(){
 		Regras.validarListaDeBlocosComPonto(this.listaBlocosCPontos, this.getClass());
 		return this.listaBlocosCPontos;		
+	}
+
+	public double getAlturaMediaBloco() {
+		return alturaMediaBloco;
+	}
+
+	private void setAlturaMediaBloco(Estatistica estats) {
+		this.alturaMediaBloco = estats.getMedia();
 	}
 }
