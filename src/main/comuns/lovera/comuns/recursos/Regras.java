@@ -10,7 +10,7 @@ import lovera.estatistica.contratos.EstatsDesc;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
-import lovera.img.graos.AlturaSubset;
+import lovera.img.graos.AreaSubset;
 import lovera.img.graos.BlocoComPonto;
 import lovera.img.modelos.blocos.AreasParaBlocos;
 
@@ -32,7 +32,7 @@ public final class Regras {
 		validarBufferedImgCinza(imgTranformavel.getImgTransformada(), imgTranformavel.getClass());
 	}
 	
-	public static void validarClassificacaoAlturas(List<AlturaSubset> lista, Coordenadas coordenadas){
+	public static void validarClassificacaoAlturas(List<AreaSubset> lista, Coordenadas coordenadas){
 		if(lista == null)
 			throw new IllegalStateException("Metodo classificarAreas não foi chamado na classe " + coordenadas.getClass().getName() + ".");
 	}

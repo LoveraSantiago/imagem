@@ -2,7 +2,7 @@ package lovera.img.contratos;
 
 import java.util.List;
 
-import lovera.img.graos.AlturaSubset;
+import lovera.img.graos.AreaSubset;
 
 /**
  * Interface para modelos que produzem areas retangulares separadas por grpos.</br>
@@ -12,6 +12,6 @@ import lovera.img.graos.AlturaSubset;
  */
 public interface CoordAClassificadas extends Coordenadas{
 	
-	List<AlturaSubset> getListaAreaClassificadas();
+	List<AreaSubset> getListaAreaClassificadas();
 
 }

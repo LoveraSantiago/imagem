@@ -12,11 +12,22 @@ import lovera.img.contratos.CoordAClassificadas;
 import lovera.img.contratos.CoordenadasArea;
 import lovera.img.contratos.CoordenadasPonto;
 import lovera.img.contratos.Executor;
-import lovera.img.graos.AlturaSubset;
+import lovera.img.graos.AreaSubset;
 import lovera.img.graos.BlocoComPonto;
 import lovera.img.modelos.floodfill.FloodFillCCs;
 import lovera.img.modelos.img.BinarizacaoImg;
 
+/**
+ * Classe que executa a transformação de areas "Rectangles" da imagem para blocos.</br>
+ * - Recebe as areas dos componentes conectados.</br> 
+ * - Utiliza de estatistica para pegar a altura media desses retangulos.</br>
+ * - Classifica em um 3 tipos de subsets.</br>
+ * - Realiza a filtragem para os subsets1.</br>
+ * - Divide as areas dos componentes conectados em blocos.</br>
+ * - Marca o ponto de centro de gravidade para cada bloco. 
+ * @author Lovera
+ * @since 05/04/2016
+ */
 public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Executor{
 	
 	private List<BlocoComPonto> listaBlocosCPontos;
@@ -40,7 +51,7 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 
 	private void gerarBlocos(){
 		Estatistica estats = getEstatisticaDaAltura();
-		List<AlturaSubset> altClassificadas = classificarAlturas(estats);
+		List<AreaSubset> altClassificadas = classificarAlturas(estats);
 		List<Rectangle> areas = filtrarAlturasClassificadas(altClassificadas);		
 						areas = gerarBlocos(areas, estats);		
 		this.listaBlocosCPontos = localizarCentroDosBlocos(areas);
@@ -55,13 +66,13 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 						   .getEstatistica();
 	}
 	
-	private List<AlturaSubset> classificarAlturas(Estatistica estats){
+	private List<AreaSubset> classificarAlturas(Estatistica estats){
 		Executor classificador = new ClassifAltura(this.listaTemp, estats);
 		classificador.executar();
 		return ((CoordAClassificadas) classificador).getListaAreaClassificadas();
 	}
 	
-	private List<Rectangle> filtrarAlturasClassificadas(List<AlturaSubset> altClassificadas){
+	private List<Rectangle> filtrarAlturasClassificadas(List<AreaSubset> altClassificadas){
 		Executor filtro = new FiltroSubset1(altClassificadas);
 		filtro.executar();
 		return ((CoordenadasArea) filtro).getAreas();

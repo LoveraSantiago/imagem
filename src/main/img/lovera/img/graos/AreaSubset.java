@@ -10,11 +10,11 @@ import lovera.img.comum.Subset;
  * @author Lovera
  * @since 29/03/2016
  */
-public class AlturaSubset extends Area{
+public class AreaSubset extends Area{
 	
 	private final Subset subset;
 	
-	public AlturaSubset(Subset subset, Rectangle area) {
+	public AreaSubset(Subset subset, Rectangle area) {
 		super(area);
 		this.subset = subset;
 	}

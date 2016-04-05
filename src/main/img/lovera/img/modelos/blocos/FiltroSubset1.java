@@ -8,14 +8,14 @@ import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Subset;
 import lovera.img.contratos.CoordenadasArea;
 import lovera.img.contratos.Executor;
-import lovera.img.graos.AlturaSubset;
+import lovera.img.graos.AreaSubset;
 
 class FiltroSubset1 implements CoordenadasArea, Executor{
 	
-	List<AlturaSubset> listaFiltrada;
+	List<AreaSubset> listaFiltrada;
 	List<Rectangle> listaAreas;
 	
-	public FiltroSubset1(List<AlturaSubset> listaParaClassificar) {
+	public FiltroSubset1(List<AreaSubset> listaParaClassificar) {
 		this.listaFiltrada = listaParaClassificar;
 	}
 	

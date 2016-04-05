@@ -8,14 +8,14 @@ import java.util.List;
 
 import lovera.img.contratos.CoordAClassificadas;
 import lovera.img.contratos.UnidorImagens;
-import lovera.img.graos.AlturaSubset;
+import lovera.img.graos.AreaSubset;
 
 public final class UniaoImgAreasCor extends UniaoImg{
 	
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
 	
-	List<AlturaSubset> listaClassificacao;
+	List<AreaSubset> listaClassificacao;
 
 	public UniaoImgAreasCor(String nomeArquivo, CoordAClassificadas coordenadas, BufferedImage img) {
 		super(nomeArquivo);
