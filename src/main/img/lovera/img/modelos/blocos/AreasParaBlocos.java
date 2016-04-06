@@ -2,6 +2,7 @@ package lovera.img.modelos.blocos;
 
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.CoordAClassificadas;
 import lovera.img.contratos.CoordenadasArea;
 import lovera.img.contratos.CoordenadasPonto;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 import lovera.img.graos.AreaSubset;
 import lovera.img.graos.BlocoComPonto;
 import lovera.img.modelos.floodfill.FloodFillCCs;
@@ -28,7 +29,7 @@ import lovera.img.modelos.img.BinarizacaoImg;
  * @author Lovera
  * @since 05/04/2016
  */
-public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Executor{
+public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Executador{
 	
 	private double alturaMediaBloco;
 	
@@ -71,19 +72,19 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 	}
 	
 	private List<AreaSubset> classificarAlturas(Estatistica estats){
-		Executor classificador = new ClassifAltura(this.listaTemp, estats);
+		Executador classificador = new ClassifAltura(this.listaTemp, estats);
 		classificador.executar();
 		return ((CoordAClassificadas) classificador).getListaAreaClassificadas();
 	}
 	
 	private List<Rectangle> filtrarAlturasClassificadas(List<AreaSubset> altClassificadas){
-		Executor filtro = new FiltroSubset1(altClassificadas);
+		Executador filtro = new FiltroSubset1(altClassificadas);
 		filtro.executar();
 		return ((CoordenadasArea) filtro).getAreas();
 	}
 	
 	private List<Rectangle> gerarBlocos(List<Rectangle> listaAreas, Estatistica estats){
-		Executor gerador = new GeradorDeBlocos(listaAreas, estats);
+		Executador gerador = new GeradorDeBlocos(listaAreas, estats);
 		gerador.executar();
 		return ((CoordenadasArea) gerador).getAreas();
 	}
@@ -103,9 +104,9 @@ public class AreasParaBlocos implements CoordenadasArea, CoordenadasPonto, Execu
 	}
 
 	@Override
-	public List<Point> getCoordenadas() {
+	public List<Point2D> getCoordenadas() {
 		Regras.validarListaDeBlocosComPonto(this.listaBlocosCPontos, this.getClass());
-		List<Point> listaPontos = new ArrayList<>(this.listaBlocosCPontos.size());
+		List<Point2D> listaPontos = new ArrayList<>(this.listaBlocosCPontos.size());
 		this.listaBlocosCPontos.forEach((areaPonto) -> listaPontos.add(areaPonto.getPonto()));
 		return listaPontos;
 	}

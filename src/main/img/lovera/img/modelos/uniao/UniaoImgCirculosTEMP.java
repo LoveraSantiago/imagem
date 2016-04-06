@@ -5,6 +5,7 @@ import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class UniaoImgCirculosTEMP extends UniaoImg{
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
 	
-	private final List<Point> coordenadas;
+	private final List<Point2D> coordenadas;
 
 	public UniaoImgCirculosTEMP(String nomeArquivo, CoordenadasPonto coordenadas, BufferedImage img) {
 		super(nomeArquivo);
@@ -35,8 +36,13 @@ public class UniaoImgCirculosTEMP extends UniaoImg{
 		Graphics graphics = this.imgUniao.getGraphics();
 		graphics.setColor(Color.cyan);
 		
-		this.coordenadas.forEach((ponto) -> 
-			graphics.drawOval(ponto.x, ponto.y, raio, raio));
+		this.coordenadas.forEach((ponto) -> { 
+			
+			int x = (int) Math.round(ponto.getX());
+			int y = (int) Math.round(ponto.getY());
+			
+			graphics.drawOval(x, y, raio, raio);			
+		});
 		 
 		this.imgTemp = null;
 		return this;

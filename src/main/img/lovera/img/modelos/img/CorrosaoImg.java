@@ -8,6 +8,7 @@ import static lovera.img.comum.Binario.ZERO_BINARIO;
 import static lovera.img.manipulacao.ManipulacaoImg.copiarImg;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.awt.image.WritableRaster;
@@ -27,7 +28,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	
 	private BufferedImage imgCorrosao;
 	
-	private List<Point> coordenadas;
+	private List<Point2D> coordenadas;
 	
 	public CorrosaoImg(BinarizacaoImg binarizacao) {
 		validarBufferedImgCinza(binarizacao, this.getClass());
@@ -195,7 +196,7 @@ public final class CorrosaoImg implements ImgTransformavel, Gravavel, Coordenada
 	}
 
 	@Override
-	public List<Point> getCoordenadas() {
+	public List<Point2D> getCoordenadas() {
 		validarListaCoordenadas(this.coordenadas, this.getClass());
 		return this.coordenadas;
 	}

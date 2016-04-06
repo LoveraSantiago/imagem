@@ -3,6 +3,7 @@ package lovera.comuns.recursos;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -12,6 +13,7 @@ import lovera.img.contratos.Coordenadas;
 import lovera.img.contratos.ImgTransformavel;
 import lovera.img.graos.AreaSubset;
 import lovera.img.graos.BlocoComPonto;
+import lovera.img.hough.CoordenadaPolarTemp;
 import lovera.img.modelos.blocos.AreasParaBlocos;
 
 /**
@@ -65,11 +67,18 @@ public final class Regras {
 		validarListaDeBlocosComPonto(areas.getListaBlocosComPontos(), classe);
 	}
 	
-	public static void validarListaCoordenadas(List<Point> lista, Class<?> classe){
+	public static void validarListaCoordenadas(List<Point2D> lista, Class<?> classe){
 		if(lista == null)
 			throw new IllegalStateException("Lista de coordenadas nula. Na classe " + classe.getName() + ".");
 		if(lista.size() <= 0)
 			throw new IllegalArgumentException("Lista de coordenadas vazia. Na classe " + classe.getName() + ".");
+	}
+	
+	public static void validarListaCoordenadasPolar(List<CoordenadaPolarTemp> lista, Class<?> classe){
+		if(lista == null)
+			throw new IllegalStateException("Lista de coordenadas polares nula. Na classe " + classe.getName() + ".");
+		if(lista.size() <= 0)
+			throw new IllegalArgumentException("Lista de coordenadas polares vazia. Na classe " + classe.getName() + ".");
 	}
 	
 	public static void validarListaDeLinhas(List<Line2D> lista, Class<?> classe){

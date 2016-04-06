@@ -3,6 +3,7 @@ package lovera.img.modelos.uniao;
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.WritableRaster;
 import java.util.List;
@@ -18,7 +19,7 @@ import lovera.img.contratos.UnidorImagens;
  */
 public final class UniaoImgPontos extends UniaoImg{
 	
-	private final List<Point> coordenadas;
+	private final List<Point2D> coordenadas;
 	
 	private BufferedImage imgTemp;
 	private BufferedImage imgUniao;
@@ -32,7 +33,7 @@ public final class UniaoImgPontos extends UniaoImg{
 	/**
 	 * Construtor para debug 
 	 */
-	public UniaoImgPontos(String nomeArquivo, List<Point> coordenadas, BufferedImage img) {
+	public UniaoImgPontos(String nomeArquivo, List<Point2D> coordenadas, BufferedImage img) {
 		super(nomeArquivo);
 		this.coordenadas = coordenadas;
 		this.imgTemp = img;
@@ -44,8 +45,13 @@ public final class UniaoImgPontos extends UniaoImg{
 		
 		WritableRaster wRaster = this.imgUniao.getRaster(); 
 		
-		this.coordenadas.forEach((ponto) -> 
-			wRaster.setSample(ponto.x, ponto.y, 1, Pixel.VAZIO.getValor()));
+		this.coordenadas.forEach((ponto) -> {
+			
+			int x = (int) Math.round(ponto.getX());
+			int y = (int) Math.round(ponto.getY());
+			
+			wRaster.setSample(x, y, 1, Pixel.VAZIO.getValor());			
+		});
 		
 		this.imgTemp = null;		
 		return this;

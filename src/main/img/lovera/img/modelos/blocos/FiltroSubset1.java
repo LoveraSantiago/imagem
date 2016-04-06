@@ -7,10 +7,10 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Subset;
 import lovera.img.contratos.CoordenadasArea;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 import lovera.img.graos.AreaSubset;
 
-class FiltroSubset1 implements CoordenadasArea, Executor{
+class FiltroSubset1 implements CoordenadasArea, Executador{
 	
 	List<AreaSubset> listaFiltrada;
 	List<Rectangle> listaAreas;

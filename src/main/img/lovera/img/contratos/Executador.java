@@ -5,8 +5,8 @@ package lovera.img.contratos;
  * @author Lovera
  * @since 27/03/2016
  */
-public interface Executor {
+public interface Executador {
 	
-	public Executor executar();
+	public Executador executar();
 
 }

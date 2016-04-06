@@ -10,12 +10,12 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
 import lovera.img.contratos.CoordenadasArea;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.img.BinarizacaoImg;
 
 //CCs Componentes Conectados
-public final class FloodFillCCs implements Executor, CoordenadasArea{
+public final class FloodFillCCs implements Executador, CoordenadasArea{
 
 	private List<RetanguloInfo> listaRI;
 

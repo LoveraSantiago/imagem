@@ -3,6 +3,7 @@ package lovera.imagem.linhas;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Testes2 {
 		BufferedImage img = ImgIO.carregarImg_modoMediaTracker(Imagens.REDACAO_PNG);
 		BufferedImage recortado = ManipulacaoImg.recortar(img, new Rectangle(402, 856, 29, 54));
 		
-		List<Point> lista = new ArrayList<>();
+		List<Point2D> lista = new ArrayList<>();
 		lista.add(new Point(13, 40));
 		
 		List<Line2D> linhas = new ArrayList<>();

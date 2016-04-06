@@ -9,10 +9,10 @@ import lovera.estatistica.grao.Estatistica;
 import lovera.img.comum.Subset;
 import lovera.img.contratos.CoordAClassificadas;
 import lovera.img.contratos.CoordenadasArea;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 import lovera.img.graos.AreaSubset;
 
-class ClassifAltura implements CoordenadasArea, CoordAClassificadas, Executor{
+class ClassifAltura implements CoordenadasArea, CoordAClassificadas, Executador{
 	
 	private final double altMedia;
 	

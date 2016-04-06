@@ -7,9 +7,9 @@ import java.util.List;
 import lovera.comuns.recursos.Regras;
 import lovera.estatistica.grao.Estatistica;
 import lovera.img.contratos.CoordenadasArea;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 
-class GeradorDeBlocos implements CoordenadasArea, Executor{
+class GeradorDeBlocos implements CoordenadasArea, Executador{
 	
 	private final int altMedia;
 	

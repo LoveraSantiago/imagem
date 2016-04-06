@@ -7,7 +7,9 @@ import lovera.comuns.recursos.Imagens;
 import lovera.img.contratos.UnidorImagens;
 import lovera.img.factory.FactoryModelo;
 import lovera.img.graos.BlocoComPonto;
+import lovera.img.hough.CoordenadaPolarTemp;
 import lovera.img.hough.HoughDosBlocos;
+import lovera.img.hough.HoughDosBlocosTemp;
 import lovera.img.manipulacao.ImgIO;
 import lovera.img.modelos.blocos.AreasParaBlocos;
 import lovera.img.modelos.floodfill.FloodFillCCs;
@@ -27,11 +29,19 @@ public class TestePrintarCentrosGravidades {
 		
 		AreasParaBlocos blocos = new AreasParaBlocos(flood, binarizacao);
 		blocos.executar();
-		List<BlocoComPonto> cGravidades = blocos.getListaBlocosComPontos();	
+		List<BlocoComPonto> cGravidades = blocos.getListaBlocosComPontos();
+		
+		HoughDosBlocosTemp hTemp = new HoughDosBlocosTemp(blocos, binarizacao);
+		hTemp.executar();
+		List<CoordenadaPolarTemp> listaPolar = hTemp.getListaPolar();
 		
 		int contador = 0;
-		for(BlocoComPonto bp : cGravidades)
-			System.out.println("tt = " + ++contador + " " + bp.getPonto());
+		for(int i = 0; i < cGravidades.size(); i++){
+			BlocoComPonto bp = cGravidades.get(i);
+			CoordenadaPolarTemp pPolar = listaPolar.get(i);
+			
+			System.out.println("tt = " + ++contador + " " + bp.getPonto() + " - polar " + pPolar);
+		}
 		
 	}
 }

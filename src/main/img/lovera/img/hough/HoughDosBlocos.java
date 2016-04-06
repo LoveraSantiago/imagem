@@ -9,13 +9,13 @@ import java.util.List;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.contratos.CoordenadasLinhas;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 import lovera.img.graos.BlocoComPonto;
 import lovera.img.manipulacao.ManipulacaoImg;
 import lovera.img.modelos.blocos.AreasParaBlocos;
 import lovera.img.modelos.img.BinarizacaoImg;
 
-public class HoughDosBlocos implements CoordenadasLinhas, Executor{
+public class HoughDosBlocos implements CoordenadasLinhas, Executador{
 	
 	private List<BlocoComPonto> blocos;
 	private BufferedImage img;
@@ -38,7 +38,7 @@ public class HoughDosBlocos implements CoordenadasLinhas, Executor{
 	
 	private void gerarHoughNosBlocos(){
 		
-		Executor transformadaH = new TransformadaDeHough();//Para carregar blocos estaticos
+		Executador transformadaH = new TransformadaDeHough();//Para carregar blocos estaticos
 		Processamento processamento = new Processamento();
 		
 		for(BlocoComPonto blocoPt : this.blocos){

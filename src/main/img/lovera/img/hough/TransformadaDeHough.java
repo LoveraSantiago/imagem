@@ -6,9 +6,9 @@ import java.awt.image.Raster;
 
 import lovera.comuns.recursos.Regras;
 import lovera.img.comum.Pixel;
-import lovera.img.contratos.Executor;
+import lovera.img.contratos.Executador;
 
-public class TransformadaDeHough implements Executor{
+public class TransformadaDeHough implements Executador{
 	
 	private static final int GRAUS;
 		

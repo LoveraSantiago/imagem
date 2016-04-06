@@ -5,6 +5,7 @@ import static lovera.comuns.recursos.Regras.validarListaCoordenadas;
 import static lovera.comuns.recursos.Regras.validarOperacaoExecutada;
 
 import java.awt.Point;
+import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.Raster;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 	private BufferedImage imgTemp;
 	private BufferedImage imgChuva;
 	
-	private List<Point> coordenadas;
+	private List<Point2D> coordenadas;
 	
 	public ChuvaImg(BinarizacaoImg binarizacao) {
 		validarBufferedImgCinza(binarizacao, this.getClass());
@@ -69,7 +70,7 @@ public final class ChuvaImg implements ImgTransformavel, Gravavel, CoordenadasPo
 	}
 
 	@Override
-	public List<Point> getCoordenadas() {
+	public List<Point2D> getCoordenadas() {
 		validarListaCoordenadas(this.coordenadas, this.getClass());
 		return this.coordenadas;
 	}
