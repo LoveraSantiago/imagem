@@ -40,7 +40,8 @@ public class TestePrintarCentrosGravidades {
 			BlocoComPonto bp = cGravidades.get(i);
 			CoordenadaPolarTemp pPolar = listaPolar.get(i);
 			
-			System.out.println("tt = " + ++contador + " " + bp.getPonto() + " - polar " + pPolar);
+//			System.out.println("tt = " + ++contador + " " + bp.getPonto() + " - polar " + pPolar);
+			System.out.println(String.format("%.2f", pPolar.getRaio()));
 		}
 		
 	}
