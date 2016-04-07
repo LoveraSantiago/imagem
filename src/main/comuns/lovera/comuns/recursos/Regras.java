@@ -65,6 +65,7 @@ public final class Regras {
 	
 	public static void validarListaDeBlocosComPonto(AreasParaBlocos areas, Class<?> classe){
 		validarListaDeBlocosComPonto(areas.getListaBlocosComPontos(), classe);
+		validarListaCoordenadas(areas.getCoordenadas(), classe);
 	}
 	
 	public static void validarListaCoordenadas(List<Point2D> lista, Class<?> classe){

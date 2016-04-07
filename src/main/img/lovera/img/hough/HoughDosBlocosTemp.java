@@ -15,17 +15,24 @@ public class HoughDosBlocosTemp implements Executador{
 	private List<BlocoComPonto> blocos;
 	private List<CoordenadaPolarTemp> listaPolar;
 	
+	private List<Point2D> listaDePontos;
+	
 	public HoughDosBlocosTemp(AreasParaBlocos areas, BinarizacaoImg binarizacao) {
 		Regras.validarBufferedImgCinza(binarizacao, this.getClass());
-		Regras.validarListaDeBlocosComPonto(areas, this.getClass());
+		Regras.validarListaDeBlocosComPonto(areas, this.getClass());		
 		
 		this.blocos = areas.getListaBlocosComPontos();
+		this.listaDePontos = areas.getCoordenadas();
 		this.listaPolar = new ArrayList<>(this.blocos.size());
 	}
 	
 		
 	@Override
 	public HoughDosBlocosTemp executar(){
+		TransformadaDeHoughTemp transformada = new TransformadaDeHoughTemp(this.listaDePontos, );
+		transformada.executar();
+		
+		
 		this.blocos.forEach((blocoPonto) -> {
 			
 			Point2D pCartesiano = blocoPonto.getPonto();
